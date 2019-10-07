@@ -1,0 +1,38 @@
+baseURL = "https://pwnagotchi.ai/"
+languageCode = "en-us"
+title = "Pwnagotchi - Deep Reinforcement Learning instrumenting bettercap for WiFi pwning."
+
+theme = "hugo-theme-learn"
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+themeVariant = "red"
+disableShortcutsTitle=true
+editURL = "https://github.com/evilsocket/www.pwnagotchi.ai/edit/master/content/"
+
+[[menu.shortcuts]]
+name = "<img src='https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter' alt='follow on Twitter'>"
+url = "https://twitter.com/intent/follow?screen_name=pwnagotchi"
+weight = 1
+
+[[menu.shortcuts]]
+name = "<img alt='Slack' src='https://pwnagotchi.herokuapp.com/badge.svg'>"
+url = "https://pwnagotchi.herokuapp.com/"
+weight = 2
+
+[[menu.shortcuts]]
+name = '<img alt="Software License" src="https://img.shields.io/badge/license-GPL3-brightgreen.svg?style=flat-square">'
+url = "https://github.com/evilsocket/pwnagotchi/blob/master/LICENSE.md"
+weight = 3
+
+[[menu.shortcuts]] 
+name = '<img alt="Travis" src="https://img.shields.io/travis/evilsocket/pwnagotchi/master.svg?style=flat-square">'
+url = "https://travis-ci.org/evilsocket/pwnagotchi"
+weight = 4
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Github"
+url = "https://github.com/evilsocket/pwnagotchi"
+weight = 5
