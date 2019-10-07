@@ -33,6 +33,11 @@ url = "https://travis-ci.org/evilsocket/pwnagotchi"
 weight = 4
 
 [[menu.shortcuts]]
-name = "<i class='fab fa-github'></i> Github"
+name = "<i class='fab fa-github'></i> pwnagotchi"
 url = "https://github.com/evilsocket/pwnagotchi"
 weight = 5
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-reddit'></i> r/pwnagotchi"
+url = "https://www.reddit.com/r/pwnagotchi/"
+weight = 6
