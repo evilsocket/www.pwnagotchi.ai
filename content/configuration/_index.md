@@ -11,7 +11,7 @@ Once you've [written the image file onto the SD card](../installation/#flashing-
 1. [Connect to your Pwnagotchi](../configuration/#connect-to-your-pwnagotchi)
 2. [Name your new Pwnagotchi](../configuration/#name-your-new-pwnagotchi)
 3. [Choose your unit's language](../configuration/#choose-your-unit-s-language)
-4. [Set your pwnGRID preferences](../configuration/#set-your-pwngrid-preferences)
+4. [Set your PwnGrid preferences](../configuration/#set-your-pwngrid-preferences)
 5. [Select your display](../configuration/#select-your-display)
 6. [Host connection sharing](../configuration/#host-connection-sharing)
 7. [Troubleshooting](../configuration/#troubleshooting)
@@ -58,8 +58,6 @@ You can give your new Pwnagotchi unit its own name by [changing its hostname](ht
 
 Open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
 
-<!-- §CHANGE§ is this second paragraph still accurate? i'm not sure what the second set of instructions is for... -->
-
 -------------------------------------------------------------------------------------------------------------
 ## Choose your unit's language
 
@@ -83,20 +81,18 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 {{% /notice %}}
 
 
-## Set your [pwnGRID](../intro/#pwnagotchis-on-the-pwngrid) preferences
+## Set your [PwnGrid](../intro/#pwnagotchis-on-the-pwngrid) preferences
 
-<!-- §CHANGE§ ADD ADDITIONAL INFORMATION ABOUT THE pwnGRID PLUGIN TO HELP USERS UNDERSTAND WHY THEY WANT TO ENROLL -->
-
-By default, the `grid` [plugin](../plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](../usage/#user-interface), it will signal its existence to the pwnGRID server by sending ONLY the following enrollment data: 
+By default, the `grid` [plugin](../plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](../usage/#user-interface), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
 
-If you would like your unit to participate in [pwnGRID]()'s community rankings and scoreboards (pwnGRID is like Pokèmon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to pwnGRID by enabling your unit to send the pwnGRID API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the pwnGRID server;** ONLY the minimum information to enroll the unit in the pwnGRID database (see above) and calculate how many networks it has "conquered" so far, namely:
+If you would like your unit to participate in [PwnGrid]()'s community rankings and scoreboards (PwnGrid is like Pokèmon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
 
 - The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
 
-In order to **fully opt-in** to pwnGRID, you must make the following change in your `/etc/pwnagotchi/config.yml` file:
+In order to **fully opt-in** to PwnGrid, you must make the following change in your `/etc/pwnagotchi/config.yml` file:
 
 ```yaml
 main:
@@ -106,7 +102,7 @@ main:
         report: true # full-opt in
 ```
 
-Even if you have decided to **fully opted-in** to pwnGRID, you can still disable reporting for specific networks—for instance, if you don't want your home network to be in the system:
+Even if you have decided to **fully opted-in** to PwnGrid, you can still disable reporting for specific networks—for instance, if you don't want your home network to be in the system:
 
 ```yaml
 main:

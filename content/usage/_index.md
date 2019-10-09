@@ -68,12 +68,12 @@ If you've properly attached the optional [supported e-ink display](../installati
 ## Files to know on your Pwnagotchi
 
 - **Configuration**
-   - `etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
-       - Do NOT add customizations to `defaults.yml`! They will be overwritten whenever you [update your unit](../usage/#update-your-pwnagotchi)!
+   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
+       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](../usage/#update-your-pwnagotchi)!
 - **Handshakes**
-   - All the [handshakes Pwnagotchi captures](../intro/#wifi-handshakes-101) are saved to _______
+   - All the [handshakes Pwnagotchi captures](../intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
 - **The AI**
-   - The neural network is located at _________. If you want to save your Pwnagotchi's memories, these are the files to [back up](../usage/#backup-your-pwnagotchi).
+   - The neural network is located at `/root/brain.nn`. If you want to save your Pwnagotchi's memories, these are the files to [back up](../usage/#backup-your-pwnagotchi).
 
 ------------------------------------------------------------------------------------------------------
 
@@ -81,7 +81,6 @@ If you've properly attached the optional [supported e-ink display](../installati
 
 {{% notice warning %}}
 <p><strong>An important note about the AI:</strong> a network trained with a specific WiFi interface will ONLY work with another interface if it supports the <em>exact same</em> WiFi channels of the first one. For instance, you CANNOT use a neural network trained on a Raspberry Pi Zero W (which only supports 2.4GHz channels) with a 5GHz antenna; you will need to train one from scratch for those channels to be included. This means that if you swap out your SD card or neural network from, say, a RPi0W body into a RPi4 body, the neural network will NOT work.</p>
-<!-- §CHANGE§ double-check this. what actually happens if you do this? are there any other reasons somebody might run across this problem? -->
 {{% /notice %}}
 
 At its core Pwnagotchi is a very simple creature: we could summarize its main algorithm as:
@@ -190,35 +189,19 @@ Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.be
 <p><b>Why can't I use bettercap's web UI while my Pwnagotchi is eating handshakes?</b> This is because when Pwnagotchi is running in AUTO or AI modes, it is basically instrumenting bettercap in order to sniff packets and capture and record handshakes. You and Pwnagotchi cannot BOTH use bettercap at the same time; for this reason, it is only when your Pwnagotchi <b>isn't</b> hunting for handshakes to eat—AKA, when it is in MANUAL mode—that you are free to use bettercap (and its web UI) yourself.</p>
 {{% /notice %}}
 
-<!-- §CHANGE§ is this correct? ^^^^ -->
-
-
 ------------------------------------------------------------------------------------------------------
+
+<!--
 ## Update your Pwnagotchi
 
-You can use the `scripts/update_pwnagotchi.sh` script to update to the most recent version of pwnagotchi.
-<!-- §CHANGE§ is this still correct? ^^^^ -->
-
-```shell
-usage: ./update_pwnagitchi.sh [OPTIONS]
-
-   Options:
-      -v                # Version to update to, can be a branch or commit. (default: master)
-      -u                # Url to clone from. (default: https://github.com/evilsocket/pwnagotchi)
-      -m                # Mode to restart to. (Supported: auto manual; default: auto)
-      -b                # Backup the current pwnagotchi config.
-      -r                # Restore the current pwnagotchi config. -b will be enabled.
-      -h                # Shows this help.             Shows this help.
-
-```
-
+TODO
 
 ------------------------------------------------------------------------------------------------------
+-->
 
 ## Backup your Pwnagotchi
 
 You can use the `scripts/backup.sh` script to backup the important files of your unit.
-<!-- §CHANGE§ is this still correct? ^^^^ -->
 
 ```shell
 usage: ./scripts/backup.sh HOSTNAME backup.zip

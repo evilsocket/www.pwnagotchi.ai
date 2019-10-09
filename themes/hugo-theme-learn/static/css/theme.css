@@ -34,6 +34,7 @@
     font-weight: 500;
     src: url("../fonts/Work_Sans_500.eot?#iefix") format("embedded-opentype"), url("../fonts/Work_Sans_500.woff") format("woff"), url("../fonts/Work_Sans_500.woff2") format("woff2"), url("../fonts/Work_Sans_500.svg#WorkSans") format("svg"), url("../fonts/Work_Sans_500.ttf") format("truetype");
 }
+
 /* ROBOTO */
 /* roboto-regular - cyrillic_latin_greek */
 @font-face {
@@ -141,7 +142,6 @@
        url('../fonts/roboto-condensed-v18-cyrillic_latin_greek-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/roboto-condensed-v18-cyrillic_latin_greek-700italic.svg#RobotoCondensed') format('svg'); /* Legacy iOS */
 }
-
 
 body {
     background: #fff;
@@ -554,7 +554,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 }
 body {
     font-family: "Roboto", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.6;
     font-size: 18px !important;
 }

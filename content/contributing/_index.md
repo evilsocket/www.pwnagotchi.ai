@@ -6,11 +6,13 @@ draft: false
 pre: "<i class='fas fa-dna' style='color:#b33636;'></i> "
 ---
 
-<!-- §CHANGE§ DOESN'T THIS NEED TO GET COMPLETELY REWRITTEN? vvvvvvvvvvvvvv -->
-
 - Raspbian + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune config.yml).
 
-**Do not try with Kali on the Raspberry Pi 0 W, it is compiled without hardware floating point support and TensorFlow is simply not available for it, use Raspbian.**
+{{% notice warning %}}
+<p>
+<strong>Do not try with Kali on the Raspberry Pi 0 W</strong>, it is compiled without hardware floating point support and TensorFlow is simply not available for it, use Raspbian.
+</p>
+{{% /notice %}}
 
 ## Creating an Image
 
@@ -29,16 +31,6 @@ usage: ./scripts/create_sibling.sh [OPTIONS]
     -d           # Only run dependencies checks
     -h           # Show this help
 ```
-
-#### Known Issues
-
-`GLib-ERROR **: 20:50:46.361: getauxval () failed: No such file or directory`
-
-- Affected DEB & Versions: QEMU <= 2.11
-- Fix: Upgrade QEMU to >= 3.1
-- Bug Link: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923289
-
-<!-- §CHANGE§ DOESN'T THIS NEED TO GET COMPLETELY REWRITTEN? ^^^^^^^^^^^^^^^ -->
 
 ## Adding a Language
 
@@ -84,20 +76,4 @@ Sometimes we change old or add new status messages in Pwnagotchi's UI. If that's
 
 4. Add it to the [GitHub repo](https://github.com/evilsocket/pwnagotchi) and submit a pull request.
 None of these changes break anything. If the user made a mistake it will fallback to english.
-An important part is: dont change the voice.py, because this results in a change in all languages
-
-
-
-
-
-
-#### old version of the language HOW TO
-use the `language.sh` script.  If you want to add for example the language **italian** you would type: 
-
-
-Now you can use the `preview.py`-script to preview the changes:
-
-```shell
-./scripts/preview.py --lang it --display ws1 ws2 inky --output preview.png
-# Now open preview.png
-```
+An important part is: dont change the voice.py, because this results in a change in all languages.

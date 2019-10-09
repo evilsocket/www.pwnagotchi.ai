@@ -1,5 +1,5 @@
 ---
-title: "Community"
+title: "Community Hacks"
 date: 2019-02-25T11:33:49+01:00
 weight: 8
 draft: false

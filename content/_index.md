@@ -10,17 +10,6 @@ Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/
 <p><strong>Learn more about <a href="../intro/#how-does-pwnagotchi-work">how Pwnagotchi works</a> and why it <a href="../intro/#wifi-handshakes-101">eats WPA handshakes</a> in the <i class='fas fa-star-of-life' style='color:#b33636;'></i> <a href="../intro/">Introduction</a> doc.</strong></p>
 {{% /notice %}}
 
-## Features
-- **Adorable WiFi AI creature with a cute face that reflects an internal state predicated on pwnage 😍**
-- WPA handshake packet sniffer
-- Automated deauthing device
-- Dedicated hardware for [bettercap](https://www.bettercap.org/) + [webUI](../usage/#bettercap-s-web-ui)
-- Additional functionality can be easily scripted via [plugin](../plugins/) system
-- Integrates with [pwnGRID](../intro/#pwnagotchis-on-the-pwngrid) for _____________
-- A reason to leave the house more often (you nerds!)
-- That excuse you've been searching for to learn more about reinforcement learning &/or WiFi networking (amirite?)
-<!-- §CHANGE§ ^^ this list should be finessed, but it's important to provide an overview of what exactly you can do with the unit. ^^ -->
-
 ## But...why?
 
 To give hackers an excuse to learn about reinforcement learning and WiFi networking—and have a reason to get out for more walks.
