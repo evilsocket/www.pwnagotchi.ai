@@ -5,7 +5,7 @@ draft: false
 weight: 3
 ---
 
-Once you've [written the image file onto the SD card](https://github.com/evilsocket/pwnagotchi/blob/master/docs/install.md#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
+Once you've [written the image file onto the SD card](https://pwnagotchi.ai/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
 
 ## Connect to your Pwnagotchi
 
@@ -58,7 +58,7 @@ But if you want, you can change `main.lang` to one of the supported languages:
 
 ## PwnGRID
 
-By default the `grid` [plugin](https://github.com/evilsocket/pwnagotchi/blob/master/docs/plugins.md) is **only partially** enabled, this means that whenever the unit will detect internet connectivity in manual mode, it'll signal its 
+By default the `grid` [plugin](https://pwnagotchi.ai/plugins/) is **only partially** enabled, this means that whenever the unit will detect internet connectivity in manual mode, it'll signal its 
 presence to the PwnGRID server without sending any data other than: 
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
