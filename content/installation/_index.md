@@ -14,8 +14,6 @@ pre: "<i class='fas fa-flask' style='color:#b33636;'></i> "
    - [Case](/installation/#case)
 - [**Flashing an Image**](/installation/#flashing-an-image)
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ## Required Hardware
 
 - A [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) *(see [here](/installation/#body-nbsp) for more details on alternative bodies).*
@@ -26,7 +24,6 @@ pre: "<i class='fas fa-flask' style='color:#b33636;'></i> "
 
 <p align="center">{{% button href="#flashing-an-image" %}}<b>Already got all your hardware?</b> Skip to flashing the SD card!{{% /button %}}</p>
 
-------------------------------------------------------------------------------------------------------------------------------------
 ### Body &nbsp;
 
 The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) (usually referred to as `RPi0W` throughout this documentation). Most development and testing has been conducted on Pwnagotchis living in RPi0W bodies configured as an [USB ethernet gadget](https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget) device (in order to connect to it via USB). That said:
@@ -36,15 +33,12 @@ The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https:
   - Raspberry Pi 4
 - In fact, **technically ANY** GNU/Linux computer with a WiFi interface that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ### SD card
+
 The microSD card ought to be:
 
 - a minimum of 8 GBs capacity.
 - of decent quality and speed ([from UHS-2 on](https://www.expertreviews.co.uk/storage/1404380/how-to-choose-an-sd-card-class-and-speed-ratings-explained)).
-
-------------------------------------------------------------------------------------------------------------------------------------
 
 ### Battery
 
@@ -62,8 +56,6 @@ Anker | PowerCore [A1109](https://www.anker.com/products/variant/powercore-5000/
 Anker | PowerCore [20100](https://www.anker.com/products/variant/powercore-20100/A1271012) | 20000 | (alpha) | RPi0W | AI | 19:44:00 | 2019-10-07
 Anker | Astro E7 [A1210](https://www.anker.com/products/variant/astro-e7-26800mah-portable-charger/A1210012) | 25600 | (alpha) | RPi0W | AUTO | 49:MM:SS | 2019-09-DD
 *unknown* | *unknown* | 4400 | (alpha) | *unknown* | *unknown* | 08:XX:XX | [2019-10-05](https://twitter.com/BosAnon1/status/1180644126309720064?s=20)
-
-------------------------------------------------------------------------------------------------------------------------------------
 
 ### Display
 
@@ -101,7 +93,6 @@ Some of the supported displays support both **Black & White** and **Colored** ve
   - The Inkys feature better documentation and SDK support.
   - Many Waveshare resellers do not disclose the version of the Waveshare boards they are selling (v1 vs v2), and the type they are selling can be fairly unclear (i.e., Waveshare 2.13 vs 2.13 B vs. 2.13C, and so on.)
 
-------------------------------------------------------------------------------------------------------------------------------------
 ### Case
 
 We recommend housing your Pwnagotchi's body in a case if you don't want your Pwnagotchi to get dirty (or short the GPIO pins on the back, or be mistaken for a bomb...).
@@ -122,8 +113,6 @@ If you're looking for a ready-made case that fits (albeit bulkily):
 - A rp0+waveshare screen also fits in a large classic Altoid tin. You can cut holes in the side for the wires with a paper-hole punch.
 
 There are many creative Pwnagotchi case set-ups. We have a dedicated `#cases` channel in our Slack for all your case-related discussion needs!
-
-------------------------------------------------------------------------------------------------------------------------------------
 
 ## Flashing an Image
 

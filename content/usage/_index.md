@@ -66,11 +66,9 @@ Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local:8080/` whenever your Pwnagotchi is set to MANUAL mode.
 
-
 #### The e-ink display (optional)
 
 If you've properly attached the optional [supported e-ink display](/installation/#display) to your Pwnagotchi's body and successfully [configured it](/configuration/#select-your-display) to use that display, you will also be able to see Pwnagotchi's UI displayed on that screen.
-
 
 ### Anatomy of a Pwnagotchi face
 
@@ -98,9 +96,6 @@ If you've properly attached the optional [supported e-ink display](/installation
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
 
-
-------------------------------------------------------------------------------------------------------
-
 ## Files to know on your Pwnagotchi
 
 - **Configuration**
@@ -108,10 +103,10 @@ If you've properly attached the optional [supported e-ink display](/installation
        - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
 - **Handshakes**
    - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
+- **Logs**
+   - The main log file is located at `/var/log/pwnagotchi.log`.
 - **The AI**
    - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
-
-------------------------------------------------------------------------------------------------------
 
 ## Training the AI
 
@@ -211,7 +206,6 @@ reward = h + a + c + b + i + m
 
 By maximizing this reward value, the AI learns over time to find the set of parameters that better perform with the current environmental conditions.
 
-------------------------------------------------------------------------------------------------------
 ## BetterCAP's Web UI
 
 Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local/`.
@@ -225,14 +219,12 @@ Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.be
 <p><b>Why can't I use bettercap's web UI while my Pwnagotchi is eating handshakes?</b> This is because when Pwnagotchi is running in AUTO or AI modes, it is basically instrumenting bettercap in order to sniff packets and capture and record handshakes. You and Pwnagotchi cannot BOTH use bettercap at the same time; for this reason, it is only when your Pwnagotchi <b>isn't</b> hunting for handshakes to eat—AKA, when it is in MANUAL mode—that you are free to use bettercap (and its web UI) yourself.</p>
 {{% /notice %}}
 
-------------------------------------------------------------------------------------------------------
-
 <!--
 ## Update your Pwnagotchi
 
 TODO
 
-------------------------------------------------------------------------------------------------------
+
 -->
 
 ## Backup your Pwnagotchi
@@ -242,8 +234,6 @@ You can use the `scripts/backup.sh` script to backup the important files of your
 ```shell
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
-
-------------------------------------------------------------------------------------------------------
 
 ## Random Info
 

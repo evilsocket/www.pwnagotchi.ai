@@ -16,8 +16,6 @@ Once you've [written the image file onto the SD card](/installation/#flashing-an
 6. [Host connection sharing](/configuration/#host-connection-sharing)
 7. [Troubleshooting](/configuration/#troubleshooting)
 
--------------------------------------------------------------------------------------------------------------
-
 ## Connect to your Pwnagotchi
 
 In order to properly set up and configure your Pwnagotchi, you'll first need to connect to it via SSH.
@@ -51,15 +49,12 @@ If you want to login directly without entering a password (recommended!), copy y
 ssh-copy-id -i ~/.ssh/id_rsa.pub pi@10.0.0.2
 ```
 
--------------------------------------------------------------------------------------------------------------
-
 ## Name your new Pwnagotchi
 
 You can give your new Pwnagotchi unit its own name by [changing its hostname](https://geek-university.com/raspberry-pi/change-raspberry-pis-hostname/). By default, your new Pwnagotchi's name will be `Pwnagotchi`.
 
 Open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
 
--------------------------------------------------------------------------------------------------------------
 ## Choose your unit's language
 
 Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
@@ -76,11 +71,9 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 - Swedish
 - Macedonian
 
-
 {{% notice tip %}}
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
 {{% /notice %}}
-
 
 ## Set your [PwnGrid](/intro/#pwnagotchis-on-the-pwngrid) preferences
 

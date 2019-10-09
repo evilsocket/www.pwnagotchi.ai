@@ -19,8 +19,6 @@ If you test one of these hacks yourself and it still works, it's extra nice if y
   - [Adding an external antenna to the RPi0W](#adding-an-external-antenna-to-the-rpi0w)
   - [RPi0W "Slim-agotchi"](#rpi0w-slim-agotchi)
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ## Screens
 ### Waveshare 3.5" SPI TFT screen
 
@@ -52,8 +50,8 @@ fbi -T 1 -a -noverbose -t 15 -cachemem 0 /root/pwnagotchi_1.png /root/pwnagotchi
 
 And you should be good!
 
-------------------------------------------------------------------------------------------------------------------------------------
 ### Pwnagotchi face via Bluetooth
+
 Last tested on | Pwnagotchi version | Hardware | Working? | Reference
 ---------------|--------------------|----------|----------|-----------|
 2019-10-06 | Unknown | Android | ✅ | Slack
@@ -127,9 +125,8 @@ sudo bt-network -a hci0 -s nap pan0 &
 
 Happy tweaking.
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ## Hardware Modifications
+
 ### Adding an external wireless antenna to the RPi0W
 Last tested on | Pwnagotchi version | Hardware |Working? | Reference
 ---------------|--------------------|----------|---------|-----------|
@@ -161,9 +158,8 @@ I used the following guide for the great images that they were able to take: [br
 - This can be done very quickly with a hot air rework station, but not many folks will have a hot air rework station—so I did it with my soldering iron.
 - You will need some sort of magnification device (whether a jewelers loupe or a stereo microscope) when it comes to the moving of the 0ohm resistor. It is VERY small.
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ### RPi0W "Slim-agotchi"
+
 Last tested on | Pwnagotchi version | Hardware | Working? | Reference
 ---------------|--------------------|----------|----------|-----------|
 2019-10-04 | Unknown | RPi0W | ✅ | Slack

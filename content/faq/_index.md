@@ -124,7 +124,7 @@ Because they don't drain the battery and they're readable in direct sunlight. ðŸ
 ### How do I connect to my Pwnagotchi?
 Check out [Connect to your Pwnagotchi](/configuration/#connect-to-your-pwnagotchi).
 
----------------------------------------------------------------------------------------------------------------
+---------
 ## **Customizing Your Pwnagotchi**
 ### How do I change my Pwnagotchi's name?
 Check out [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi).
@@ -145,7 +145,7 @@ lorem ipsum dolor sit amet
 ### Are there any unofficial community "hacks" for further customizing my Pwnagotchi?
 lorem ipsum dolor sit amet
 
----------------------------------------------------------------------------------------------------------------
+---------
 ## **Getting to Know Your Pwnagotchi**
 ### What does everything on the screen mean?
 lorem ipsum dolor sit amet
@@ -178,7 +178,7 @@ lorem ipsum dolor sit amet
 ### What happens when my Pwnagotchi meets another Pwnagotchi?
 lorem ipsum dolor sit amet
 
----------------------------------------------------------------------------------------------------------------
+---------
 ## **Caring for Your Pwnagotchi**
 ### What do all my Pwnagotchi's faces mean?
 lorem ipsum dolor sit amet
@@ -207,7 +207,7 @@ Since the RPi0W doesn't feature any buttons, there are only two ways to graceful
 ### Uh. So. What do I do with all these handshakes my Pwnagotchi has been eating?
 lorem ipsum dolor sit amet
 
----------------------------------------------------------------------------------------------------------------
+---------
 ## **Known Quirks**
 ### My Pwnagotchi's log timestamps seem...unreliable. Huh?
 lorem ipsum dolor sit amet
