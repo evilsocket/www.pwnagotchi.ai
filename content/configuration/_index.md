@@ -6,15 +6,15 @@ weight: 3
 pre: "<i class='fas fa-cog' style='color:#b33636;'></i> "
 ---
 
-Once you've [written the image file onto the SD card](../installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
+Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
 
-1. [Connect to your Pwnagotchi](../configuration/#connect-to-your-pwnagotchi)
-2. [Name your new Pwnagotchi](../configuration/#name-your-new-pwnagotchi)
-3. [Choose your unit's language](../configuration/#choose-your-unit-s-language)
-4. [Set your PwnGrid preferences](../configuration/#set-your-pwngrid-preferences)
-5. [Select your display](../configuration/#select-your-display)
-6. [Host connection sharing](../configuration/#host-connection-sharing)
-7. [Troubleshooting](../configuration/#troubleshooting)
+1. [Connect to your Pwnagotchi](/configuration/#connect-to-your-pwnagotchi)
+2. [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi)
+3. [Choose your unit's language](/configuration/#choose-your-unit-s-language)
+4. [Set your PwnGrid preferences](/configuration/#set-your-pwngrid-preferences)
+5. [Select your display](/configuration/#select-your-display)
+6. [Host connection sharing](/configuration/#host-connection-sharing)
+7. [Troubleshooting](/configuration/#troubleshooting)
 
 -------------------------------------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ In order to properly set up and configure your Pwnagotchi, you'll first need to 
      - Gateway: `10.0.0.1`
      - DNS (if required): `8.8.8.8` *(or whatever)*
 4. If everything's been configured properly, you will now be able to `ping` either `10.0.0.2` or `pwnagotchi.local`
-     * If you have already [configured the name](../configuration/#name-your-new-pwnagotchi) of your Pwnagotchi, `pwnagotchi.local` won't work. Instead, try *your unit's hostname* + `.local`.
+     * If you have already [configured the name](/configuration/#name-your-new-pwnagotchi) of your Pwnagotchi, `pwnagotchi.local` won't work. Instead, try *your unit's hostname* + `.local`.
 5. **Congratulations!** You should now be able to connect to your unit using SSH:
 
 ```bash
@@ -77,13 +77,13 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 
 
 {{% notice tip %}}
-<p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="../contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
+<p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
 {{% /notice %}}
 
 
-## Set your [PwnGrid](../intro/#pwnagotchis-on-the-pwngrid) preferences
+## Set your [PwnGrid](/intro/#pwnagotchis-on-the-pwngrid) preferences
 
-By default, the `grid` [plugin](../plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](../usage/#user-interface), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
+By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#user-interface), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
@@ -128,7 +128,7 @@ main:
 ## Select your display
 
 {{% notice tip %}}
-<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="../usage/#user-interface">User Interface</a> doc for more details on using the web UI.</p>
+<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="/usage/#user-interface">User Interface</a> doc for more details on using the web UI.</p>
 {{% /notice %}}
 
 **Set the type of display you want to use via `ui.display.type`.**
@@ -151,7 +151,7 @@ Windows | `scripts/win_connection_share.ps1`
 
 &nbsp;
 
-**All done configuring your new Pwnagotchi?** Time to learn how to take care of your new friend over in [**Usage**](../usage/)!
+**All done configuring your new Pwnagotchi?** Time to learn how to take care of your new friend over in [**Usage**](/usage/)!
 
 ## Troubleshooting
 

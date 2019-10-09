@@ -6,17 +6,17 @@ draft: false
 pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 ---
 
-- [**User Interface**](../usage/#user-interface)
-  - [Viewing Pwnagotchi's face](../usage/#viewing-pwnagotchi-s-face)
-     - [The web UI](../usage/#the-web-ui)
-     - [The e-ink display](../usage/#the-e-ink-display-optional)
-  - [Anatomy of a Pwnagotchi face](../usage/#anatomy-of-a-pwnagotchi-face)
-- [**Files to know on your Pwnagotchi**](../usage/#files-to-know-on-your-pwnagotchi)
-- [**Training the AI**](../usage/#training-the-ai)
-    - [The reward function](../usage/#the-reward-function)
-- [**bettercap's web UI**](../usage/#bettercap-s-web-ui)
-- [**Update your Pwnagotchi**](../usage/#update-your-pwnagotchi)
-- [**Backup your Pwnagotchi**](../usage/#backup-your-pwnagotchi)
+- [**User Interface**](/usage/#user-interface)
+  - [Viewing Pwnagotchi's face](/usage/#viewing-pwnagotchi-s-face)
+     - [The web UI](/usage/#the-web-ui)
+     - [The e-ink display](/usage/#the-e-ink-display-optional)
+  - [Anatomy of a Pwnagotchi face](/usage/#anatomy-of-a-pwnagotchi-face)
+- [**Files to know on your Pwnagotchi**](/usage/#files-to-know-on-your-pwnagotchi)
+- [**Training the AI**](/usage/#training-the-ai)
+    - [The reward function](/usage/#the-reward-function)
+- [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
+- [**Update your Pwnagotchi**](/usage/#update-your-pwnagotchi)
+- [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
 
 
 ## User Interface
@@ -25,15 +25,15 @@ pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 
 #### The web UI
 
-Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](../configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
+Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
 
-- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](../configuration/#name-your-new-pwnagotchi) you've given your unit.
-- You can also view [bettercap's webUI](../usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local:8080/` whenever your Pwnagotchi is set to MANUAL mode.
+- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
+- You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local:8080/` whenever your Pwnagotchi is set to MANUAL mode.
 
 
 #### The e-ink display (optional)
 
-If you've properly attached the optional [supported e-ink display](../installation/#display) to your Pwnagotchi's body and successfully [configured it](../configuration/#select-your-display) to use that display, you will also be able to see Pwnagotchi's UI displayed on that screen.
+If you've properly attached the optional [supported e-ink display](/installation/#display) to your Pwnagotchi's body and successfully [configured it](/configuration/#select-your-display) to use that display, you will also be able to see Pwnagotchi's UI displayed on that screen.
 
 
 ### Anatomy of a Pwnagotchi face
@@ -49,8 +49,8 @@ If you've properly attached the optional [supported e-ink display](../installati
    - The number of unique networks your Pwnagotchi has eaten **at least one** handshake of, from the beginning of its life, is displayed in parentheses.
    - The SSID of the latest network handshake acquired is displayed in brackets.
 * **MODE**: Mode indicates how Pwnagotchi is currently functioning.
-   * **MANU:** This appears when the unit is running in MANUAL mode, which is triggered when you start up your unit with the [USB network cable connected](../configuration/#connect-to-your-pwnagotchi).
-      - This mode is good for [updating](../usage/#update-your-pwnagotchi) and [backing up](../usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](../usage/#bettercap-s-web-ui). 
+   * **MANU:** This appears when the unit is running in MANUAL mode, which is triggered when you start up your unit with the [USB network cable connected](/configuration/#connect-to-your-pwnagotchi).
+      - This mode is good for [updating](/usage/#update-your-pwnagotchi) and [backing up](/usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](/usage/#bettercap-s-web-ui). 
       - Pwnagotchi does NOT sniff or capture handshakes when it is in MANUAL mode.
       - Stuck in MANUAL mode? Turn on the unit **without** the USB network cable connected.
    * **AUTO:** This indicates that the Pwnagotchi algorithm is running in AUTOMATIC mode, with AI disabled (or still loading).
@@ -69,11 +69,11 @@ If you've properly attached the optional [supported e-ink display](../installati
 
 - **Configuration**
    - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
-       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](../usage/#update-your-pwnagotchi)!
+       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
 - **Handshakes**
-   - All the [handshakes Pwnagotchi captures](../intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
+   - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
 - **The AI**
-   - The neural network is located at `/root/brain.nn`. If you want to save your Pwnagotchi's memories, these are the files to [back up](../usage/#backup-your-pwnagotchi).
+   - The neural network is located at `/root/brain.nn`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
 
 ------------------------------------------------------------------------------------------------------
 
@@ -180,7 +180,7 @@ By maximizing this reward value, the AI learns over time to find the set of para
 
 Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local/`.
 
-- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local/` to the [new hostname](../configuration/#name-your-new-pwnagotchi) you've given your unit.
+- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](http://localhost:1313/usage/#anatomy-of-a-pwnagotchi-face). 
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
