@@ -58,7 +58,7 @@ But if you want, you can change `main.lang` to one of the supported languages:
 
 ## PwnGRID
 
-By default the `grid` [plugin](https://github.com/evilsocket/pwnagotchi/blob/master/docs/plugins.md) is **only partially** enabled, this means that whenever the unit will detect internet connectivity in manual mode, it'll signal its 
+By default the `grid` [plugin](https://github.com/evilsocket/pwnagotchi/blob/master/docs/plugins.md) is **only partially** enabled, this means that whenever the Pwnagotchi detects internet connectivity in manual mode, it'll signal its 
 presence to the PwnGRID server without sending any data other than: 
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
@@ -69,7 +69,7 @@ just the minimum information to enroll the unit in the database and know how man
 
 - The list of networks that the unit collected handshakes of, made of their `BSSID` and `ESSID`.
 
-Other than for easy unit identification and debugging, this data is collected in order to build drankings, scoreboards and regional statistics. **Like Pokèmon Go, but for WiFi!**
+This is used for easy unit identification and debugging, this data is collected in order to build rankings, scoreboards and regional statistics. **Like Pokèmon Go, but for WiFi!**
 
 In order to fully opt-in, you can put this in your `/etc/pwnagotchi/config.yml` file:
 
@@ -81,7 +81,7 @@ main:
         report: true # full-opt in
 ```
 
-Even if fully opted-in, you can still disable reporting for specific networks, for instance if you don't want your home network to be in the system:
+Even if you fully opt-in, you can still disable reporting for specific networks, for instance if you don't want your home network to be in the system:
 
 ```yaml
 main:
@@ -94,7 +94,7 @@ main:
           - de:ad:be:ef:de:ad # both ESSIDs and BSSIDs are supported
 ```
 
-If instead you prefer to completely opt-out by also disabling signaling:
+If you would prefer instead to completely opt-out, also disabling signaling:
 
 ```yaml
 main:
@@ -107,7 +107,7 @@ main:
 ## Display Selection
 
 **Set the type of display you want to use via `ui.display.type`.**
-If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
+If your display does not work after changing this setting, you might need to completely remove its power, safely shutting down first to preserve the SD Card, from the Raspberry Pi and make a clean boot.
 
 **You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
 
