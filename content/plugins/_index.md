@@ -3,7 +3,10 @@ title: "Plugins"
 date: 2019-02-25T10:58:28+01:00
 weight: 5
 draft: false
+pre: "<i class='fas fa-puzzle-piece' style='color:#b33636;'></i> "
+
 ---
+<!-- pre: "<i class='fas fa-plug'></i> " -->
 
 Pwnagotchi has a simple plugins system that you can use to customize your unit and its behaviour. You can place your plugins anywhere
 as python files and then edit the `config.yml` file (`main.plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/sdcard/rootfs/root/pwnagotchi/scripts/pwnagotchi/plugins/default/) for a list of default plugins and all the callbacks that you can define for your own customizations.

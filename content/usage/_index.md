@@ -3,24 +3,86 @@ title: "Usage"
 date: 2019-02-25T10:58:28+01:00
 weight: 4
 draft: false
+pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 ---
+
+- [**User Interface**](../usage/#user-interface)
+  - [Viewing Pwnagotchi's face](../usage/#viewing-pwnagotchi-s-face)
+     - [The web UI](../usage/#the-web-ui)
+     - [The e-ink display](../usage/#the-e-ink-display-optional)
+  - [Anatomy of a Pwnagotchi face](../usage/#anatomy-of-a-pwnagotchi-face)
+- [**Files to know on your Pwnagotchi**](../usage/#files-to-know-on-your-pwnagotchi)
+- [**Training the AI**](../usage/#training-the-ai)
+    - [The reward function](../usage/#the-reward-function)
+- [**bettercap's web UI**](../usage/#bettercap-s-web-ui)
+- [**Update your Pwnagotchi**](../usage/#update-your-pwnagotchi)
+- [**Backup your Pwnagotchi**](../usage/#backup-your-pwnagotchi)
+
 
 ## User Interface
 
-The UI is available either via display if installed, or via http://pwnagotchi.local:8080/ if you connect to the unit via `usb0` and set a static address on the network interface (change `pwnagotchi` with the hostname of your unit).
+### Viewing Pwnagotchi's face
+
+#### The web UI
+
+Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](../configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
+
+- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](../configuration/#name-your-new-pwnagotchi) you've given your unit.
+- You can also view [bettercap's webUI](../usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local:8080/` whenever your Pwnagotchi is set to MANUAL mode.
+
+
+#### The e-ink display (optional)
+
+If you've properly attached the optional [supported e-ink display](../installation/#display) to your Pwnagotchi's body and successfully [configured it](../configuration/#select-your-display) to use that display, you will also be able to see Pwnagotchi's UI displayed on that screen.
+
+
+### Anatomy of a Pwnagotchi face
 
 ![ui](https://i.imgur.com/c7xh4hN.png)
 
-* **CH**: Current channel the unit is operating on or `*` when hopping on all channels.
-* **APS**: Number of access points on the current channel and total visible access points.
-* **UP**: Time since the unit has been activated.
-* **PWND**: Number of handshakes captured in this session and number of unique networks we own at least one handshake of, from the beginning.
-* **MODE**: 
-   * **AUTO:** This indicates that the Pwnagotchi algorithm is running in AUTOMATIC mode, with AI disabled (or still loading); it disappears once the AI dependencies have been bootstrapped and the neural network has finished loading.
-   * **MANU:** This appears when the unit is running in MANUAL mode.
-* **FRIEND:** If another unit is nearby, its presence will be indicated here. If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed.
+* **CH**: This displays the current channel the unit is operating on. 
+   - When the unit is performing recon and hopping on all channels, it will display `*` instead of a number. It is gathering the number of APs on each channel when it is conducting recon. Recon signals the start of a new epoch.
+* **APS**: Number of access points on the current channel.
+   - The total visible access points across all channels (according to the last recon) is displayed in parentheses.
+* **UP**: The uptime of the unit, since its last reboot. It is displayed in hh:mm:ss format.
+* **PWND**: Number of handshakes captured in this session. 
+   - The number of unique networks your Pwnagotchi has eaten **at least one** handshake of, from the beginning of its life, is displayed in parentheses.
+   - The SSID of the latest network handshake acquired is displayed in brackets.
+* **MODE**: Mode indicates how Pwnagotchi is currently functioning.
+   * **MANU:** This appears when the unit is running in MANUAL mode, which is triggered when you start up your unit with the [USB network cable connected](../configuration/#connect-to-your-pwnagotchi).
+      - This mode is good for [updating](../usage/#update-your-pwnagotchi) and [backing up](../usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](../usage/#bettercap-s-web-ui). 
+      - Pwnagotchi does NOT sniff or capture handshakes when it is in MANUAL mode.
+      - Stuck in MANUAL mode? Turn on the unit **without** the USB network cable connected.
+   * **AUTO:** This indicates that the Pwnagotchi algorithm is running in AUTOMATIC mode, with AI disabled (or still loading).
+      - Pwnagotchi will still sniff and capture handshakes in this mode; it is *mostly* functional—the primary difference between AUTO and AI mode is its actions are being determined by a static algorithm instead of the AI deciding what the Pwnagotchi should do for optimal pwnage.
+      - This disappears once the AI dependencies have been bootstrapped and the neural network has finished loading. (On a RPi0W, this process takes about 20–30 minutes.)
+      - If you are running your Pwnagotchi **without** the AI enabled, this is the mode you'll stay in.
+   * **AI:** This appears once the AI dependencies have finished loading and the neural network is functional. 
+      - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
+* **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
+  - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
+
+
+------------------------------------------------------------------------------------------------------
+
+## Files to know on your Pwnagotchi
+
+- **Configuration**
+   - `etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
+       - Do NOT add customizations to `defaults.yml`! They will be overwritten whenever you [update your unit](../usage/#update-your-pwnagotchi)!
+- **Handshakes**
+   - All the [handshakes Pwnagotchi captures](../intro/#wifi-handshakes-101) are saved to _______
+- **The AI**
+   - The neural network is located at _________. If you want to save your Pwnagotchi's memories, these are the files to [back up](../usage/#backup-your-pwnagotchi).
+
+------------------------------------------------------------------------------------------------------
 
 ## Training the AI
+
+{{% notice warning %}}
+<p><strong>An important note about the AI:</strong> a network trained with a specific WiFi interface will ONLY work with another interface if it supports the <em>exact same</em> WiFi channels of the first one. For instance, you CANNOT use a neural network trained on a Raspberry Pi Zero W (which only supports 2.4GHz channels) with a 5GHz antenna; you will need to train one from scratch for those channels to be included. This means that if you swap out your SD card or neural network from, say, a RPi0W body into a RPi4 body, the neural network will NOT work.</p>
+<!-- §CHANGE§ double-check this. what actually happens if you do this? are there any other reasons somebody might run across this problem? -->
+{{% /notice %}}
 
 At its core Pwnagotchi is a very simple creature: we could summarize its main algorithm as:
 
@@ -85,7 +147,7 @@ personality:
 
 There is no optimal set of parameters for every situation: when the unit is moving (during a walk for instance) smaller timeouts and RSSI thresholds might be preferred in order to quickly remove routers that are not in range anymore, while when stationary in high density areas (like an office) other parameters might be better. The role of the AI is to observe what's going on at the WiFi level, and adjust those parameters in order to maximize the cumulative reward of that loop / epoch.
 
-## Reward Function
+### The reward function
 
 After each iteration of the main loop (an `epoch`), the reward, a score that represents how well the parameters performed, is computed as (an excerpt from `pwnagotchi/ai/reward.py`):
 
@@ -114,15 +176,28 @@ reward = h + a + c + b + i + m
 
 By maximizing this reward value, the AI learns over time to find the set of parameters that better perform with the current environmental conditions.
 
+------------------------------------------------------------------------------------------------------
 ## BetterCAP's Web UI
 
-Moreover, given that the unit is running bettercap with API and Web UI, you'll be able to use the unit as a WiFi penetration testing portable station by accessing `http://pwnagotchi.local/`.
+Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local/`.
+
+- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local/` to the [new hostname](../configuration/#name-your-new-pwnagotchi) you've given your unit.
+- In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](http://localhost:1313/usage/#anatomy-of-a-pwnagotchi-face). 
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
 
+{{% notice info %}}
+<p><b>Why can't I use bettercap's web UI while my Pwnagotchi is eating handshakes?</b> This is because when Pwnagotchi is running in AUTO or AI modes, it is basically instrumenting bettercap in order to sniff packets and capture and record handshakes. You and Pwnagotchi cannot BOTH use bettercap at the same time; for this reason, it is only when your Pwnagotchi <b>isn't</b> hunting for handshakes to eat—AKA, when it is in MANUAL mode—that you are free to use bettercap (and its web UI) yourself.</p>
+{{% /notice %}}
+
+<!-- §CHANGE§ is this correct? ^^^^ -->
+
+
+------------------------------------------------------------------------------------------------------
 ## Update your Pwnagotchi
 
 You can use the `scripts/update_pwnagotchi.sh` script to update to the most recent version of pwnagotchi.
+<!-- §CHANGE§ is this still correct? ^^^^ -->
 
 ```shell
 usage: ./update_pwnagitchi.sh [OPTIONS]
@@ -137,18 +212,23 @@ usage: ./update_pwnagitchi.sh [OPTIONS]
 
 ```
 
+
+------------------------------------------------------------------------------------------------------
+
 ## Backup your Pwnagotchi
 
 You can use the `scripts/backup.sh` script to backup the important files of your unit.
+<!-- §CHANGE§ is this still correct? ^^^^ -->
 
 ```shell
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
+
+------------------------------------------------------------------------------------------------------
 
 ## Random Info
 
 * **On a rpi0w, it'll take approximately 30 minutes to load the AI**.
 * `/var/log/pwnagotchi.log` is your friend.
 * if connected to a laptop via usb data port, with internet connectivity shared, magic things will happen.
-* checkout the `ui.video` section of the `config.yml` - if you don't want to use a display, you can connect to it with the browser and a cable.
 * If you get `[FAILED] Failed to start Remount Root and Kernel File Systems.` while booting pwnagotchi, make sure the `PARTUUID`s for `rootfs` and `boot` partitions are the same in `/etc/fstab`. Use `sudo blkid` to find those values when you are using `create_sibling.sh`.
