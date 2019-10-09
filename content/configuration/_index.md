@@ -42,6 +42,8 @@ Open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editin
 
 ## Choose your Pwnagotchi's language
 
+The defaults.yml location: /usr/local/src/pwnagotchi/pwnagotchi/
+
 Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special.
 
 But if you want, you can change `main.lang` to one of the supported languages:
@@ -106,6 +108,8 @@ main:
 
 ## Display Selection
 
+The defaults.yml location: /usr/local/src/pwnagotchi/pwnagotchi/
+
 **Set the type of display you want to use via `ui.display.type`.**
 If your display does not work after changing this setting, you might need to completely remove its power, safely shutting down first to preserve the SD Card, from the Raspberry Pi and make a clean boot.
 
@@ -122,7 +126,9 @@ OS | Script Location
 ------|---------------------------
 Linux | `scripts/linux_connection_share.sh`
 Mac OS X | `scripts/macos_connection_share.sh`
-Windows | `scripts/win_connection_share.ps1`
+Windows | `scripts/win_connection_share.ps1`  (may change pwnagotchi static IP when enabling sharing)
+
+Depending on OS, if you are connected via SSH to the pwnagotchi when enabling sharing, you may get disconnected
 
 ## Troubleshooting
 
