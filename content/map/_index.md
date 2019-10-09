@@ -1,5 +1,5 @@
 ---
-title: "World Map"
+title: "PwnMAP"
 date: 2019-02-25T11:33:49+01:00
 weight: 9
 draft: false

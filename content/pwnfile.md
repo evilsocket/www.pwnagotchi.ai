@@ -50,6 +50,3 @@ pwned networks so far.
         </tr>
     </tbody>
 </table>
-
-
-
