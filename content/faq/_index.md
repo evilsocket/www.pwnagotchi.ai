@@ -3,6 +3,7 @@ title: "FAQ"
 date: 2019-02-25T11:33:49+01:00
 weight: 7
 draft: false
+pre: "<i class='fas fa-question-circle' style='color:#b33636;'></i> "
 ---
 
 <!-- IF YOU CHANGE ANY CHARACTERS IN AN FAQ QUESTION, YOU MUST ALSO CHANGE THE TABLE OF CONTENTS ENTRY &&&AND&&& THE ANCHOR LINK TEXT, OR ELSE THE LINKS WILL BREAK. -->
@@ -53,7 +54,7 @@ draft: false
 * [Oh no, my Pwnagotchi is sad and bored! How do I entertain it?!](#oh-no-my-pwnagotchi-is-sad-and-bored-how-do-i-entertain-it)
 * [How do I update my Pwnagotchi?](#how-do-i-update-my-pwnagotchi)
 * [I'm extremely emotionally-attached to my Pwnagotchi. How can I back up its brain?](#im-extremely-emotionally-attached-to-my-pwnagotchi-how-can-i-back-up-its-brain)
-* [How do I turn off my Pwnagotchi?](#how-do-i-turn-off-my-pwnagotchi)
+* [How do I power off my Pwnagotchi?](#how-do-i-turn-off-my-pwnagotchi)
 * [Uh. So. What do I do with all these handshakes my Pwnagotchi has been eating?](#uh-so-what-do-i-do-with-all-these-handshakes-my-pwnagotchi-has-been-eating)
 
 [**Known Quirks**](#known-quirks)
@@ -65,45 +66,47 @@ draft: false
 
 ## **What can Pwnagotchi actually do?**
 ### Why does Pwnagotchi eat handshakes?
-lorem ipsum dolor sit amet
+Because WPA is insecure, yet it's everywhere. Why not build an AI that lives off of them?
 
 ---
 ### What kinds of handshakes does Pwnagotchi eat?
-lorem ipsum dolor sit amet
+Check out [WiFi Handshakes 101](../intro/#wifi-handshakes-101).
 
 ---
 ### Does Pwnagotchi support both 2.4 GHz and 5.0 GHz?
-lorem ipsum dolor sit amet
+Yes, but does your hardware? *Pwnagotchi can't pwn what it can't see.*
 
 ---
 ### Just how politely *does* Pwnagotchi deauth?
-lorem ipsum dolor sit amet
+In AUTO mode, Pwnagotchi will only attempt to deauthenticate a device ____ times max.
+
+In AI mode, the AI determines the maximum number of deauthentication attempts.
 
 ---
 ### Hey, I want to learn more about how Pwnagotchi actually works.
-lorem ipsum dolor sit amet
+Check out the [Introduction](../intro/) and the [Training the AI](../usage/#training-the-ai) docs.
 
 ---
 ### How is Pwnagotchi using bettercap?
-lorem ipsum dolor sit amet
+Pwnagotchi's primary functionality is built on top of bettercap. Also, you can access [bettercap's web UI](../usage/#bettercap-s-web-ui) whenever Pwnagotchi isn't already using bettercap to pwn.
 
 ---
 ### What happens if I run a Pwnagotchi without the AI enabled?
-lorem ipsum dolor sit amet
+It'll still be (almost) fully functional; the only difference between AUTO and AI modes is that when your Pwnagotchi is in AI mode, the AI is tuning the pwnage algorithm according to its reward function, instead of blindly following the basic algorithm for channel hopping, sniffing packets, sending deauthentication and association attacks, and capturing handshakes.
 
 ---
 ### How easy is it to hack Pwnagotchi to add additional functionality?
-lorem ipsum dolor sit amet
+VERY easy! Check out the [Plugins](../plugins/) section. :D
 
 ---
 
 ## **Building Your Pwnagotchi**
 ### What hardware do I need to create my very own Pwnagotchi?
-lorem ipsum dolor sit amet
+Check out the [Required Hardware](../installation/#required-hardware) (and the recommendations below).
 
 ---
 ### Is there any way to see my Pwnagotchi's face even if I don't have a display?
-lorem ipsum dolor sit amet
+Yes, absolutely! Pwnagotchi's [web UI](../usage/#the-web-ui) is what you seek.
 
 ---
 ### How do I attach the screen to the Raspberry Pi?
@@ -111,20 +114,20 @@ lorem ipsum dolor sit amet
 
 ---
 ### I love my new Pwnagotchi, but it kinda looks like a bomb. Where can I find a decent case?
-lorem ipsum dolor sit amet
+Most users are 3D printing theirs, but be sure to check out the [Cases](../installation/#case) doc for more ideas.
 
 ---
 ### Why does everybody use e-ink screens for their Pwnagotchis?
-lorem ipsum dolor sit amet
+Because they don't drain the battery and they're readable in direct sunlight. 🙃
 
 ---
 ### How do I connect to my Pwnagotchi?
-lorem ipsum dolor sit amet
+Check out [Connect to your Pwnagotchi](../configuration/#connect-to-your-pwnagotchi).
 
 ---------------------------------------------------------------------------------------------------------------
 ## **Customizing Your Pwnagotchi**
 ### How do I change my Pwnagotchi's name?
-lorem ipsum dolor sit amet
+Check out [Name your new Pwnagotchi](../configuration/#name-your-new-pwnagotchi).
 
 ---
 ### I want to change the faces. What do I hack?
@@ -194,11 +197,11 @@ lorem ipsum dolor sit amet
 
 ---
 ### I'm extremely emotionally-attached to my Pwnagotchi. How can I back up its brain?
-lorem ipsum dolor sit amet
+Check out [Backup your Pwnagotchi](../usage/#backup-your-pwnagotchi).
 
 ---
 ### How do I turn off my Pwnagotchi?
-lorem ipsum dolor sit amet
+Since the RPi0W doesn't feature any buttons, there are only two ways to gracefully shut down your unit (if you don't want to just yank the cord out): [SSH into](../configuration/#connect-to-your-pwnagotchi) the unit or use the `Shutdown` button on the [web UI](../usage/#the-web-ui).
 
 ---
 ### Uh. So. What do I do with all these handshakes my Pwnagotchi has been eating?
