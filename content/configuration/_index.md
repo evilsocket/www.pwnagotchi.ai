@@ -42,6 +42,7 @@ ssh pi@10.0.0.2
 ```
 
 #### About your SSH connection
+
 The default password is `raspberry`; you should change it as soon as you log in for the first time by issuing the `passwd` command and selecting a new and more complex passphrase.
 
 If you want to login directly without entering a password (recommended!), copy your SSH public key to the unit's authorized keys:
@@ -135,6 +136,18 @@ main:
 If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
 
 **You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
+
+## Apply the new Configuration
+
+Now you can run:
+
+    sudo service pwnagotchi restart
+    
+In order to restart the service with the new configuration.
+
+{{% notice tip %}}
+<p>You will need to either reboot your unit or perform this step every time you will change the configuration.</p>
+{{% /notice %}}
 
 ## Host connection sharing
 
