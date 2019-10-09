@@ -6,6 +6,10 @@ draft: false
 pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 ---
 
+- [**Modes**](/usage/#auto-ai-and-manu-modes)
+  - [MANU](/usage/#manu)
+  - [AUTO](/usage/#auto)
+  - [AI](/usage/#ai)
 - [**User Interface**](/usage/#user-interface)
   - [Viewing Pwnagotchi's face](/usage/#viewing-pwnagotchi-s-face)
      - [The web UI](/usage/#the-web-ui)
@@ -18,10 +22,42 @@ pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 - [**Update your Pwnagotchi**](/usage/#update-your-pwnagotchi)
 - [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
 
+## AUTO, AI and MANU Modes
+
+Your unit can operate in one of three different "modes" that determines how it behaves:
+
+#### MANU
+
+If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode. 
+This means it will read the log of the last session and report a few statistics on the screen. This is the mode  you should be
+using your unit when you want to transfer data from/to it. Moreover, in MANU mode you'll be able to access bettercap's web ui 
+from your computer by opening the http://pwnagotchi.local:8080/ page.
+
+{{% notice tip %}}
+<p>You can "force" the unit to always go in AUTO mode regardless of the USB ports by creating the <code>/root/.pwnagotchi-auto</code> file.</p>
+{{% /notice %}}
+
+
+#### AUTO
+
+This is the default mode your unit will start if only connected to the USB **power port**, for instance when connected to a powerbank without any host computer on the data port. 
+In AUTO mode, your unit will start operating, perform attacks and sniffing handshakes only by using the default `personality` configuration parameters.
+
+#### AI
+
+If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 30 minutes on a Rpi0W). This interval is required 
+to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
+Once the dependencies are loaded and so the `/root/brain.nn` file, AI mode will pick the optimal set of parameters in real time, depending on how long 
+it's been trained on the specific type of WiFi environment it's observing now.
+
+Moreover, depending on the `laziness` configuration parameter, it will more or less frequently start to learn continuously for a given amount of time. 
+While this is happening and the AI is "training", the algorithm tends to explore wider ranges of parameters in order to determine how those changes affect the reward. 
+While during simple inference epochs (when the unit is not learning but just picking the parameters using previous knowledge), the AI tends to be more conservative and 
+only use parameters in smaller ranges that are known to work in that situation.
+
+Ideally, the `laziness` value should be very low at the beginning (say 0.1) and you should manually increase over time in order to reduce the amount of training vs inference epochs.
 
 ## User Interface
-
-### Viewing Pwnagotchi's face
 
 #### The web UI
 
@@ -73,7 +109,7 @@ If you've properly attached the optional [supported e-ink display](/installation
 - **Handshakes**
    - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
 - **The AI**
-   - The neural network is located at `/root/brain.nn`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
+   - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
 
 ------------------------------------------------------------------------------------------------------
 
