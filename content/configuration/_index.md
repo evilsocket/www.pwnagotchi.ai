@@ -145,7 +145,7 @@ Now you can run:
     
 In order to restart the service with the new configuration.
 
-{{% notice tip %}}
+{{% notice warning %}}
 <p>You will need to either reboot your unit or perform this step every time you will change the configuration.</p>
 {{% /notice %}}
 
