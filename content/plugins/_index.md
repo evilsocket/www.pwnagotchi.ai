@@ -10,6 +10,23 @@ pre: "<i class='fas fa-puzzle-piece' style='color:#b33636;'></i> "
 Pwnagotchi has a simple plugins system that you can use to customize your unit and its behaviour. You can place your plugins anywhere
 as python files and then edit the `config.yml` file (`main.plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/plugins/default) for a list of default plugins and all the callbacks that you can define for your own customizations.
 
+## Default plugins
+
+* `auto-backup.py` : backups files when internet is available.
+* `auto-update.py` : `apt update && apt upgrade` when internet is available.
+* `example.py` : example plugin for pwnagotchi that implements all the available callbacks.
+* `gps.py` : save GPS coordinates whenever a handshake is captured.
+* `grid.py` :  signals the unit cryptographic identity and list of pwned networks to api.pwnagotchi.ai
+* `memtemp.py` : will add a memory and temperature indicator.
+* `net-pos.py` : saves wifi position whenever a handshake is captured and retrieves the geo location when internet is available.
+* `onlinehashcrack.py` : automatically uploades handshakes to https://onlinehashcrack.com
+* `screen_refresh.py` : refresh he e-ink display after X amount of updates.
+* `twitter.py` : creates tweets about the recent activity of pwnagotchi.
+* `ups_lite.py` : add a voltage indicator for the UPS Lite v1.1
+* `wigles.py` : automatically uploades collected wifis to wigle.net
+* `wpa-sec.pt` : uploades handshakes to https://wpa-sec.stanev.org
+
+## Example
 Here's as an example the GPS plugin:
 
 ```python
