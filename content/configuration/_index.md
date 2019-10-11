@@ -24,6 +24,8 @@ In order to properly set up and configure your Pwnagotchi, you'll first need to 
 <p><b>PLEASE NOTE:</b> If you cannot connect to your Pwnagotchi <b>no matter what you try</b>, ensure that the micro-USB you are using <b>allows data transfer</b> and doesn't ONLY provide charge. Cheaper quality micro-USB cords often do not support data transfer and will NOT allow you to actually connect to your Pwnagotchi. :'( <b>Use a quality cord!</b></p>
 {{% /notice %}}
 
+![ui](https://i.imgur.com/uLdQYqF.png)
+
 1. Start by connecting the micro-USB cable to the data port of your Pwnagotchi's RPi0W, then connect the other end of that cable to your computer. 
 2. After a few seconds, the RPi0W's board will boot and you will see a new Ethernet interface on your host computer.
 3. You'll need to configure it with a static IP address:
