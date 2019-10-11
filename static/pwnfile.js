@@ -280,5 +280,15 @@ $(function(){
         if( data['data']['session']['epochs'] ) {
           $('#unitsession').show();
         }
+
+        var disqus_config = function () {
+          this.page.url = 'https://pwnagotchi.ai/pwnfile/#' + fingerprint;
+          this.page.identifier = 'pwnfile/' + fingerprint;
+        };
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://pwnagotchi.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     });
 });
