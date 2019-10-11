@@ -1,6 +1,23 @@
 var prev = {};
 var map = null;
 
+var entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function escape(string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap[s];
+  });
+}
+
 function doPoll() {
     if( $('#unitsmap').length == 0 )
         return;
@@ -14,7 +31,7 @@ function doPoll() {
             var unit = data.units[i];
             var html = "<li>" +
                     "<a href='/pwnfile/#" + unit.fingerprint + "' target='_blank'>" +
-                        unit.name + "</a>" +
+                        escape(unit.name) + "</a>" +
                      " was active " + $.timeago(unit.updated_at) + " from " + countries[unit.country] +
                 (unit.networks ? (" <strong>(pwned " + unit.networks + " networks so far)</strong>") : "" )+
                     "</li>";
