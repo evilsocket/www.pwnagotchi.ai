@@ -246,13 +246,23 @@ var countries = {
   ZW: 'Zimbabwe'
 };
 
+function obj(root, parts) {
+  var root_name = parts.shift();
+  if( !(root_name in root) ) {
+    return "";
+  } else if( parts.length === 0 ) {
+    return root[root_name];
+  }
+  return obj(root[root_name], parts)
+}
+
 $(function(){
-    if( window.location.pathname != "/pwnfile/" ) {
+    if( window.location.pathname !== "/pwnfile/" ) {
         return;
     }
 
     var fingerprint = window.location.hash.substr(1);
-    if( fingerprint.length != 64 ){
+    if( fingerprint.length !== 64 ){
         window.location.href = "/";
         return;
     }
@@ -269,26 +279,30 @@ $(function(){
       s.setAttribute('data-timestamp', +new Date());
       (d.head || d.body).appendChild(s);
 
-      $('*[class^="unit."]').each(function(_, o) {
-            var name = $(o).attr('class').split('.')[1].split(' ')[0];
-            if( name.indexOf(':') != -1 ){
-                var parts = name.split(':');
-                if( data['data']['session'] )
-                  $(o).text(data['data']['session'][parts[1]]);
-            } else {
-                var v = data[name];
+      $('*[class^="unit."]').each(function(_, element) {
+            var name = $(element).attr('class').split(' ')[0];
+            var parts = name.split('.');
 
-                if( name.indexOf("_at") != -1 )
-                    v = $.timeago(v);
-                else if( name == 'country' )
-                    v = countries[v];
+            // remove unit.
+            parts.shift();
+            // console.log(parts);
+            var v = obj(data, parts);
+            // console.log("v = " + v);
 
-                $(o).text(v);
-            }
+            if( name.indexOf("_at") !== -1 )
+              v = $.timeago(v);
+            else if( name.indexOf('.country' ) !== -1 )
+              v = countries[v];
+
+            $(element).text(v);
         });
 
-        if( data['data']['session']['epochs'] ) {
+        if( data['data'] && data['data']['session'] && data['data']['session']['epochs'] ) {
           $('#unitsession').show();
+        }
+
+        if( data['data'] && data['data']['brain'] ) {
+          $('#unitlife').show();
         }
     });
 });
