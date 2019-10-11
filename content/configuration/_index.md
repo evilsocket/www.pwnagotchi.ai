@@ -75,14 +75,14 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
 {{% /notice %}}
 
-## Set your [PwnGrid](/intro/#pwnagotchis-on-the-pwngrid) preferences
+## Set your PwnGrid preferences
 
-By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#user-interface), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
+By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#auto-ai-and-manu-modes), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
 
-If you would like your unit to participate in [PwnGrid]()'s community rankings and scoreboards (PwnGrid is like Pokèmon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
+If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
 
 - The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
 
@@ -130,13 +130,13 @@ If your display does not work after changing this setting, you might need to com
 
 **You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
 
-## Apply the new Configuration
+## Apply the new configuration
 
 Now you can run:
 
     sudo service pwnagotchi restart
     
-In order to restart the service with the new configuration.
+...in order to restart the service with the new configuration.
 
 {{% notice warning %}}
 <p>You will need to either reboot your unit or perform this step every time you will change the configuration.</p>
@@ -149,11 +149,11 @@ Want to be able to update your Pwnagotchi and access things from the internet on
 1. Connect to the Pwnagotchi unit via `usb0` (A.K.A., using the data port).
 2. Run the appropriate connection sharing script to bring the interface up on your end and share internet connectivity from another interface:
 
-OS | Script Location
-------|---------------------------
-Linux | `scripts/linux_connection_share.sh`
-Mac OS X | `scripts/macos_connection_share.sh`
-Windows | `scripts/win_connection_share.ps1`
+OS | Script Location | Link
+---|-----------------|---------
+Linux | `scripts/linux_connection_share.sh` | [link](https://github.com/evilsocket/pwnagotchi/blob/master/scripts/linux_connection_share.sh)
+Mac OS X | `scripts/macos_connection_share.sh` | [link](https://github.com/evilsocket/pwnagotchi/blob/master/scripts/macos_connection_share.sh)
+Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsocket/pwnagotchi/blob/master/scripts/win_connection_share.ps1)
 
 &nbsp;
 
