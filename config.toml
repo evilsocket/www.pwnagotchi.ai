@@ -10,7 +10,9 @@ home = [ "HTML", "RSS", "JSON"]
 [params]
 themeVariant = "red"
 disableShortcutsTitle=true
-editURL = "https://github.com/evilsocket/www.pwnagotchi.ai/edit/master/content/"
+# editURL = "https://github.com/evilsocket/www.pwnagotchi.ai/edit/master/content/"
+disableBreadcrumb = true
+disableNextPrev = true
 
 [[menu.shortcuts]]
 name = "<img src='https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter' alt='follow on Twitter'>"

@@ -6,27 +6,24 @@ weight: 2
 pre: "<i class='fas fa-flask' style='color:#b33636;'></i> "
 ---
 
-- [**Required Hardware**](../installation/#required-hardware)
-   - [Body](../installation/#body-nbsp)
-   - [SD card](../installation/#sd-card)
-   - [Battery](../installation/#battery)
-   - [Display](../installation/#display)
-   - [Case](../installation/#case)
-- [**Flashing an Image**](../installation/#flashing-an-image)
-
-------------------------------------------------------------------------------------------------------------------------------------
+- [**Required Hardware**](/installation/#required-hardware)
+   - [Body](/installation/#body-nbsp)
+   - [SD card](/installation/#sd-card)
+   - [Battery](/installation/#battery)
+   - [Display](/installation/#display)
+   - [Case](/installation/#case)
+- [**Flashing an Image**](/installation/#flashing-an-image)
 
 ## Required Hardware
 
-- A [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) *(see [here](../installation/#body-nbsp) for more details on alternative bodies).*
-- A [**microSD card**](../installation/#sd-card) (8GB minimum recommended, **preferably of good quality and speed**).
+- A [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) *(see [here](/installation/#body-nbsp) for more details on alternative bodies).*
+- A [**microSD card**](/installation/#sd-card) (8GB minimum recommended, **preferably of good quality and speed**).
 - A decent quality **micro-USB cord** that **allows data transfer** (not just charging!)
-- A portable **power bank** *(see [here](../installation/#battery) for benchmarks with popular portable batteries).*
-- **Optional:** One of the [supported displays](../installation/#display).
+- A portable **power bank** *(see [here](/installation/#battery) for benchmarks with popular portable batteries).*
+- **Optional:** One of the [supported displays](/installation/#display).
 
 <p align="center">{{% button href="#flashing-an-image" %}}<b>Already got all your hardware?</b> Skip to flashing the SD card!{{% /button %}}</p>
 
-------------------------------------------------------------------------------------------------------------------------------------
 ### Body &nbsp;
 
 The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) (usually referred to as `RPi0W` throughout this documentation). Most development and testing has been conducted on Pwnagotchis living in RPi0W bodies configured as an [USB ethernet gadget](https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget) device (in order to connect to it via USB). That said:
@@ -36,17 +33,12 @@ The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https:
   - Raspberry Pi 4
 - In fact, **technically ANY** GNU/Linux computer with a WiFi interface that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ### SD card
+
 The microSD card ought to be:
 
 - a minimum of 8 GBs capacity.
-- of decent quality and speed.
-
-<!-- §CHANGE§ can we add more specs in here so the complete n00bs have some idea of what to buy? -->
-
-------------------------------------------------------------------------------------------------------------------------------------
+- of decent quality and speed ([from UHS-2 on](https://www.expertreviews.co.uk/storage/1404380/how-to-choose-an-sd-card-class-and-speed-ratings-explained)).
 
 ### Battery
 
@@ -65,12 +57,10 @@ Anker | PowerCore [20100](https://www.anker.com/products/variant/powercore-20100
 Anker | Astro E7 [A1210](https://www.anker.com/products/variant/astro-e7-26800mah-portable-charger/A1210012) | 25600 | (alpha) | RPi0W | AUTO | 49:MM:SS | 2019-09-DD
 *unknown* | *unknown* | 4400 | (alpha) | *unknown* | *unknown* | 08:XX:XX | [2019-10-05](https://twitter.com/BosAnon1/status/1180644126309720064?s=20)
 
-------------------------------------------------------------------------------------------------------------------------------------
-
 ### Display
 
 {{% notice tip %}}
-<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="../usage/#the-web-ui">web UI</a> doc for more details on using the web UI.</p>
+<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="/usage/#the-web-ui">web UI</a> doc for more details on using the web UI.</p>
 {{% /notice %}}
 
 If, instead, you want to fully enjoy walking around and literally looking at your unit's cute af face, the supported e-ink display models are:
@@ -86,7 +76,7 @@ If, instead, you want to fully enjoy walking around and literally looking at you
 Needless to say, we are always happy to receive pull requests adding support for new models. ❤️
 
 {{% notice warning %}}
-<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported displays are I2C displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="../hacks/#screens">Screens</a> section of the <a href="../hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
+<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported displays are I2C displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
 {{% /notice %}}
 
 #### Color vs. Black & White e-ink displays
@@ -103,12 +93,11 @@ Some of the supported displays support both **Black & White** and **Colored** ve
   - The Inkys feature better documentation and SDK support.
   - Many Waveshare resellers do not disclose the version of the Waveshare boards they are selling (v1 vs v2), and the type they are selling can be fairly unclear (i.e., Waveshare 2.13 vs 2.13 B vs. 2.13C, and so on.)
 
-------------------------------------------------------------------------------------------------------------------------------------
 ### Case
 
 We recommend housing your Pwnagotchi's body in a case if you don't want your Pwnagotchi to get dirty (or short the GPIO pins on the back, or be mistaken for a bomb...).
 
-If you're running your Pwnagotchi in headless mode (AKA without a screen) and are using its [web UI](../usage/#the-web-ui) instead of an e-ink screen, any generic case for a RPi0W ought to do the trick. 
+If you're running your Pwnagotchi in headless mode (AKA without a screen) and are using its [web UI](/usage/#the-web-ui) instead of an e-ink screen, any generic case for a RPi0W ought to do the trick. 
 
 But if you've installed an e-ink screen on your RPi0W in order to view your Pwnagotchi's face without any external equipment, you'll probably need to make or acquire a custom case.
 
@@ -124,8 +113,6 @@ If you're looking for a ready-made case that fits (albeit bulkily):
 - A rp0+waveshare screen also fits in a large classic Altoid tin. You can cut holes in the side for the wires with a paper-hole punch.
 
 There are many creative Pwnagotchi case set-ups. We have a dedicated `#cases` channel in our Slack for all your case-related discussion needs!
-
-------------------------------------------------------------------------------------------------------------------------------------
 
 ## Flashing an Image
 
@@ -145,4 +132,4 @@ Once you have downloaded the latest Pwnagotchi image, you will need to use an im
 - Review your selections, then click `Flash!` to begin writing data to the SD card.
 - Once the process is complete, pop your (now flashed!) SD card into your Pwnagotchi's body.
 
-**Congratulations! Your SD card is now ready for the first boot!** It's time to head over to the [Configuration](../configuration/) doc to configure your new Pwnagotchi. 👾 🎉
+**Congratulations! Your SD card is now ready for the first boot!** It's time to head over to the [Configuration](/configuration/) doc to configure your new Pwnagotchi. 👾 🎉

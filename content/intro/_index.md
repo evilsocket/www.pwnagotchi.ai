@@ -14,14 +14,13 @@ pre: "<i class='fas fa-star-of-life' style='color:#b33636;'></i> "
 
 Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/sdcard/rootfs/root/pwnagotchi/config.yml#L54) over time to **get better at pwning WiFi things** in the environments you expose it to. 
 
-To be more precise, Pwnagotchi is using an [LSTM with MLP feature extractor](https://stable-baselines.readthedocs.io/en/master/modules/policies.html#stable_baselines.common.policies.MlpLstmPolicy) as its policy network for the [A2C agent](https://stable-baselines.readthedocs.io/en/master/modules/a2c.html). If you're unfamiliar with A2C, here is a very good [introductory explanation](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752) *(in comic form!)* of the basic principles behind how Pwnagotchi learns. Be sure to check out the [Usage](../usage/#training-the-ai) doc for more pragmatic details of how to help your Pwnagotchi learn as quickly as possible.
+To be more precise, Pwnagotchi is using an [LSTM with MLP feature extractor](https://stable-baselines.readthedocs.io/en/master/modules/policies.html#stable_baselines.common.policies.MlpLstmPolicy) as its policy network for the [A2C agent](https://stable-baselines.readthedocs.io/en/master/modules/a2c.html). If you're unfamiliar with A2C, here is a very good [introductory explanation](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752) *(in comic form!)* of the basic principles behind how Pwnagotchi learns. Be sure to check out the [Usage](/usage/#training-the-ai) doc for more pragmatic details of how to help your Pwnagotchi learn as quickly as possible.
 
 {{% notice tip %}}
 <p>Unlike the usual reinforcement learning simulations, Pwnagotchi actually learns at a human timescale because it is interacting with a real-world environment instead of a well-defined virtual environment (like playing Super Mario). Time for a Pwnagotchi is measured in epochs; a single epoch can last anywhere from a few seconds to many minutes, depending on how many access points and client stations are visible.<br /><br />
 	Do not expect your Pwnagotchi to perform amazingly well at the very beginning, as it will be <a href="https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752">exploring</a> several combinations of <a href="https://github.com/evilsocket/pwnagotchi/blob/master/docs/usage.md#training-the-ai">key parameters</a> to determine ideal adjustments for pwning the particular environment you are exposing it to during its beginning epochs ... but <strong>definitely listen to your Pwnagotchi when it tells you it's bored!</strong> Bring it into novel WiFi environments with you and have it observe new networks and capture new handshakes—and you'll see. :) <br /><br />
-	<strong>Find out more about how to train your Pwnagotchi for optimal pwnage in the <a href="../usage/#training-the-ai">Usage</a> doc.</strong></p>
+	<strong>Find out more about how to train your Pwnagotchi for optimal pwnage in the <a href="/usage/#training-the-ai">Usage</a> doc.</strong></p>
 {{% /notice %}}
-<!-- §CHANGE§ please make sure the above explanation is accurate ^^ -->
 
 Multiple units within close physical proximity can "talk" to each other, advertising their own presence to each other by broadcasting custom information elements using a parasite protocol I've built on top of the existing dot11 standard. Over time, two or more Pwnagotchi units trained together will learn to cooperate upon detecting each other's presence by dividing the available channels among them for optimal pwnage.
 
@@ -32,7 +31,7 @@ Depending on the status of the unit, several states and states transitions are c
 Of course, it IS possible to run your Pwnagotchi with the AI disabled (configurable in `config.yml`). Why might you want to do this? Perhaps you simply want to use your own fixed parameters (instead of letting the AI decide for you), or maybe you want to save battery and CPU cycles, or maybe it's just you have strong concerns about aiding and abetting baby Skynet. Whatever your particular reasons may be: an AI-disabled Pwnagotchi is still a simple and very effective automated deauther, WPA handshake sniffer, and portable [bettercap](https://www.bettercap.org/) + [webui](https://github.com/evilsocket/pwnagotchi/blob/master/docs/usage.md#bettercaps-web-ui) dedicated hardware.
 
 {{% notice info %}}
-<p><strong>In case you're curious about the name:</strong> <em>Pwnagotchi</em> is a portmanteau of <em>pwn</em> (which we shouldn't have to explain if you are interested in this project 😘) and <em>-gotchi</em>. It is a nostalgic reference made in homage to a very popular children's toy from the 1990s called the <a href="https://en.wikipedia.org/wiki/Tamagotchi">Tamagotchi</a>. The Tamagotchi (たまごっち, derived from <em>tamago</em> (たまご) "egg" + <em>uotchi</em> (ウオッチ) "watch") is a cultural touchstone for many Millennial hackers as a formative electronic toy from our collective childhoods. Were you lucky enough to possess a Tamagotchi as a kid? Well, with your Pwnagotchi, you too can enjoy the nostalgic delight of being strangely emotionally attached to a handheld automata <em>yet again!</em> Except, this time around...you get to #HackThePlanet. >:D</p>
+<p><strong>In case you're curious about the name:</strong> <em>Pwnagotchi</em> is a combination of <em>pwn</em> and <em>-gotchi</em>. It is a nostalgic reference made in homage to a very popular children's toy from the 1990s called the <a href="https://en.wikipedia.org/wiki/Tamagotchi">Tamagotchi</a>. The Tamagotchi (たまごっち, derived from <em>tamago</em> (たまご) "egg" + <em>uotchi</em> (ウオッチ) "watch") is a cultural touchstone for many Millennial hackers as a formative electronic toy from our collective childhoods. Were you lucky enough to possess a Tamagotchi as a kid? Well, with your Pwnagotchi, you too can enjoy the nostalgic delight of being strangely emotionally attached to a handheld automata <em>yet again!</em> Except, this time around...you get to #HackThePlanet. >:D</p>
 {{% /notice %}}
 
 ## WiFi Handshakes 101
@@ -60,15 +59,27 @@ to try to force them to [leak the PMKID](https://www.evilsocket.net/2019/02/13/P
 
 For instance, even if you whitelist your home network so that Pwnagotchi knows to never actively attack it, you will <strong>still</strong> passively collect handshakes for that network <em>by chance</em> as your Pwnagotchi is simply sniffing packets in its environment. (If you're monitoring a residential area, you might see an uptick in handshakes passively acquired as your neighbors turn on their devices in the morning and again in the early evening when they return home after work.)</p>
 {{% /notice %}}
-<!-- §CHANGE§ please make sure the above info is correct  -->
 
 All the handshakes captured by your Pwnagotchi are saved into `.pcap` files on its filesystem. Each PCAP file that Pwnagotchi generates is organized according to access point; one PCAP will contain all the handshakes that Pwnagotchi has ever captured for that particular AP. These handshakes can later be [cracked with proper hardware and software](https://hashcat.net/wiki/doku.php?id=cracking_wpawpa2).
 
-## Pwnagotchis on the pwnGRID
-<!-- §CHANGE§ this is where the primary explanation of pwnGRID should be, especially since none of the possibilities are functional at present; this is where you make the argument for why users want to opt into enabling pwnGRID. -->
-### pwnLympics
+<!--
+
+## Pwnagotchis on the PwnGrid
+
+TODO 
+
+### PwnLympics
+
+TODO
+
 ### Statistics
+
+TODO 
+
 ### Geographical Heatmap
+
+TODO
+-->
 
 ## License
 
