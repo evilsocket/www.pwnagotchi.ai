@@ -3,9 +3,6 @@
 Unit <strong><span class="unit.name">NAME</span></strong> registered <span class="unit.enrolled_at">ENROLLED AT</span> and has been seen online 
 <span class="unit.updated_at">UPDATED AT</span> from <span class="unit.country">COUNTRY</span>. 
 
-<pre><code class="unit.data:uname">
-</code></pre>
-
 <pre><code class="unit.public_key">
 </code></pre>
 
