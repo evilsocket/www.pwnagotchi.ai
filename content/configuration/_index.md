@@ -3,7 +3,7 @@ title: "Configuration"
 date: 2019-02-25T10:57:57+01:00
 draft: false
 weight: 3
-pre: "<i class='fas fa-cog' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-cog'></i> "
 ---
 
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.

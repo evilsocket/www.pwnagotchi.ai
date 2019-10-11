@@ -3,7 +3,7 @@ title: "Hall of Fame"
 date: 2019-02-25T11:33:49+01:00
 weight: 8
 draft: false
-pre: "<i class='fas fa-trophy' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-trophy'></i> "
 ---
 In this page, we want to thank and give special recognition to the people who contributed to this project by responsibly disclosing to the team a security vulnerability related to Pwnagotchi, PwnGRID, or this website.
 

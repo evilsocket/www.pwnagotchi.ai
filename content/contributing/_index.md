@@ -3,7 +3,7 @@ title: "Contributing"
 date: 2019-02-25T11:33:49+01:00
 weight: 6
 draft: false
-pre: "<i class='fas fa-dna' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-dna'></i> "
 ---
 
 - Raspbian + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune config.yml).

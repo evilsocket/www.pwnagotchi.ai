@@ -3,7 +3,7 @@ title: "FAQ"
 date: 2019-02-25T11:33:49+01:00
 weight: 7
 draft: false
-pre: "<i class='fas fa-question-circle' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-question-circle'></i> "
 ---
 
 <!-- IF YOU CHANGE ANY CHARACTERS IN AN FAQ QUESTION, YOU MUST ALSO CHANGE THE TABLE OF CONTENTS ENTRY &&&AND&&& THE ANCHOR LINK TEXT, OR ELSE THE LINKS WILL BREAK. -->
