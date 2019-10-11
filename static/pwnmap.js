@@ -78,6 +78,7 @@ function doPoll() {
         $('#unitscountries').html(countries);
         $('#unitsmap').html('');
 
+        document.title = total + ' Pwnagotchis'
 
         map = new svgMap({
             targetElementID: 'unitsmap',
