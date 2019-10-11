@@ -1,4 +1,4 @@
-const countries = {
+var countries = {
   AF: 'Afghanistan',
   AX: 'Åland Islands',
   AL: 'Albania',
@@ -257,19 +257,18 @@ $(function(){
         return;
     }
 
-    const url = "https://api.pwnagotchi.ai/api/v1/unit/" + fingerprint;
+    var url = "https://api.pwnagotchi.ai/api/v1/unit/" + fingerprint;
     $.getJSON(url, function (data) {
         $('*[class^="unit."]').each(function(_, o) {
-            let name = $(o).attr('class').split('.')[1].split(' ')[0];
+            var name = $(o).attr('class').split('.')[1].split(' ')[0];
             if( name.indexOf(':') != -1 ){
-                let parts = name.split(':');
+                var parts = name.split(':');
                 $(o).html(data[parts[0]][parts[1]]);
             } else {
-                let v = data[name];
+                var v = data[name];
 
                 if( name.indexOf("_at") != -1 )
                     v = $.timeago(v);
-
                 else if( name == 'country' )
                     v = countries[v];
 

@@ -9,3 +9,7 @@ pre: "<i class='fas fa-globe-europe' style='color:#b33636;'></i> "
 <span id="unitstotal">???</span> total units <a href="/configuration/#set-your-pwngrid-intro-pwnagotchis-on-the-pwngrid-preferences">joined PwnGRID</a> so far from <span id="unitscountries">???</span> different countries.
 
 <div id="unitsmap"></div>
+
+## Latest Units
+
+<ul id="unitslist"></ul>
