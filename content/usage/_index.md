@@ -26,17 +26,16 @@ pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
 
 Your unit can operate in one of three different "modes" that determines how it behaves:
 
+![ui](https://i.imgur.com/uLdQYqF.png)
+
 #### MANU
 
 If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode. 
-This means it will read the log of the last session and report a few statistics on the screen. This is the mode  you should be
-using your unit when you want to transfer data from/to it. Moreover, in MANU mode you'll be able to access bettercap's web ui 
-from your computer by opening the http://pwnagotchi.local:8080/ page.
+This means it will read the log of the last session and report a few statistics on the screen. This is the mode you should be using your unit when you want to transfer data from/to it. Moreover, in MANU mode, you'll be able to access [bettercap's web UI](/usage/#bettercap-s-web-ui) from your computer by pointing your browser to `http://pwnagotchi.local:8080/`.
 
 {{% notice tip %}}
 <p>You can "force" the unit to always go in AUTO mode regardless of the USB ports by creating the <code>/root/.pwnagotchi-auto</code> file.</p>
 {{% /notice %}}
-
 
 #### AUTO
 
@@ -211,7 +210,7 @@ By maximizing this reward value, the AI learns over time to find the set of para
 Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local/`.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
-- In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](http://localhost:1313/usage/#anatomy-of-a-pwnagotchi-face). 
+- In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face). 
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
 
