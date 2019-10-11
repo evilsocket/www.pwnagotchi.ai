@@ -263,7 +263,8 @@ $(function(){
             var name = $(o).attr('class').split('.')[1].split(' ')[0];
             if( name.indexOf(':') != -1 ){
                 var parts = name.split(':');
-                $(o).html(data[parts[0]][parts[1]]);
+                if( data['data']['session'] )
+                  $(o).text(data['data']['session'][parts[1]]);
             } else {
                 var v = data[name];
 
@@ -275,5 +276,9 @@ $(function(){
                 $(o).text(v);
             }
         });
+
+        if( data['data']['session']['epochs'] ) {
+          $('#unitsession').show();
+        }
     });
 });
