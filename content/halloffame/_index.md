@@ -9,4 +9,4 @@ In this page, we want to thank and give special recognition to the people who co
 
 -------------------------
 
-On 2019-10-11, [0xRoM](https://rossmarks.uk) discovered a stored [XSS](https://pwnagotchi.ai/pwnfile/#97dccbb59f7682e9135448fc0978a062d83ca9cac6b39fb67eca5973601c3829) in the PwnMAP and pwnfile pages caused by the unit’s name parameter not being escaped.
+On 2019-10-11, [0xRoM](https://rossmarks.uk) discovered a stored [XSS](https://pwnagotchi.ai/pwnfile/#97dccbb59f7682e9135448fc0978a062d83ca9cac6b39fb67eca5973601c3829) in the pwnmap and pwnfile pages caused by the unit’s name parameter not being escaped.
