@@ -272,7 +272,7 @@ $(function(){
                 else if( name == 'country' )
                     v = countries[v];
 
-                $(o).html(v);
+                $(o).text(v);
             }
         });
     });
