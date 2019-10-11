@@ -7,27 +7,30 @@ pre: "<i class='fas fa-puzzle-piece' style='color:#b33636;'></i> "
 
 ---
 
-Pwnagotchi has a simple plugins system that you can use to customize your unit and its behavior. You can place your plugins anywhere
-as Python files, and then edit the `config.yml` file (`main.plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/plugins/default) in the main Pwnagotchi repo for a list of  plugins included by default and all the callbacks that you can define for your own customizations.
+Pwnagotchi has a simple plugin system that you can use to customize your unit and its behavior. You can place your plugins anywhere
+as Python files, and then edit the `config.yml` file (`main.plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/plugins/default) in the main Pwnagotchi repo for a list of  plugins included by default as well as all the callbacks that you can define for your own customizations.
 
 ## Default plugins
 
-* `auto-backup.py` : backs up files when internet is available.
-* `auto-update.py` : `apt update && apt upgrade` when internet is available.
-* `example.py` : example plugin for Pwnagotchi that implements all the available callbacks.
-* `gps.py` : saves GPS coordinates whenever a handshake is captured.
-* `grid.py` :  signals the unit's cryptographic identity and (optionally) a list of pwned networks to PwnGRID at api.pwnagotchi.ai. See PwnGRID.
-* `memtemp.py` : adds a memory and temperature indicator.
-* `net-pos.py` : saves WiFi position whenever a handshake is captured and retrieves the geolocation when internet is next available.
-* `onlinehashcrack.py` : automatically uploads handshakes to [onlinehashcrack.com](https://onlinehashcrack.com).
-* `screen_refresh.py` : refreshes the e-ink display after X amount of updates.
-* `twitter.py` : creates tweets about the recent activity of Pwnagotchi.
-* `ups_lite.py` : add a voltage indicator for the UPS Lite v1.1.
-* `wigles.py` : automatically uploads collected WiFi handshakes to [wigle.net](https://wigle.net/).
-* `wpa-sec.pt` : automatically uploads handshakes to [wpa-sec.stanev.org](https://wpa-sec.stanev.org).
+Plugin Script | Description
+--------------|------------
+`auto-backup.py` | Backs up files when internet is available.
+`auto-update.py` | `apt update && apt upgrade` when internet is available.
+`example.py` | Example plugin for Pwnagotchi that implements all the available callbacks.
+`gps.py` | Saves GPS coordinates whenever a handshake is captured.
+`grid.py` | Signals the unit's cryptographic identity and (optionally) a list of pwned networks to PwnGRID at api.pwnagotchi.ai.
+`memtemp.py` | Adds a memory and temperature indicator.
+`net-pos.py` | Saves WiFi position whenever a handshake is captured and retrieves the geolocation when internet is next available.
+`onlinehashcrack.py` | Automatically uploads handshakes to [onlinehashcrack.com](https://onlinehashcrack.com).
+`quickdic.py` | Runs a quick dictionary scan against captured handshakes.
+`screen_refresh.py` | Refreshes the e-ink display after X amount of updates.
+`twitter.py` | Creates tweets about the recent activity of Pwnagotchi.
+`ups_lite.py` | Add a voltage indicator for the UPS Lite v1.1.
+`wigle.py` | Automatically uploads collected WiFi handshakes to [wigle.net](https://wigle.net/).
+`wpa-sec.py` | Automatically uploads handshakes to [wpa-sec.stanev.org](https://wpa-sec.stanev.org).
 
 ## Example
-As an example to illustrate how easy it is to add additional functionality via the plugin system, here is the code for the GPS plugin:
+To illustrate how easy it is to add additional functionality via the plugin system, here is the code for the GPS plugin (`gps.py`):
 
 ```python
 __author__ = 'evilsocket@gmail.com'
