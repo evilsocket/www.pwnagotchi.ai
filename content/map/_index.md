@@ -12,4 +12,3 @@ pre: "<i class='fas fa-globe-europe' style='color:#b33636;'></i> "
 
 ## Latest Units
 
-<ul id="unitslist"></ul>
