@@ -31,10 +31,10 @@ Your unit can operate in one of three different "modes" that determines how it b
 #### MANU
 
 If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode. 
-This means it will read the log of the last session and report a few statistics on the screen. This is the mode you should be using your unit when you want to transfer data from/to it. Moreover, in MANU mode, you'll be able to access [bettercap's web UI](/usage/#bettercap-s-web-ui) from your computer by pointing your browser to `http://pwnagotchi.local:8080/`.
+This means it will read the log of the last session and report a few statistics on the screen. This is the mode you should be using your unit when you want to transfer data from/to it. Moreover, in MANU mode, you'll be able to access [bettercap's web UI](/usage/#bettercap-s-web-ui) from your computer by pointing your browser to `http://pwnagotchi.local`.
 
 {{% notice tip %}}
-<p>You can "force" the unit to always go in AUTO mode regardless of the USB ports by creating the <code>/root/.pwnagotchi-auto</code> file.</p>
+<p>You can "force" the unit to always go in AUTO mode regardless of which USB port you're using by creating the <code>/root/.pwnagotchi-auto</code> file.</p>
 {{% /notice %}}
 
 #### AUTO
@@ -63,7 +63,7 @@ Ideally, the `laziness` value should be very low at the beginning (say 0.1) and 
 Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
-- You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local:8080/` whenever your Pwnagotchi is set to MANUAL mode.
+- You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local` whenever your Pwnagotchi is set to [MANUAL](/usage/#auto-ai-and-manu-modes) mode.
 
 #### The e-ink display (optional)
 
@@ -78,19 +78,19 @@ If you've properly attached the optional [supported e-ink display](/installation
 * **APS**: Number of access points on the current channel.
    - The total visible access points across all channels (according to the last recon) is displayed in parentheses.
 * **UP**: The uptime of the unit, since its last reboot. It is displayed in hh:mm:ss format.
-* **PWND**: Number of handshakes captured in this session. 
+* **PWND**: Number of handshakes captured during this current session. 
    - The number of unique networks your Pwnagotchi has eaten **at least one** handshake of, from the beginning of its life, is displayed in parentheses.
-   - The SSID of the latest network handshake acquired is displayed in brackets.
-* **MODE**: Mode indicates how Pwnagotchi is currently functioning.
-   * **MANU:** This appears when the unit is running in MANUAL mode, which is triggered when you start up your unit with the [USB network cable connected](/configuration/#connect-to-your-pwnagotchi).
+   - The SSID of the latest network handshake your Pwnagotchi has acquired is displayed in brackets.
+* **MODE**: Mode indicates how Pwnagotchi is currently functioning. See [above](/usage/#auto-ai-and-manu-modes) for more info about modes.
+   * **MANU:** This appears when the unit is running in [MANUAL](/usage/#manu) mode, which is triggered when you start up your unit with the [USB network cable connected](/configuration/#connect-to-your-pwnagotchi).
       - This mode is good for [updating](/usage/#update-your-pwnagotchi) and [backing up](/usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](/usage/#bettercap-s-web-ui). 
       - Pwnagotchi does NOT sniff or capture handshakes when it is in MANUAL mode.
       - Stuck in MANUAL mode? Turn on the unit **without** the USB network cable connected.
-   * **AUTO:** This indicates that the Pwnagotchi algorithm is running in AUTOMATIC mode, with AI disabled (or still loading).
+   * **AUTO:** This indicates that the Pwnagotchi algorithm is running in [AUTOMATIC](/usage/#auto) mode, with AI disabled (or still loading).
       - Pwnagotchi will still sniff and capture handshakes in this mode; it is *mostly* functional—the primary difference between AUTO and AI mode is its actions are being determined by a static algorithm instead of the AI deciding what the Pwnagotchi should do for optimal pwnage.
       - This disappears once the AI dependencies have been bootstrapped and the neural network has finished loading. (On a RPi0W, this process takes about 20–30 minutes.)
       - If you are running your Pwnagotchi **without** the AI enabled, this is the mode you'll stay in.
-   * **AI:** This appears once the AI dependencies have finished loading and the neural network is functional. 
+   * **AI:** [AI](/usage/#ai) mode appears once the AI dependencies have finished loading and the neural network is functional. 
       - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
@@ -132,7 +132,7 @@ while True:
     wait_for_loot()
 ```
 
-Despite its simplicity, this logic is controlled by several parameters that regulate the wait times, the timeouts, on which channels to hop and so on.
+Despite its simplicity, this logic is controlled by several parameters that regulate the wait times, the timeouts, on which channels to hop, and so on.
 
 From `config.yml`:
 
@@ -207,9 +207,9 @@ By maximizing this reward value, the AI learns over time to find the set of para
 
 ## BetterCAP's Web UI
 
-Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local/`.
+Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local`.
 
-- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
+- Obviously, change the `pwnagotchi` in `http://pwnagotchi.local` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face). 
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
