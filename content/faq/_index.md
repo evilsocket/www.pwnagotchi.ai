@@ -245,7 +245,7 @@ Since the RPi0W doesn't feature any buttons, there are only two ways to graceful
 ---------
 ## **Known Quirks**
 ### My Pwnagotchi's log timestamps seem...unreliable. Huh?
-Since the rpi0w doesn't have an hardware clock, uptimes and timing in general can get very weird. We are currently looking into a fix to generate more reliable timestamps.
+Since the rpi0w doesn't have a hardware clock, uptimes and timing in general can get very weird. We are currently looking into a fix to generate more reliable timestamps.
 
 ---
 ### Help! My Pwnagotchi's SD card got corrupted. What gives?
