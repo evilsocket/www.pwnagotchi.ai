@@ -19,8 +19,8 @@ pre: "<i class='fas fa-brain'></i> "
 - [**Training the AI**](/usage/#training-the-ai)
     - [The reward function](/usage/#the-reward-function)
 - [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
-- [**Update your Pwnagotchi**](/usage/#update-your-pwnagotchi)
 - [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
+- [**Known Issues**](/usage/#known-issues)
 
 ## AUTO, AI and MANU Modes
 
@@ -233,6 +233,31 @@ You can use the `scripts/backup.sh` script to backup the important files of your
 ```shell
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
+
+
+## Known Issues
+#### Pwnagotchi goes blind and detects no APs on any channel
+Every once in a while, nexmon dies with: 
+
+```shell
+[ 4341.527847] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4101, -110
+[ 4344.327806] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4097, -110
+[ 4347.127853] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4098, -110
+[ 4349.927917] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4099, -110
+[ 4352.728074] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4100, -110
+[ 4355.527970] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4101, -110
+[ 4358.328022] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4102, -110
+[ 4361.208095] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4103, -110
+[ 4364.008157] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4104, -110
+[ 4366.808218] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4105, -110
+[ 4369.608431] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4097, -110
+[ 4372.408345] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4098, -110
+[ 4375.288408] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4099, -110
+[ 4378.088474] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4100, -110
+[ 4380.891399] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4101, -110
+```
+
+...and only a reboot can fix the WiFi and fix Pwnagotchi's apparent blindness. This is why the `mon_max_blind_epochs` parameter exists—to reboot the RPi0W board automatically whenever this happens. This `mon_max_blind_epochs` parameter is the number of epochs (or rounds of recon) during which Pwnagotchi has no detection of any APs on any channels it hops on.  Maybe someday somebody will fix this, but until that happens, `mon_max_blind_epochs` will be the existing work-around. See GitHub issue [#267](https://github.com/evilsocket/pwnagotchi/issues/267) and [this tweet](https://twitter.com/evilsocket/status/1170631160197779457) from @evilsocket for more details.
 
 ## Random Info
 
