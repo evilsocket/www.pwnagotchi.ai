@@ -3,7 +3,7 @@ title: "Community Hacks"
 date: 2019-02-25T11:33:49+01:00
 weight: 8
 draft: false
-pre: "<i class='fas fa-cube' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-cube'></i> "
 ---
 
 {{% notice warning %}}

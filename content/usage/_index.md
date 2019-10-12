@@ -3,7 +3,7 @@ title: "Usage"
 date: 2019-02-25T10:58:28+01:00
 weight: 4
 draft: false
-pre: "<i class='fas fa-brain' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-brain'></i> "
 ---
 
 - [**Modes**](/usage/#auto-ai-and-manu-modes)

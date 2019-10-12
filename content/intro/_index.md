@@ -3,7 +3,7 @@ title: "Introduction"
 date: 2019-02-25T10:57:36+01:00
 weight: 1
 draft: false
-pre: "<i class='fas fa-star-of-life' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-star-of-life'></i> "
 ---
 
 [Pwnagotchi](https://twitter.com/pwnagotchi) is an [A2C](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752)-based "AI" powered by [bettercap](https://www.bettercap.org/) that learns from its surrounding WiFi environment in order to maximize the [crackable WPA key material it captures](#wifi-handshakes-101) (either through passive sniffing or by performing deauthentication and association attacks). This material is collected on disk as PCAP files containing any form of crackable handshake supported by [hashcat](https://hashcat.net/hashcat/), including full and half WPA handshakes as well as [PMKIDs](https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/).

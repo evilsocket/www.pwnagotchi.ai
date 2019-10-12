@@ -8,14 +8,14 @@ theme = "hugo-theme-learn"
 home = [ "HTML", "RSS", "JSON"]
 
 [params]
-themeVariant = "red"
+themeVariant = "yellow"
 disableShortcutsTitle=true
 # editURL = "https://github.com/evilsocket/www.pwnagotchi.ai/edit/master/content/"
 disableBreadcrumb = true
 disableNextPrev = true
 
 [[menu.shortcuts]]
-name = "<img src='https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter' alt='follow on Twitter'>"
+name = "<div style='border-top:3px solid #262020'></div><br/><img src='https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter' alt='follow on Twitter'>"
 url = "https://twitter.com/intent/follow?screen_name=pwnagotchi"
 weight = 1
 

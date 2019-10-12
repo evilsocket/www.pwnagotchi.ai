@@ -3,7 +3,7 @@ title: "Installation"
 date: 2019-02-25T10:57:57+01:00
 draft: false
 weight: 2
-pre: "<i class='fas fa-flask' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-flask'></i> "
 ---
 
 - [**Required Hardware**](/installation/#required-hardware)

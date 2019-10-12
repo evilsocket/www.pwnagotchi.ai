@@ -3,7 +3,7 @@ title: "Plugins"
 date: 2019-02-25T10:58:28+01:00
 weight: 5
 draft: false
-pre: "<i class='fas fa-puzzle-piece' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-puzzle-piece'></i> "
 
 ---
 

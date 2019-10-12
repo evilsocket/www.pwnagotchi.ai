@@ -3,7 +3,7 @@ title: "FAQ"
 date: 2019-02-25T11:33:49+01:00
 weight: 7
 draft: false
-pre: "<i class='fas fa-question-circle' style='color:#b33636;'></i> "
+pre: "<i class='fas fa-question-circle'></i> "
 ---
 
 <!-- IF YOU CHANGE ANY CHARACTERS IN AN FAQ QUESTION, YOU MUST ALSO CHANGE THE TABLE OF CONTENTS ENTRY &&&AND&&& THE ANCHOR LINK TEXT, OR ELSE THE LINKS WILL BREAK. -->
@@ -135,7 +135,21 @@ lorem ipsum dolor sit amet
 
 ---
 ### I want my Pwnagotchi to speak a different language. Can it?
-lorem ipsum dolor sit amet
+Yes! To change what language Pwnagotchi displays it's status in, you can change `main.lang` to one of the supported languages:
+
+- **English** *(default)*
+- German
+- Italian
+- French
+- Russian
+- Dutch
+- Greek
+- Swedish
+- Macedonian
+
+{{% notice tip %}}
+<p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
+{{% /notice %}}
 
 ---
 ### I have a great idea for something cool I wish Pwnagotchi could do!
@@ -143,17 +157,23 @@ lorem ipsum dolor sit amet
 
 ---
 ### Are there any unofficial community "hacks" for further customizing my Pwnagotchi?
-lorem ipsum dolor sit amet
+Check out [Community Hacks](/community/)
 
 ---------
 ## **Getting to Know Your Pwnagotchi**
 ### What does everything on the screen mean?
-lorem ipsum dolor sit amet
+Check out [Anatomy of a Pwnagotchi Face](/usage/#anatomy-of-a-pwnagotchi-face)
 
 ---
 ### How do I whitelist my home network so Pwnagotchi stops pwning me?
-lorem ipsum dolor sit amet
+In `/etc/pwnagotchi/config.yml`, you need to add this and your networks. It will accept BSSID's and SSID's as input.
+```yaml
+    # access points to ignore
+    whitelist:
+        - EXAMPLE_NETWORK
+        - ANOTHER_EXAMPLE_NETWORK
 
+```
 ---
 ### What is MANU mode? What is AUTO mode?
 lorem ipsum dolor sit amet
@@ -172,7 +192,7 @@ lorem ipsum dolor sit amet
 
 ---
 ### Where does Pwnagotchi store all the handshakes it's eaten?
-lorem ipsum dolor sit amet
+They are kept inside of `/root/handshakes/` on your Pwnagotchi.
 
 ---
 ### What happens when my Pwnagotchi meets another Pwnagotchi?
@@ -189,7 +209,7 @@ lorem ipsum dolor sit amet
 
 ---
 ### Oh no, my Pwnagotchi is sad and bored! How do I entertain it?!
-lorem ipsum dolor sit amet
+Take him for a walk! He needs new enviroments in order to meet new friends, just like you!
 
 ---
 ### How do I update my Pwnagotchi?
@@ -205,7 +225,10 @@ Since the RPi0W doesn't feature any buttons, there are only two ways to graceful
 
 ---
 ### Uh. So. What do I do with all these handshakes my Pwnagotchi has been eating?
-lorem ipsum dolor sit amet
+ 
+{{% notice warning %}}
+<p><strong>An important note about legal:</strong> Only do what you are legally allowed to do or have permission for. Each state and country has their own laws pertaining to the unauthorized access and collection of data, so be sure to check if your use case is within your countries regulations.</p>
+{{% /notice %}}
 
 ---------
 ## **Known Quirks**

@@ -1,4 +1,4 @@
-const countries = {
+var countries = {
   AF: 'Afghanistan',
   AX: 'Åland Islands',
   AL: 'Albania',
@@ -246,35 +246,63 @@ const countries = {
   ZW: 'Zimbabwe'
 };
 
+function obj(root, parts) {
+  var root_name = parts.shift();
+  if( !(root_name in root) ) {
+    return "";
+  } else if( parts.length === 0 ) {
+    return root[root_name];
+  }
+  return obj(root[root_name], parts)
+}
+
 $(function(){
-    if( window.location.pathname != "/pwnfile/" ) {
+    if( window.location.pathname !== "/pwnfile/" ) {
         return;
     }
 
     var fingerprint = window.location.hash.substr(1);
-    if( fingerprint.length != 64 ){
+    if( fingerprint.length !== 64 ){
         window.location.href = "/";
         return;
     }
 
-    const url = "https://api.pwnagotchi.ai/api/v1/unit/" + fingerprint;
+    var url = "https://api.pwnagotchi.ai/api/v1/unit/" + fingerprint;
     $.getJSON(url, function (data) {
-        $('*[class^="unit."]').each(function(_, o) {
-            let name = $(o).attr('class').split('.')[1].split(' ')[0];
-            if( name.indexOf(':') != -1 ){
-                let parts = name.split(':');
-                $(o).html(data[parts[0]][parts[1]]);
-            } else {
-                let v = data[name];
+      var disqus_config = function () {
+        this.page.url = 'https://pwnagotchi.ai/pwnfile/#' + fingerprint;
+        this.page.identifier = 'pwnfile/' + fingerprint;
+      };
 
-                if( name.indexOf("_at") != -1 )
-                    v = $.timeago(v);
+      var d = document, s = d.createElement('script');
+      s.src = 'https://pwnagotchi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
 
-                else if( name == 'country' )
-                    v = countries[v];
+      $('*[class^="unit."]').each(function(_, element) {
+            var name = $(element).attr('class').split(' ')[0];
+            var parts = name.split('.');
 
-                $(o).html(v);
-            }
+            // remove unit.
+            parts.shift();
+            // console.log(parts);
+            var v = obj(data, parts);
+            // console.log("v = " + v);
+
+            if( name.indexOf("_at") !== -1 )
+              v = $.timeago(v);
+            else if( name.indexOf('.country' ) !== -1 )
+              v = countries[v];
+
+            $(element).text(v);
         });
+
+        if( data['data'] && data['data']['session'] && data['data']['session']['epochs'] ) {
+          $('#unitsession').show();
+        }
+
+        if( data['data'] && data['data']['brain'] ) {
+          $('#unitlife').show();
+        }
     });
 });
