@@ -158,6 +158,34 @@ Linux | `scripts/linux_connection_share.sh` | [link](https://github.com/evilsock
 Mac OS X | `scripts/macos_connection_share.sh` | [link](https://github.com/evilsocket/pwnagotchi/blob/master/scripts/macos_connection_share.sh)
 Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsocket/pwnagotchi/blob/master/scripts/win_connection_share.ps1)
 
+### Bluetooth
+
+If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully,
+you can use the `bt-tether`-plugin.
+
+The configuration is as follows:
+
+```yaml
+main:
+    plugins:
+      bt-tether:
+        enabled: true
+        mac: 'FF:FF:FF:FF:FF'  # you need to put your phones bt-mac here (goto your phones settings > status)
+        ip: '192.168.44.44'    # adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
+        netmask: 24
+        interval: 1
+        share_internet: true   # this will change the routing and nameserver on your pi
+```
+
+Also don't forget to bind your pwnagotchi to all interfaces:
+
+```yaml
+ui:
+  display:
+    video:
+      address: 0.0.0.0
+```
+
 &nbsp;
 
 **All done configuring your new Pwnagotchi?** Time to learn how to take care of your new friend over in [**Usage**](/usage/)!
