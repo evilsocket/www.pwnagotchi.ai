@@ -233,7 +233,32 @@ You can use the `scripts/backup.sh` script to backup the important files of your
 ```shell
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
+Or if you are using a Linux host, and have the sd card inserted into your computer - 
+```shell
+# Manually back up and restore on Linux
+# files that need backed up, be sure they are in pwn_bak before you reflash
+# /root/brain.nn /root/brain.json /root/handshakes
+# /etc/pwnagotchi/ /etc/hostname /etc/hosts /etc/motd
+# /var/log/pwnagotchi.log
 
+# Mount sd and make a back up directory
+
+sudo mkdir ~/pwn_bak
+
+# change directory to rootfs/
+cd /media/$USER/rootfs
+
+# Command to run from inside rootfs/ to copy all files to new directory on your host machine
+
+sudo cp -r root/brain.nn root/brain.json root/handshakes etc/pwnagotchi/ etc/hostname etc/hosts etc/motd var/log/pwnagotchi.log ~/pwn_bak/
+
+# send files back to mounted sd after reflash
+sudo cp -r brain.json brain.nn handshakes/ /media/$USER/rootfs/root/
+
+sudo cp -r pwnagotchi/ hostname hosts motd /media/$USER/rootfs/etc/
+
+sudo cp pwnagotchi.log /media/$USER/rootfs/var/log/
+```
 
 ## Known Issues
 #### Pwnagotchi goes blind and detects no APs on any channel
