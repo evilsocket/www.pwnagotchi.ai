@@ -65,15 +65,18 @@ Anker | Astro E7 [A1210](https://www.anker.com/products/variant/astro-e7-26800ma
 
 If, instead, you want to fully enjoy walking around and literally looking at your unit's cute af face, the supported e-ink display models are:
 
-- [Waveshare eInk Display (both V1 and V2)](https://www.waveshare.com/2.13inch-e-paper-hat.htm)
+- **[Waveshare eInk Display (both V1 and V2)](https://www.waveshare.com/2.13inch-e-paper-hat.htm) \***
   - [Product comparison](https://www.waveshare.com/4.3inch-e-paper.htm) (scroll down to `Selection Guide`)
   - [GitHub](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python)
+  - **\* The Waveshare V2 is the officially-supported e-ink display for Pwnagotchi. See [Recommendations](/installation/#recommendations) for more details.** The Waveshare V2 can be distinguished from the V1 by the presence of a [red sticker](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT#Versions) on the screen.
 - [Pimoroni Inky pHAT](https://shop.pimoroni.com/products/inky-phat)
   - [Product page](https://shop.pimoroni.com/products/inky-phat)
   - [GitHub](https://github.com/pimoroni/inky)
 - [PaPiRus eInk Screen](https://uk.pi-supply.com/products/papirus-zero-epaper-screen-phat-pi-zero)
 
-Needless to say, we are always happy to receive pull requests adding support for new models. ❤️
+Before purchasing a display, see [Recommendations](/installation/#recommendations) for more details about choosing the right display. If you find yourself struggling with the screen you've chosen, there are dedicated #waveshare and #inky channels for troubleshooting in the [Pwnagotchi Slack](https://pwnagotchi.herokuapp.com/).
+
+Needless to say, we are always happy to receive pull requests updating support for existing models as well as adding support for new models. ❤️
 
 {{% notice warning %}}
 <p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported displays are I2C displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
@@ -85,32 +88,35 @@ Some of the supported displays support both **Black & White** and **Colored** ve
 
 - **Color displays have a much slower refresh rate.** In some cases, it can take up to 15 seconds; if slow refresh rates are something that you want to avoid, we recommend you use B&W displays.
 - The 3-color 2.13" Waveshare displays have a slightly smaller pixel layout (104x212) compared to their B&W counterparts (122x250).
+- We recommend you stick to the **Waveshare B&W V2.**
 
 #### Recommendations
+- **The Waveshare V2 screen is the officially supported e-ink screen for the following reasons:**
+   - supports partial refreshes of the screen, which avoids those black screens between full refreshes.
+   - better rendering of font UI elements.
+   - features a higher functional resolution compared to the Inky pHATs.
+   - will always have the most updated and best supported UI elements; Pwnagotchi's primary developer ([@evilsocket](https://twitter.com/evilsocket)) will be testing new features exclusively on Waveshare V2s.
+   - the continued support for other e-ink display models like the Inky pHAT depends entirely on users' continued contributions to the code.
 - Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.
-- Many users seem to prefer the Inky pHATs over the Waveshares. There are two primary reasons:
-  - The Inkys feature better documentation and SDK support.
-  - Many Waveshare resellers do not disclose the version of the Waveshare boards they are selling (v1 vs v2), and the type they are selling can be fairly unclear (i.e., Waveshare 2.13 vs 2.13 B vs. 2.13C, and so on.)
+
 
 ### Case
 
 We recommend housing your Pwnagotchi's body in a case if you don't want your Pwnagotchi to get dirty (or short the GPIO pins on the back, or be mistaken for a bomb...).
 
-If you're running your Pwnagotchi in headless mode (AKA without a screen) and are using its [web UI](/usage/#the-web-ui) instead of an e-ink screen, any generic case for a RPi0W ought to do the trick. 
+If you're running your Pwnagotchi in headless mode (AKA without a screen) and are using its [web UI](/usage/#the-web-ui) instead of an e-ink screen, any generic case for a RPi0W ought to do the trick. But if you've installed an e-ink screen on your RPi0W in order to view your Pwnagotchi's face without any external equipment, you'll probably need to make or acquire a custom case.
 
-But if you've installed an e-ink screen on your RPi0W in order to view your Pwnagotchi's face without any external equipment, you'll probably need to make or acquire a custom case.
-
-A few users have already designed custom cases you can 3D print:
+A few users have already designed custom cases you can 3D print (If you don't have access to a 3D printer yourself, you can use a service like Shapeways or treatstock.com to have a case printed on demand):
 
 - [@DorkfeastTeam](https://twitter.com/dorkfeastteam)'s [Pwnagotchi case on Thingiverse](https://www.thingiverse.com/thing:3849519) for use with a Raspberry Pi 0 and a Waveshare e-ink screen.
 - [@elkentaro](https://twitter.com/elkentaro)'s [Pwnagotchi case on Thingiverse](https://www.thingiverse.com/thing:3879459) for use with a Raspberry Pi 0 and a Waveshare e-ink screen. There is 71.5x34x20mm available for the acrylic plate on the 3D printed model. (MK3S, PET, 0.25mm extruder, 0.15mm layer height.)
-- If you don't have access to a 3D printer, you can use a service like Shapeways to have a case printed on demand.
+- [@3MUl0R](https://twitter.com/3mul0r)'s [Pwnagotchi case for RPi0W with Inky pHAT](https://www.thingiverse.com/thing:3897860) is the only case (that we are aware of) designed to fit the RPi0Ws fitted with the Inky pHAT e-ink display.
 
 If you're looking for a ready-made case that fits (albeit bulkily):
 
 - [This enclosure on Amazon](https://www.amazon.com/gp/product/B072FS3W7X) works if you drill a hole in the side. 
-- A rp0+waveshare screen also fits in a large classic Altoid tin. You can cut holes in the side for the wires with a paper-hole punch.
+- A RPi0W+Waveshare screen also fits in a large classic Altoid tin. You can [cut holes](https://www.head-fi.org/threads/best-way-to-create-holes-in-an-altoids-tin.406228/#post-5370959) in the side for the wires with a paper-hole punch.
 
 There are many creative Pwnagotchi case set-ups. We have a dedicated `#cases` channel in our Slack for all your case-related discussion needs!
 
