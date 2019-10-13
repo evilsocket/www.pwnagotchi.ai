@@ -86,13 +86,9 @@ sudo brctl setfd pan0 0
 sudo brctl stp pan0 off
 sudo ifconfig pan0 172.26.0.1 netmask 255.255.255.0
 sudo ip link set pan0 up
-```
 
-```
 cat <<- EOF > /tmp/dnsmasq_bt.conf
-```
 
-```
 bind-interfaces
 port=0
 interface=pan0
@@ -101,13 +97,8 @@ dhcp-range=172.26.0.2,172.26.0.100,255.255.255.0,5m
 dhcp-leasefile=/tmp/dnsmasq_bt.leases
 dhcp-authoritative
 log-dhcp
-```
-
-```
 EOF
-```
 
-```
 sudo dnsmasq -C /tmp/dnsmasq_bt.conf
 sudo bt-agent -c NoInputNoOutput&
 sudo bt-adapter -a hci0 --set Discoverable 1
@@ -128,6 +119,21 @@ sudo bt-network -a hci0 -s nap pan0 &
 - You can connect to the shell with a terminal emulator ...
 
 Happy tweaking.
+
+
+### Pwnagotchi Bluetooth Tethering with access to internet, webui, ssh
+
+New guide is available here : https://github.com/systemik/pwnagotchi-bt-tether
+
+### Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer
+
+You can execute these two commands and then each time you connect the pwnagotchi to your computer, the interface will be ready and configured:
+
+```
+export RDNIS=' g_ether.host_addr='$(dmesg | awk '/: HOST MAC/{print $NF}')' g_ether.dev_addr='$(dmesg | awk '/: MAC/{print $NF}')
+sudo sed -i '$ s/$/ \'"$RDNIS"'/' /boot/cmdline.txt
+```
+
 
 ## Hardware Modifications
 
@@ -222,29 +228,3 @@ If you want to slim down the thickness of your RPi0W for a slim Pwnagotchi, it c
 ![ui](https://i.imgur.com/OMILljO.png)
 
 10. And you're finished!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

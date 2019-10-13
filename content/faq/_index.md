@@ -110,7 +110,7 @@ Yes, absolutely! Pwnagotchi's [web UI](/usage/#the-web-ui) is what you seek.
 
 ---
 ### How do I attach the screen to the Raspberry Pi?
-lorem ipsum dolor sit amet
+For the recommended hardware, the [WaveShare v2 2.13inch E-Ink display HAT](https://www.waveshare.com/2.13inch-e-paper-hat.htm), be sure your Pi has male pins attached, then place the hat on top of the board's pins and gently push the screen down onto the pins. The Pwnagotchi image will have all the files and configurations ready when you first boot the device.
 
 ---
 ### I love my new Pwnagotchi, but it kinda looks like a bomb. Where can I find a decent case?
@@ -153,7 +153,7 @@ Yes! To change what language Pwnagotchi displays it's status in, you can change 
 
 ---
 ### I have a great idea for something cool I wish Pwnagotchi could do!
-lorem ipsum dolor sit amet
+Submit an issue on the [Git](https://github.com/evilsocket/pwnagotchi/issues/new/choose) page. Make sure to select a Feature Request, then fill in all the information for us to look at and we can see what we can do! 
 
 ---
 ### Are there any unofficial community "hacks" for further customizing my Pwnagotchi?
@@ -176,7 +176,19 @@ In `/etc/pwnagotchi/config.yml`, you need to add this and your networks. It will
 ```
 ---
 ### What is MANU mode? What is AUTO mode?
-lorem ipsum dolor sit amet
+#### MANU
+
+If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode. 
+This means it will read the log of the last session and report a few statistics on the screen. This is the mode you should be using your unit when you want to transfer data from/to it. Moreover, in MANU mode, you'll be able to access [bettercap's web UI](/usage/#bettercap-s-web-ui) from your computer by pointing your browser to `http://pwnagotchi.local`.
+
+{{% notice tip %}}
+<p>You can "force" the unit to always go in AUTO mode regardless of which USB port you're using by creating the <code>/root/.pwnagotchi-auto</code> file.</p>
+{{% /notice %}}
+
+#### AUTO
+
+This is the default mode your unit will start if only connected to the USB **power port**, for instance when connected to a powerbank without any host computer on the data port. 
+In AUTO mode, your unit will start operating, perform attacks and sniffing handshakes only by using the default `personality` configuration parameters.
 
 ---
 ### Why does the AI take 30 minutes to load?
@@ -205,7 +217,7 @@ lorem ipsum dolor sit amet
 
 ---
 ### How do I feed my Pwnagotchi?
-lorem ipsum dolor sit amet
+If the AI is running, he feeds himself ;)
 
 ---
 ### Oh no, my Pwnagotchi is sad and bored! How do I entertain it?!
@@ -213,7 +225,7 @@ Take him for a walk! He needs new enviroments in order to meet new friends, just
 
 ---
 ### How do I update my Pwnagotchi?
-lorem ipsum dolor sit amet
+Currently, the recommended update procedure is to [Backup your Pwnagotchi](/usage/#backup-your-pwnagotchi), then flash the new release image, then manually move the files back to the respected directories. The .zip file that the backup script creates will unzip the files in the proper directory structure for easy manual replacement. 
 
 ---
 ### I'm extremely emotionally-attached to my Pwnagotchi. How can I back up its brain?
@@ -233,8 +245,8 @@ Since the RPi0W doesn't feature any buttons, there are only two ways to graceful
 ---------
 ## **Known Quirks**
 ### My Pwnagotchi's log timestamps seem...unreliable. Huh?
-lorem ipsum dolor sit amet
+Since the rpi0w doesn't have a hardware clock, uptimes and timing in general can get very weird. We are currently looking into a fix to generate more reliable timestamps.
 
 ---
 ### Help! My Pwnagotchi's SD card got corrupted. What gives?
-lorem ipsum dolor sit amet
+Make sure you are using a good quality SD card. Lessor quality cards do not like the constant read/write that happens in a normal OS filesystem. SD cards made for 4k Video recording and photography are generally the best for this sort of use case.
