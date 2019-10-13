@@ -29,7 +29,7 @@ In order to properly set up and configure your Pwnagotchi, you'll first need to 
 1. Start by connecting the micro-USB cable to the **data port** of your Pwnagotchi's RPi0W, then connect the other end of that cable to your computer. 
 2. **If your Pwnagotchi has already been booted up at least once before:** after a few seconds, you will see a new Ethernet interface on your host computer.
      - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
-3. You'll need to configure it with a static IP address:
+3. If you are using a data-cabable cable, you should see a new interface pop up on your host machine. You'll need to configure this interface that newly shows up with a static IP address either via `ifconfig` or your host machines Network Manager:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
      - Gateway: `10.0.0.1`
@@ -167,3 +167,4 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 ##### If your network connection keeps flapping on your device connecting to your Pwnagotchi:
 * Check if `usb0` (or equivalent) device is being controlled by NetworkManager. 
 * You can check this via `nmcli dev status`.
+* If you are having trouble connecting to your Pi via USB, be sure you are using a microUSB cord that is capable of data transfer
