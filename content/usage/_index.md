@@ -18,6 +18,7 @@ pre: "<i class='fas fa-brain'></i> "
 - [**Files to know on your Pwnagotchi**](/usage/#files-to-know-on-your-pwnagotchi)
 - [**Training the AI**](/usage/#training-the-ai)
     - [The reward function](/usage/#the-reward-function)
+- [**PwnMAIL**](/usage/#pwnmail)
 - [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
 - [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
 - [**Known Issues**](/usage/#known-issues)
@@ -204,6 +205,39 @@ reward = h + a + c + b + i + m
 ```
 
 By maximizing this reward value, the AI learns over time to find the set of parameters that better perform with the current environmental conditions.
+
+## PwnMAIL
+
+You probably don't know yet, but Pwnagotchi is also a "crypto-pager"! By using the [PwnGRID](/configuration/#set-your-pwngrid-preferences) API (and [internet connectivity](/configuration/#host-connection-sharing) of course), your unit is able to exchange [end to end encrypted messages](https://en.wikipedia.org/wiki/End-to-end_encryption) with other units enrolled in the grid. Each message is encrypted on your Raspberry with the recipient RSA public key before being sent, therefore **we only have access to encrypted data and we have absolutely no way to see the cleartext** as 
+it can only be done by the original recipient via his private key.
+
+Your PwnMAIL address is your unit's cryptographic fingerprint (which is the SHA256 checksum of its public key in PEM format), you can read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint`. You can also use this address to open (and share) your ["pwnfile"](/pwnfile/#ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea).
+ 
+**Each unit corresponds to a single cryptographically signed and hardware isolated address.**
+
+To check your PwnMAIL inbox, you'll need to [SSH into your unit](/configuration/) and then use the `pwngrid` binary:
+
+```sh
+sudo pwngrid -inbox
+# and for all other pages if more than one
+sudo pwngrid -inbox -page 2
+```
+
+To fetch a message given its id (123 in this example), verify the sender signature and decryp it:
+
+```sh
+sudo pwngrid -inbox -id 123
+# in case you want to save the decrypted message body to a file
+sudo pwngrid -inbox -id 123 -output picture.jpg
+```
+
+To send an encrypted message (max size is 512KB) to another unit having its fingerprint (`ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea` in this example):
+
+```sh
+sudo pwngrid -send ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea -message "hi there, how are you doing?"
+# in case you want to send a file instead
+sudo pwngrid -send ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea -message @/path/to/file.jpg
+```
 
 ## BetterCAP's Web UI
 
