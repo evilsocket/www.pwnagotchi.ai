@@ -275,6 +275,9 @@ $(function () {
     }
 
     var fingerprint = window.location.hash.substr(1);
+    if( fingerprint[0] === '!' )
+        fingerprint = fingerprint.substr(1);
+
     if (fingerprint.length !== 64) {
         window.location.href = "/";
         return;

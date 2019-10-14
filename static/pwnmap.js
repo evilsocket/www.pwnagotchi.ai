@@ -40,7 +40,7 @@ function doPoll() {
             // console.log(unit.data.advertisement);
             var html = "<li>" +
                     "<div class='face' style='float:left'>" + escape(face) + "</div>" +
-                    "<a href='/pwnfile/#" + unit.fingerprint + "' target='_blank'>" +
+                    "<a href='/pwnfile/#!" + unit.fingerprint + "' target='_blank'>" +
                         escape(unit.name) + "</a>" +
                      " was active " + $.timeago(unit.updated_at) + " from " + countries[unit.country] +
                 (unit.networks ? (" <strong>(pwned " + unit.networks + " networks so far)</strong>") : "" ) + '.' +
