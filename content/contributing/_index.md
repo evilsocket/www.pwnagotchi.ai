@@ -25,6 +25,12 @@ To create a zip file with the image and one with its sha256 checksum, just run:
 make image
 ```
 
+To remove the generated files:
+
+```sh
+sudo make clean
+```
+
 ## Adding a Language
 
 #### Contributing a new translation
