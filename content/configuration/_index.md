@@ -56,35 +56,28 @@ ssh pi@10.0.0.2
 * If you have any wired interfaces on your host PC, you will need to remove them from Network Manager so we can be sure you have everything set correctly, on the correct interface.
 * If you are using Wi-Fi on your host computer, you need to be certain that your routers IP address scheme is not in the `10.0.0.1/24` range. If it is, you should turn Wi-Fi off initially to best troubleshoot your connectivity issues, then change the interface IP scheme on your Pi once you can `ssh` to it.
 * These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is RC4,* and **4.** a *completely* vanilla image(*plug-in and whitelist configuration is fine, but if you have previously adjusted the UI: from `10.0.0.2` to `0.0.0.0`, you need to revert those changes by deleting anything related to `UI:` in your `config.yml`.*)
-
-#### Steps to complete on your host (the pc that you are connecting the Pi to)
-
-1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
-
-2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port shown below.
-
 ![ui](https://i.imgur.com/uLdQYqF.png)
-
-3.  Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.** 
-***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3***.
-     - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
-
+#### Steps to complete on your host (the pc that you are connecting the Pi to)
+1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
+2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port seen in the picture shown above .
+3.  Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.**
+***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3**.
+    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!*
 4.  On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
-
 5.  Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3** and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
+
 ```bash
 inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
 ```
-
 6.  **Congratulations!** You should now be able to connect to your unit using SSH:
 
 ```bash
 ssh pi@10.0.0.2
 ```
 {{% notice tip %}}
-<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before you PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
+<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before your PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
 {{% /notice %}}
 
 {{% notice warning %}}
