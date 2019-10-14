@@ -12,12 +12,16 @@ pre: "<i class='fas fa-cube'></i> "
 
 If you test one of these hacks yourself and it still works, it's extra nice if you update the **Last Tested On** table for that particular hack and note any minor adjustments you may have had to make to the instructions to make it work with your particular Pwnagotchi setup. ❤️
 
+{{% notice tip %}}
+<p>Some of these hacks involve a soldering iron. If you don't have one already, the [Miniware TS100](https://hackaday.com/2017/07/24/review-ts100-soldering-iron/) is a nice inexpensive choice.</p>
+{{% /notice %}}
+
 - [**Screens**](#screens)
   - [Waveshare 3.5" SPI TFT screen](#waveshare-3-5-spi-tft-screen)
   - [Pwnagotchi face via Bluetooth](#pwnagotchi-face-via-bluetooth)
 - [**Hardware Mods**](#hardware-modifications)
   - [Adding an external antenna to the RPi0W](#adding-an-external-antenna-to-the-rpi0w)
-  - [RPi0W "Slim-agotchi"](#rpi0w-slim-agotchi)
+  - [RPi0W with Waveshare V2 "Slim-agotchi"](#rpi0w-with-waveshare-v2-slim-agotchi)
 
 ## Screens
 ### Waveshare 3.5" SPI TFT screen
@@ -82,13 +86,9 @@ sudo brctl setfd pan0 0
 sudo brctl stp pan0 off
 sudo ifconfig pan0 172.26.0.1 netmask 255.255.255.0
 sudo ip link set pan0 up
-```
 
-```
 cat <<- EOF > /tmp/dnsmasq_bt.conf
-```
 
-```
 bind-interfaces
 port=0
 interface=pan0
@@ -97,13 +97,8 @@ dhcp-range=172.26.0.2,172.26.0.100,255.255.255.0,5m
 dhcp-leasefile=/tmp/dnsmasq_bt.leases
 dhcp-authoritative
 log-dhcp
-```
-
-```
 EOF
-```
 
-```
 sudo dnsmasq -C /tmp/dnsmasq_bt.conf
 sudo bt-agent -c NoInputNoOutput&
 sudo bt-adapter -a hci0 --set Discoverable 1
@@ -125,6 +120,21 @@ sudo bt-network -a hci0 -s nap pan0 &
 
 Happy tweaking.
 
+
+### Pwnagotchi Bluetooth Tethering with access to internet, webui, ssh
+
+New guide is available here : https://github.com/systemik/pwnagotchi-bt-tether
+
+### Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer
+
+You can execute these two commands and then each time you connect the pwnagotchi to your computer, the interface will be ready and configured:
+
+```
+export RDNIS=' g_ether.host_addr='$(dmesg | awk '/: HOST MAC/{print $NF}')' g_ether.dev_addr='$(dmesg | awk '/: MAC/{print $NF}')
+sudo sed -i '$ s/$/ \'"$RDNIS"'/' /boot/cmdline.txt
+```
+
+
 ## Hardware Modifications
 
 ### Adding an external wireless antenna to the RPi0W
@@ -134,7 +144,9 @@ Last tested on | Pwnagotchi version | Hardware |Working? | Reference
 
 Step-by-step guide to soldering an external antenna to your Pwnagotchi's RPi0W. It can improve the signal by ~6-8 dB. (**Please note:** If you implement this, you will no longer be able to use the RPi0W's built-in antenna.)
 
-(Contributed by Mastblast09 in the Slack.)
+![ui](https://i.imgur.com/1UG1g4I.jpg)![ui](https://i.imgur.com/xp5h7nN.jpg)
+
+(Contributed by [@Mastblast09](https://twitter.com/mastblast09).)
 
 #### Parts needed:
 
@@ -158,15 +170,61 @@ I used the following guide for the great images that they were able to take: [br
 - This can be done very quickly with a hot air rework station, but not many folks will have a hot air rework station—so I did it with my soldering iron.
 - You will need some sort of magnification device (whether a jewelers loupe or a stereo microscope) when it comes to the moving of the 0ohm resistor. It is VERY small.
 
-### RPi0W "Slim-agotchi"
+### RPi0W with Waveshare V2 "Slim-agotchi"
 
 Last tested on | Pwnagotchi version | Hardware | Working? | Reference
 ---------------|--------------------|----------|----------|-----------|
-2019-10-04 | Unknown | RPi0W | ✅ | Slack
+2019-10-12 | Unknown | RPi0W | ✅ | Slack
 
-If you want to slim down the thickness of your RPi0W for a slim Pwnagotchi, it can be done.
+If you want to slim down the thickness of your RPi0W for a slim Pwnagotchi, it can be done by removing the 8-pin header on the board and slimming down the thickness of the screen. This hack involves removing the 8-pin header using a simple soldering iron and braid wick, then snipping header pins and inserting them through the RPi0W and soldering.
 
-(Contributed by Mastblast09 in the Slack.)
+![ui](https://i.imgur.com/qderZXO.jpg)![ui](https://i.imgur.com/nvb7MzW.jpg)
 
-- Remove the 8-pin header using a simple soldering iron and braid wick.
-- Insert your header pins through the Pi into the screen header, then solder, then snip.
+(Contributed by [@Mastblast09](https://twitter.com/mastblast09).)
+
+#### Tools needed:
+
+- a soldering iron
+- flux
+- copper braid wick
+- side cutter
+
+
+#### Parts needed:
+
+- a RPi0W
+- a Waveshare V2 e-ink screen
+- some [kapton tape](https://en.wikipedia.org/wiki/Kapton)
+
+
+#### Instructions:
+
+1. Place some flux on the wick. 
+![ui](https://i.imgur.com/X6jSEzc.png)
+
+2. Place some flux on the connector pins. 
+ ![ui](https://i.imgur.com/ObnCH1a.png)
+
+3. Set your soldering iron to around 300˚ C; you want it hot enough to flow solder into the wick. 
+
+4. Place the wick above the pins and heat with the soldering iron. 
+![ui](https://i.imgur.com/GanjyiX.png)
+
+5. When you get to the side pads, you can use a side cutter like this one if you need to cut the pins. (Sometimes these are difficult to remove because of the size and solder amount.) 
+![ui](https://i.imgur.com/j9sTmuf.png)
+
+6. When finished, your pads should look like this:
+![ui](https://i.imgur.com/s24cIQc.png)
+
+7. Apply some Kapton tape to the back to prevent any shorting and isolate the board:
+![ui](https://i.imgur.com/YyTgXqX.png)
+
+8. Now it's time to make some pins to use in your thruhole RPi0W. You can cut these headers and use the pins like this:
+![ui](https://i.imgur.com/JZgLVZN.png)
+![ui](https://i.imgur.com/3GmWlnp.png)
+![ui](https://i.imgur.com/T076UQ0.png)
+
+9. Finally, place the pins in the screen and set your RPi0W on top; then solder the pins onto the RPi0W.
+![ui](https://i.imgur.com/OMILljO.png)
+
+10. And you're finished!

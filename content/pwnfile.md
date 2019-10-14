@@ -2,7 +2,7 @@
 
 Unit <strong><span class="unit.name">NAME</span></strong> registered <span class="unit.enrolled_at">ENROLLED AT</span> and has been seen online 
 <span class="unit.updated_at">UPDATED AT</span> from <span class="unit.country">COUNTRY</span>. <span id="unitlife" style="display: none">
-Its AI was lived <span class="unit.data.brain.epochs_lived"></span> epochs and trained for <span class="unit.data.brain.epochs_trained"></span>. 
+Its AI has lived <span class="unit.data.brain.epochs_lived"></span> epochs and trained for <span class="unit.data.brain.epochs_trained"></span>. 
 </span> It reported <strong><span class="unit.networks">9000</span></strong> pwned networks so far.
 
 ### Fingerprint
