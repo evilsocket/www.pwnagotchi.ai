@@ -212,7 +212,7 @@ You probably don't know yet, but Pwnagotchi is also a "crypto-pager"! By using t
 it can only be done by the original recipient via his private key.
 
 Your PwnMAIL address is your unit's cryptographic fingerprint (which is the SHA256 checksum of its public key in PEM format), you can 
-read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint` or by running `sudo pwngrid -whoami`. You can also use this address to open (and share) your ["pwnfile"](/pwnfile/#ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea).
+read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint` or by running `sudo pwngrid -whoami`. You can also use this address to open (and share) your ["pwnfile"](/pwnfile/#!ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea).
  
 **Each unit corresponds to a single cryptographically signed and hardware isolated address.**
 
