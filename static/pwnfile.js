@@ -248,8 +248,9 @@ var countries = {
 
 function addComments(fingerprint) {
     var disqus_config = function () {
-        this.page.url = 'https://pwnagotchi.ai/pwnfile/#' + fingerprint;
-        this.page.identifier = 'pwnfile/' + fingerprint;
+        // see https://stackoverflow.com/questions/8944287/disqus-loading-the-same-comments-for-dynamic-pages
+        this.page.url = 'https://pwnagotchi.ai/pwnfile/#!' + fingerprint;
+        this.page.identifier = 'https://pwnagotchi.ai/pwnfile/#!' + fingerprint;
     };
 
     var d = document, s = d.createElement('script');
