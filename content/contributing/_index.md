@@ -6,7 +6,7 @@ draft: false
 pre: "<i class='fas fa-dna'></i> "
 ---
 
-- Raspbian + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune config.yml).
+Pwnagotchi's developement environment is [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune config.yml).
 
 {{% notice warning %}}
 <p>
@@ -16,20 +16,13 @@ pre: "<i class='fas fa-dna'></i> "
 
 ## Creating an Image
 
-You can use the `scripts/create_sibling.sh` script to create an - ready to flash - rasbian image with pwnagotchi.
+If you want to create a custom image for testing, developing or just hacking, you will need a GNU/Linux computer and the binaries for 
+`curl`, `git`, `make`, `unzip`, `go`, `qemu-user-static` and `kpartx`. The Makefile will also temporarily install [packer](https://www.packer.io/) and use `sudo` as needed.
 
-```shell
-usage: ./scripts/create_sibling.sh [OPTIONS]
+To create a zip file with the image and one with its sha256 checksum, just run:
 
-  Options:
-    -n <name>    # Name of the pwnagotchi (default: pwnagotchi)
-    -i <file>    # Provide the path of an already downloaded raspbian image
-    -o <file>    # Name of the img-file (default: pwnagotchi.img)
-    -s <size>    # Size which should be added to second partition (in Gigabyte) (default: 4)
-    -v <version> # Version of raspbian (Supported: latest; default: latest)
-    -p           # Only run provisioning (assumes the image is already mounted)
-    -d           # Only run dependencies checks
-    -h           # Show this help
+```sh
+make image
 ```
 
 ## Adding a Language
