@@ -77,7 +77,7 @@ inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
 ssh pi@10.0.0.2
 ```
 {{% notice tip %}}
-<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before you PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
+<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before your PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
 {{% /notice %}}
 
 {{% notice warning %}}
