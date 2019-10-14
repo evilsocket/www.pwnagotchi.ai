@@ -21,6 +21,7 @@ pre: "<i class='fas fa-brain'></i> "
 - [**PwnMAIL**](/usage/#pwnmail)
 - [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
 - [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
+- [**Update your Pwnagotchi**](/usage/#update-your-pwnagotchi)
 - [**Known Issues**](/usage/#known-issues)
 
 ## AUTO, AI and MANU Modes
@@ -265,15 +266,14 @@ Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.be
 <p><b>Why can't I use bettercap's web UI while my Pwnagotchi is eating handshakes?</b> This is because when Pwnagotchi is running in AUTO or AI modes, it is basically instrumenting bettercap in order to sniff packets and capture and record handshakes. You and Pwnagotchi cannot BOTH use bettercap at the same time; for this reason, it is only when your Pwnagotchi <b>isn't</b> hunting for handshakes to eat—AKA, when it is in MANUAL mode—that you are free to use bettercap (and its web UI) yourself.</p>
 {{% /notice %}}
 
-<!--
-## Update your Pwnagotchi
-
-TODO
-
-
--->
-
 ## Backup your Pwnagotchi
+
+{{% notice warning %}}
+<p>
+This script will access your unit as root, you must have previously configured a root password by switching from <code>pi</code> to 
+<code>root</code> with <code>sudo su</code> and then <code>passwd</code> to change the password.
+</p>
+{{% /notice %}}
 
 You can use the `scripts/backup.sh` script to backup the important files of your unit.
 
@@ -281,9 +281,15 @@ You can use the `scripts/backup.sh` script to backup the important files of your
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
 
+## Update your Pwnagotchi
+
+The recommended update procedure is to backup your Pwnagotchi as explained in the previous section, flash the SD card with
+the new image and restore the backup by extracting the files back in the root filesystem.
 
 ## Known Issues
+
 #### Pwnagotchi goes blind and detects no APs on any channel
+
 Every once in a while, nexmon dies with: 
 
 ```shell
@@ -305,10 +311,3 @@ Every once in a while, nexmon dies with:
 ```
 
 ...and only a reboot can fix the WiFi and fix Pwnagotchi's apparent blindness. This is why the `mon_max_blind_epochs` parameter exists—to reboot the RPi0W board automatically whenever this happens. This `mon_max_blind_epochs` parameter is the number of epochs (or rounds of recon) during which Pwnagotchi has no detection of any APs on any channels it hops on.  Maybe someday somebody will fix this, but until that happens, `mon_max_blind_epochs` will be the existing work-around. See GitHub issue [#267](https://github.com/evilsocket/pwnagotchi/issues/267) and [this tweet](https://twitter.com/evilsocket/status/1170631160197779457) from @evilsocket for more details.
-
-## Random Info
-
-* **On a rpi0w, it'll take approximately 30 minutes to load the AI**.
-* `/var/log/pwnagotchi.log` is your friend.
-* if connected to a laptop via usb data port, with internet connectivity shared, magic things will happen.
-* If you get `[FAILED] Failed to start Remount Root and Kernel File Systems.` while booting pwnagotchi, make sure the `PARTUUID`s for `rootfs` and `boot` partitions are the same in `/etc/fstab`. Use `sudo blkid` to find those values when you are using `create_sibling.sh`.
