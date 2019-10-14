@@ -61,8 +61,8 @@ ssh pi@10.0.0.2
 1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
 2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port seen in the picture shown above .
 3.  Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.**
-***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3***.
-    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
+***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3**.
+    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!*
 4.  On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
