@@ -14,6 +14,14 @@ Pwnagotchi's developement environment is [Raspbian](https://www.raspberrypi.org/
 </p>
 {{% /notice %}}
 
+## Writing a Plugin
+
+The easiest way to extend Pwnagotchi's functionalities is writing a plugin. Pwnagotchi has a simple plugin system that you can 
+use to customize your unit and its behavior. You can place your plugins anywhere as Python files, and then edit the 
+`config.yml` file (`main.plugins` value) to point to their containing folder.
+
+Check the [plugins](/plugins/) page for more information.
+
 ## Creating an Image
 
 If you want to create a custom image for testing, developing or just hacking, you will need a GNU/Linux computer and the binaries for 
