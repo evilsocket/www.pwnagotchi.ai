@@ -83,6 +83,10 @@ inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
 ```bash
 ssh pi@10.0.0.2
 ```
+{{% notice tip %}}
+<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before you PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
+{{% /notice %}}
+
 {{% notice warning %}}
 <p><b>DEV NOTE:</b> if you have some issues, either you are using the wrong cord, or your Operating System is missing required drivers, or something mostly out of our control. We can't help everyone with their networking, sorry</p>
 {{% /notice %}}
