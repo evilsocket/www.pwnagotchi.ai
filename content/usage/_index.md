@@ -231,6 +231,18 @@ sudo pwngrid -inbox -id 123
 sudo pwngrid -inbox -id 123 -output picture.jpg
 ```
 
+This will automatically mark the message as read, to mark it back as unread:
+ 
+```sh
+sudo pwngrid -inbox -id 123 -unread
+```
+
+To delete it:
+
+```sh
+sudo pwngrid -inbox -id 123 -delete
+```
+
 To send an encrypted message (max size is 512KB) to another unit having its fingerprint (`ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea` in this example):
 
 ```sh
