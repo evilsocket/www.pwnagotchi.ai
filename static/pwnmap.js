@@ -29,12 +29,22 @@ function doPoll() {
         $('#unitslist').html('');
         for(var i = 0; i < 25; i++ ) {
             var unit = data.units[i];
+            var face = '';
+
+            if( unit.data && unit.data.advertisement && unit.data.advertisement.face ) {
+                face = unit.data.advertisement.face;
+            } else {
+                face = '(⌐■_■)';
+            }
+
+            // console.log(unit.data.advertisement);
             var html = "<li>" +
+                    "<div class='face' style='float:left'>" + escape(face) + "</div>" +
                     "<a href='/pwnfile/#" + unit.fingerprint + "' target='_blank'>" +
                         escape(unit.name) + "</a>" +
                      " was active " + $.timeago(unit.updated_at) + " from " + countries[unit.country] +
-                (unit.networks ? (" <strong>(pwned " + unit.networks + " networks so far)</strong>") : "" )+
-                    "</li>";
+                (unit.networks ? (" <strong>(pwned " + unit.networks + " networks so far)</strong>") : "" ) + '.' +
+                    "</li><div style='clear:both'></div>";
 
 
 
