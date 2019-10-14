@@ -8,7 +8,10 @@ pre: "<i class='fas fa-cog'></i> "
 
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
 
-1. [Connect to your Pwnagotchi](/configuration/#connect-to-your-pwnagotchi)
+1. **Connecting to your Pwnagotchi**
+    - Original [Connect to your Pwnagotchi](/configuration/#connect-to-your-pwnagotchi)
+    - Updated for Linux host [Connecting to Pi0w with MicroUSB cable on Linux Host
+](/configuration/#connecting-to-pi0w-with-microusb-cable-on-linux-host)
 2. [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi)
 3. [Choose your unit's language](/configuration/#choose-your-unit-s-language)
 4. [Set your PwnGrid preferences](/configuration/#set-your-pwngrid-preferences)
@@ -42,11 +45,57 @@ In order to properly set up and configure your Pwnagotchi, you'll first need to 
 ssh pi@10.0.0.2
 ```
 
+## Connecting to Pi0w with MicroUSB cable on Linux Host
+* Works for Release RC4 *
+
+{{% notice warning %}}
+<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
+{{% /notice %}}
+
+### Pre-Face
+* If you have any wired interfaces on your host PC, you will need to remove them from Network Manager so we can be sure you have everything set correctly, on the correct interface.
+* If you are using Wi-Fi on your host computer, you need to be certain that your routers IP address scheme is not in the `10.0.0.1/24` range. If it is, you should turn Wi-Fi off initially to best troubleshoot your connectivity issues, then change the interface IP scheme on your Pi once you can `ssh` to it.
+* These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is RC4,* and **4.** a *completely* vanilla image(*plug-in and whitelist configuration is fine, but if you have previously adjusted the UI: from `10.0.0.2` to `0.0.0.0`, you need to revert those changes by deleting anything related to `UI:` in your `config.yml`.*)
+
+#### Steps to complete on your host (the pc that you are connecting the Pi to)
+
+1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
+
+2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port shown below.
+
+![ui](https://i.imgur.com/uLdQYqF.png)
+
+3.  Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.** 
+***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3***.
+     - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
+
+4.  On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
+     - IP: `10.0.0.1`
+     - Netmask: `255.255.255.0`
+
+5.  Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3** and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
+```bash
+inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
+```
+
+6.  **Congratulations!** You should now be able to connect to your unit using SSH:
+
+```bash
+ssh pi@10.0.0.2
+```
+{{% notice tip %}}
+<p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before you PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
+{{% /notice %}}
+
+{{% notice warning %}}
+<p><b>DEV NOTE:</b> if you have some issues, either you are using the wrong cord, or your Operating System is missing required drivers, or something mostly out of our control. We can't help everyone with their networking, sorry</p>
+{{% /notice %}}
+
 #### About your SSH connection
 
 The default password is `raspberry`; you should change it as soon as you log in for the first time by issuing the `passwd` command and selecting a new and more complex passphrase.
 
-If you want to login directly without entering a password (recommended!), copy your SSH public key to the unit's authorized keys:
+If you want to login directly without entering a password (recommended and necessary for certain packaged scripts to work, like `backup.sh` for instance!), copy your SSH public key to the unit's authorized keys:
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub pi@10.0.0.2
@@ -195,3 +244,4 @@ ui:
 ##### If your network connection keeps flapping on your device connecting to your Pwnagotchi:
 * Check if `usb0` (or equivalent) device is being controlled by NetworkManager. 
 * You can check this via `nmcli dev status`.
+* If you are having trouble connecting to your Pi via USB, be sure you are using a microUSB cord that is capable of data transfer
