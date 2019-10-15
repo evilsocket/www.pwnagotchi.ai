@@ -46,6 +46,7 @@ ssh pi@10.0.0.2
 ```
 
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
+
 * Works for Release RC4 *
 
 {{% notice warning %}}
@@ -53,6 +54,7 @@ ssh pi@10.0.0.2
 {{% /notice %}}
 
 ### Pre-Face
+
 * If you have any wired interfaces on your host PC, you will need to remove them from Network Manager so we can be sure you have everything set correctly, on the correct interface.
 * If you are using Wi-Fi on your host computer, you need to be certain that your routers IP address scheme is not in the `10.0.0.1/24` range. If it is, you should turn Wi-Fi off initially to best troubleshoot your connectivity issues, then change the interface IP scheme on your Pi once you can `ssh` to it.
 * These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is RC4,* and **4.** a *completely* vanilla image(*plug-in and whitelist configuration is fine, but if you have previously adjusted the UI: from `10.0.0.2` to `0.0.0.0`, you need to revert those changes by deleting anything related to `UI:` in your `config.yml`.*)
@@ -171,7 +173,15 @@ main:
 {{% /notice %}}
 
 **Set the type of display you want to use via `ui.display.type`.**
-If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
+If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.  
+
+Currently supported:
+
+* `waveshare_2` for the V2 version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT), [this is the recommended and officially supported display](http://localhost:1313/installation/#recommendations).
+* `waveshare_1` for the V1 legacy version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT)
+* `inky` for [Pimoroni's Inky pHAT](https://shop.pimoroni.com/products/inky-phat).
+* `papirus` for [PaPiRus Zero](https://thepihut.com/products/papirus-zero-epaper-eink-screen-phat-for-pi-zero).
+* `oledhat` for [Waveshare's OLED Hat](https://www.waveshare.com/wiki/1.3inch_OLED_HAT).
 
 **You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
 

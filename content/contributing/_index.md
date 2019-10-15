@@ -22,6 +22,103 @@ use to customize your unit and its behavior. You can place your plugins anywhere
 
 Check the [plugins](/plugins/) page for more information.
 
+## Adding a new Display
+
+Currently Pwnagotchi supports [several displays](http://localhost:1313/configuration/#select-your-display) and adding support for new ones is very easy! 
+All you have to do is copying the specific Python libraries of the hardware [into this folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/ui/hw/libs) 
+and then create a new class in its parent folder that implements the methods of the following abstract class:
+
+```python
+class DisplayImpl(object):
+    def __init__(self, config, name):
+        self.name = name
+        self.config = config['ui']['display']
+        self._layout = {
+            'width': 0,
+            'height': 0,
+            'face': (0, 0),
+            'name': (0, 0),
+            'channel': (0, 0),
+            'aps': (0, 0),
+            'uptime': (0, 0),
+            'line1': (0, 0),
+            'line2': (0, 0),
+            'friend_face': (0, 0),
+            'friend_name': (0, 0),
+            'shakes': (0, 0),
+            'mode': (0, 0),
+            # status is special :D
+            'status': {
+                'pos': (0, 0),
+                'font': fonts.Medium,
+                'max': 20
+            }
+        }
+
+    def layout(self):
+        raise NotImplementedError
+
+    def initialize(self):
+        raise NotImplementedError
+
+    def render(self, canvas):
+        raise NotImplementedError
+
+    def clear(self):
+        raise NotImplementedError
+```
+
+For instance, the [pwnagotchi/ui/hw/oledhat.py](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/ui/hw/oledhat.py) file which supports [this hat](https://www.waveshare.com/wiki/1.3inch_OLED_HAT) 
+looks like this:
+
+```python
+import logging
+
+import pwnagotchi.ui.fonts as fonts
+from pwnagotchi.ui.hw.base import DisplayImpl
+
+
+class OledHat(DisplayImpl):
+    def __init__(self, config):
+        super(OledHat, self).__init__(config, 'oledhat')
+        self._display = None
+
+    def layout(self):
+        fonts.setup(8, 8, 8, 8)
+        self._layout['width'] = 128
+        self._layout['height'] = 64
+        self._layout['face'] = (0, 32)
+        self._layout['name'] = (0, 10)
+        self._layout['channel'] = (0, 0)
+        self._layout['aps'] = (25, 0)
+        self._layout['uptime'] = (65, 0)
+        self._layout['line1'] = [0, 9, 128, 9]
+        self._layout['line2'] = [0, 53, 128, 53]
+        self._layout['friend_face'] = (0, 41)
+        self._layout['friend_name'] = (40, 43)
+        self._layout['shakes'] = (0, 53)
+        self._layout['mode'] = (103, 10)
+        self._layout['status'] = {
+            'pos': (30, 18),
+            'font': fonts.Small,
+            'max': 18
+        }
+        return self._layout
+
+    def initialize(self):
+        logging.info("initializing oledhat display")
+        from pwnagotchi.ui.hw.libs.waveshare.oledhat.epd import EPD
+        self._display = EPD()
+        self._display.init()
+        self._display.Clear()
+
+    def render(self, canvas):
+        self._display.display(canvas)
+
+    def clear(self):
+        self._display.clear()
+```
+
 ## Creating an Image
 
 If you want to create a custom image for testing, developing or just hacking, you will need a GNU/Linux computer and the binaries for 
