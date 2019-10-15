@@ -371,73 +371,7 @@ unit's session, its current sent of parameters, etc. The reference Go code for t
 
 {{%expand "Example Response"%}}
 <pre><code>{
-	"pages": 17,
-	"records": 409,
-	"units": [{
-		"enrolled_at": "2019-10-06T22:56:06Z",
-		"updated_at": "2019-10-15T09:57:37Z",
-		"country": "IT",
-		"name": "alpha",
-		"fingerprint": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea",
-		"public_key": "-----BEGIN RSA PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzJQRTn1KDdIxduFq/pB+\nQ/+pNtvegmGAmzwb3YlP+SzhihbBUIOx85TodOEQZ1efUZy6Jn3ig6gPib3a2JsM\nT85P/Fxwfz6HrC8UlaOMaDyMksDgO7ZBM4zxthL8kgwtF9N7BYXn9nBZ2ReS1Gua\ncwayBkcMUlX83fpFe15fosXF3WeBO6jSa56YLuYDaxugUODhHR9C30n6okR2wssx\n2mUK6r6/smhSqoXwLttej4YvLi0NEvhdgp1Qy5zNHdcMhqJcxvbhFrJFx4JFZLdR\nLshs2nwTQq3rwyqC8nZvHCxXOdmFXBlSY6nQzILPLVlbeUYACeyfrOGFwdsXxq8u\nk/+Q6h9MFvdDGErv16eDYd0t/s0c0h8rHcGZpPYSE/zWviM+vQgpBPUEE4JBFNro\nxCOUjVtTWHlsjnp5dIQexagXm1/5jP1ko/q9Mf/ex3WUyadIqyoJoM8M7SlkUMYW\n39Yf/Zf52dTz4gUTUtSuMwvKvO94sa33RXxQIKXhecyjh1pJ6X1QYEcxWqCFs+qf\ns3AqNeHl7h2O6ouEuZNtkRg6+cy8zYD0ZrmwMphE5tqNm1L8lpdgaNzKnOSTcTfW\nU6wDIwC/8DkANfRds5ngA+SXCkI2LI8ujthLAi25e7qY57lAKCMdK15njcQftfiS\nEgdfHZVIDLO+lLw/ZqrAqRMCAwEAAQ==\n-----END RSA PUBLIC KEY-----\n",
-		"data": {
-			"advertisement": {
-				"epoch": 9,
-				"face": "(◕‿‿◕)",
-				"identity": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea",
-				"name": "alpha",
-				"policy": {
-					"advertise": true,
-					"ap_ttl": 120,
-					"associate": true,
-					"bored_num_epochs": 15,
-					"channels": [],
-					"deauth": true,
-					"excited_num_epochs": 10,
-					"hop_recon_time": 10,
-					"max_inactive_scale": 2,
-					"max_interactions": 3,
-					"max_misses_for_recon": 5,
-					"min_recon_time": 5,
-					"min_rssi": -200,
-					"recon_inactive_multiplier": 2,
-					"recon_time": 30,
-					"sad_num_epochs": 25,
-					"sta_ttl": 300
-				},
-				"pwnd_run": 0,
-				"pwnd_tot": 424,
-				"uptime": 19031,
-				"version": "1.0.0RC4"
-			},
-			"brain": {
-				"born_at": 1569086045.8648627,
-				"epochs_lived": 6435,
-				"epochs_trained": 6295,
-				"rewards": {
-					"best": 1.052142857142857,
-					"worst": -120000000000000000000
-				}
-			},
-			"session": {
-				"associated": 5,
-				"avg_reward": 0.00945353791507638,
-				"deauthed": 1,
-				"duration": "00:31:06",
-				"epochs": 13,
-				"handshakes": 0,
-				"max_reward": 0.16214285714285717,
-				"min_reward": -0.2,
-				"peers": 0,
-				"train_epochs": 0
-			},
-			"uname": "Linux alpha 4.19.66-Re4son+ #1 Sun Aug 18 13:42:02 AEST 2019 armv6l GNU/Linux",
-			"version": "1.0.0RC4"
-		},
-		"networks": 419
-	},
-    ...
-    ...]
+    "token": "... JWT token here ..."	
 }
 </code></pre>
 {{% /expand%}}

@@ -22,6 +22,10 @@ use to customize your unit and its behavior. You can place your plugins anywhere
 
 Check the [plugins](/plugins/) page for more information.
 
+## Writing an App
+
+You can write any type of application on top of our [API](/api/), sky is the limit!
+
 ## Adding a new Display
 
 Currently Pwnagotchi supports [several displays](http://localhost:1313/configuration/#select-your-display) and adding support for new ones is very easy! 

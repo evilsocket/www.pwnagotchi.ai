@@ -13,4 +13,3 @@ such as checking your [PwnMail](/usage/#pwnmail), having a list of registered un
 
 The second instead, the [local API](/api/local/), is available locally on each single unit and will allow you to interact with
 the WiFi advertisement protocol.
-
