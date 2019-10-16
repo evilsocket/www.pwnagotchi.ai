@@ -29,7 +29,7 @@ In order to properly set up and configure your Pwnagotchi, you'll first need to 
 
 ![ui](https://i.imgur.com/uLdQYqF.png)
 
-1. Start by connecting the micro-USB cable to the **data port** of your Pwnagotchi's RPi0W, then connect the other end of that cable to your computer. 
+1. Start by connecting the micro-USB cable to the **data port** of your Pwnagotchi's RPi0W, then connect the other end of that cable to your computer.
 2. **If your Pwnagotchi has already been booted up at least once before:** after a few seconds, you will see a new Ethernet interface on your host computer.
      - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
 3. You'll need to configure it with a static IP address:
@@ -124,7 +124,7 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 
 ## Set your PwnGrid preferences
 
-By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#auto-ai-and-manu-modes), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data: 
+By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#auto-ai-and-manu-modes), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data:
 
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
@@ -173,7 +173,7 @@ main:
 {{% /notice %}}
 
 **Set the type of display you want to use via `ui.display.type`.**
-If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.  
+If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
 
 Currently supported:
 
@@ -190,7 +190,7 @@ Currently supported:
 Now you can run:
 
     sudo service pwnagotchi restart
-    
+
 ...in order to restart the service with the new configuration.
 
 {{% notice warning %}}
@@ -238,6 +238,16 @@ ui:
       address: 0.0.0.0
 ```
 
+Your pwnagotchi will indicate the status via a little `BT` symbol at the top of the screen.
+The error codes are:
+
+- **NF** Not found: This means the connection to the device could not be established (probably because it could not be found)
+- **ERR1** Error 1: This error occures, when the address (ip/netmask) could not be set to the `bnep0` interface
+- **ERR2** Error 2: This error occures, when the `bnep0` interface could not be found
+
+If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
+check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
+
 &nbsp;
 
 **All done configuring your new Pwnagotchi?** Time to learn how to take care of your new friend over in [**Usage**](/usage/)!
@@ -245,6 +255,6 @@ ui:
 ## Troubleshooting
 
 ##### If your network connection keeps flapping on your device connecting to your Pwnagotchi:
-* Check if `usb0` (or equivalent) device is being controlled by NetworkManager. 
+* Check if `usb0` (or equivalent) device is being controlled by NetworkManager.
 * You can check this via `nmcli dev status`.
 * If you are having trouble connecting to your Pi via USB, be sure you are using a microUSB cord that is capable of data transfer
