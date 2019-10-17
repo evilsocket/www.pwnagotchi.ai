@@ -259,6 +259,8 @@ Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.be
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face). 
+- The default authentication credentials are `pwnagotchi:pwnagotchi`, if you decide to change them in `/usr/local/share/bettercap/caplets/pwnagotchi-*.cap`, you'll also need
+to update the configuration in `/etc/pwnagotchi/config.yml` to use the new credentials.
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
 
