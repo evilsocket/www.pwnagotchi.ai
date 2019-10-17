@@ -239,8 +239,9 @@ ui:
 ```
 
 Your pwnagotchi will indicate the status via a little `BT` symbol at the top of the screen.
-The error codes are:
+The status codes are:
 
+- **CON** Connected: This means the connection to the device has been established
 - **NF** Not found: This means the connection to the device could not be established (probably because it could not be found)
 - **ERR1** Error 1: This error occures, when the address (ip/netmask) could not be set to the `bnep0` interface
 - **ERR2** Error 2: This error occures, when the `bnep0` interface could not be found
