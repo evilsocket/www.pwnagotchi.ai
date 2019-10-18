@@ -213,16 +213,20 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 ### Bluetooth
 
 If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully,
-you can use the `bt-tether`-plugin.
+you can use the `bt-tether`-plugin. Please note this is reported (on Slack) to work fine with Android, but not on iOS.
 
-The configuration is as follows:
+First of all you need to pair the raspberry to your phone. Put your phone in *discoverable mode*, run `sudo bluetoothctl` and once in the shell
+type `scan`. That will list nearby bluetooth devices. Pick the mac of your phone and type `trust FF:FF:FF:FF:FF`. In short time (maybe not immediately)
+you will be prompted on the phone to allow connection from your pwnagotchi hostname. 
+
+Now in pwnagotchi's `config.yml` add the following:
 
 ```yaml
 main:
     plugins:
       bt-tether:
         enabled: true
-        mac: 'FF:FF:FF:FF:FF'  # you need to put your phones bt-mac here (goto your phones settings > status)
+        mac: 'FF:FF:FF:FF:FF'  # you need to put your phones bt-mac here (the same as above, or goto your phones settings > status)
         ip: '192.168.44.44'    # adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
         netmask: 24
         interval: 1
