@@ -136,6 +136,5 @@ Once you have downloaded the latest Pwnagotchi image, you will need to use an im
 - Open **balenaEtcher** and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
 - Select the SD card you wish to write your image to.
 - Review your selections, then click `Flash!` to begin writing data to the SD card.
-- Once the process is complete, pop your (now flashed!) SD card into your Pwnagotchi's body.
 
-**Congratulations! Your SD card is now ready for the first boot!** It's time to head over to the [Configuration](/configuration/) doc to configure your new Pwnagotchi. 👾 🎉
+**Wait before removing the SD card** as you will need to create one last file on it with the [initial configuration](/configuration/).

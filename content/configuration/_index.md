@@ -6,22 +6,123 @@ weight: 3
 pre: "<i class='fas fa-cog'></i> "
 ---
 
+For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card. 
+This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
+
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
 
-1. **Connecting to your Pwnagotchi**
-    - Original [Connect to your Pwnagotchi](/configuration/#connect-to-your-pwnagotchi)
-    - Updated for Linux host [Connecting to Pi0w with MicroUSB cable on Linux Host
-](/configuration/#connecting-to-pi0w-with-microusb-cable-on-linux-host)
-2. [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi)
-3. [Choose your unit's language](/configuration/#choose-your-unit-s-language)
-4. [Set your PwnGrid preferences](/configuration/#set-your-pwngrid-preferences)
-5. [Select your display](/configuration/#select-your-display)
-6. [Host connection sharing](/configuration/#host-connection-sharing)
-7. [Troubleshooting](/configuration/#troubleshooting)
+## Choose your unit's language
+
+Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
+
+But if you **do** want to change what language Pwnagotchi displays its status in, you can change `main.lang` to one of the supported languages:
+
+- **English** *(default)*
+- German
+- Italian
+- French
+- Russian
+- Dutch
+- Greek
+- Swedish
+- Macedonian
+- Irish
+- Japanese
+
+{{% notice tip %}}
+<p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
+{{% /notice %}}
+
+## Set your PwnGrid preferences
+
+By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#auto-ai-and-manu-modes), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data:
+
+- The cryptographic identity of the unit, generated at first boot and used for authentication.
+- The output of the `uname -a` command on the unit used to determine the type of hardware.
+
+If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
+
+- The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
+
+In order to **fully opt-in** to PwnGrid, you must make the following change in your `/etc/pwnagotchi/config.yml` file:
+
+```yaml
+main:
+    plugins:
+      grid:
+        enabled: true
+        report: true # full-opt in
+```
+
+Even if you have decided to **fully opted-in** to PwnGrid, you can still disable reporting for specific networks—for instance, if you don't want your home network to be in the system:
+
+```yaml
+main:
+    plugins:
+      grid:
+        enabled: true
+        report: true
+        exclude:
+          - MyHomeNetwork     # both ESSIDs and BSSIDs are supported
+          - de:ad:be:ef:de:ad # both ESSIDs and BSSIDs are supported
+```
+
+If instead you prefer to completely opt-out by also disabling signaling:
+
+```yaml
+main:
+    plugins:
+      grid:
+        enabled: false # full opt-out
+        report: false
+```
+
+## Select your display
+
+{{% notice tip %}}
+<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="/usage/#user-interface">User Interface</a> doc for more details on using the web UI.</p>
+{{% /notice %}}
+
+**Set the type of display you want to use via `ui.display.type`.**
+If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
+
+Currently supported:
+
+* `waveshare_2` for the V2 version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT), [this is the recommended and officially supported display](http://localhost:1313/installation/#recommendations).
+* `waveshare_1` for the V1 legacy version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT)
+* `inky` for [Pimoroni's Inky pHAT](https://shop.pimoroni.com/products/inky-phat).
+* `papirus` for [PaPiRus Zero](https://thepihut.com/products/papirus-zero-epaper-eink-screen-phat-for-pi-zero).
+* `oledhat` for [Waveshare's OLED Hat](https://www.waveshare.com/wiki/1.3inch_OLED_HAT).
+
+**You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
+
+## First Boot
+
+Your `config.yml` file in the `boot` partition of the SD card should now look something like the following (with the 
+right differences if you're using different hardware):
+
+```yaml
+main:
+  whitelist:
+    - YourHomeNetworkMaybe
+  plugins:
+    grid:
+      enabled: true
+      report: true
+      exclude:
+        - YourHomeNetworkMaybe
+
+ui:
+    display:
+      type: 'inkyphat'
+      color: 'black'
+```
+
+**Congratulations! Your SD card is now ready for the first boot!** 👾 🎉
 
 ## Connect to your Pwnagotchi
 
-In order to properly set up and configure your Pwnagotchi, you'll first need to connect to it via SSH.
+You can also connect to your Pwnagotchi via SSH.
 
 {{% notice warning %}}
 <p><b>PLEASE NOTE:</b> If you cannot connect to your Pwnagotchi <b>no matter what you try</b>, ensure that the micro-USB you are using <b>allows data transfer</b> and doesn't ONLY provide charge. Cheaper quality micro-USB cords often do not support data transfer and will NOT allow you to actually connect to your Pwnagotchi. :'( <b>Use a quality cord!</b></p>
@@ -101,101 +202,6 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub pi@10.0.0.2
 You can give your new Pwnagotchi unit its own name by [changing its hostname](https://geek-university.com/raspberry-pi/change-raspberry-pis-hostname/). By default, your new Pwnagotchi's name will be `Pwnagotchi`.
 
 Open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
-
-## Choose your unit's language
-
-Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
-
-But if you **do** want to change what language Pwnagotchi displays its status in, you can change `main.lang` to one of the supported languages:
-
-- **English** *(default)*
-- German
-- Italian
-- French
-- Russian
-- Dutch
-- Greek
-- Swedish
-- Macedonian
-
-{{% notice tip %}}
-<p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
-{{% /notice %}}
-
-## Set your PwnGrid preferences
-
-By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This means that whenever the unit will detect internet connectivity while in [MANUAL mode](/usage/#auto-ai-and-manu-modes), it will signal its existence to the PwnGrid server by sending ONLY the following enrollment data:
-
-- The cryptographic identity of the unit, generated at first boot and used for authentication.
-- The output of the `uname -a` command on the unit used to determine the type of hardware.
-
-If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
-
-- The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
-
-In order to **fully opt-in** to PwnGrid, you must make the following change in your `/etc/pwnagotchi/config.yml` file:
-
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: true
-        report: true # full-opt in
-```
-
-Even if you have decided to **fully opted-in** to PwnGrid, you can still disable reporting for specific networks—for instance, if you don't want your home network to be in the system:
-
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: true
-        report: true
-        exclude:
-          - MyHomeNetwork     # both ESSIDs and BSSIDs are supported
-          - de:ad:be:ef:de:ad # both ESSIDs and BSSIDs are supported
-```
-
-If instead you prefer to completely opt-out by also disabling signaling:
-
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: false # full opt-out
-        report: false
-```
-
-## Select your display
-
-{{% notice tip %}}
-<p>If you want to use the web UI (instead of an e-ink display attached to your unit's RPi0W) to see your Pwnagotchi's face, check out the <a href="/usage/#user-interface">User Interface</a> doc for more details on using the web UI.</p>
-{{% /notice %}}
-
-**Set the type of display you want to use via `ui.display.type`.**
-If your display does not work after changing this setting, you might need to completely remove power from the Raspberry Pi and make a clean boot.
-
-Currently supported:
-
-* `waveshare_2` for the V2 version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT), [this is the recommended and officially supported display](http://localhost:1313/installation/#recommendations).
-* `waveshare_1` for the V1 legacy version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT)
-* `inky` for [Pimoroni's Inky pHAT](https://shop.pimoroni.com/products/inky-phat).
-* `papirus` for [PaPiRus Zero](https://thepihut.com/products/papirus-zero-epaper-eink-screen-phat-for-pi-zero).
-* `oledhat` for [Waveshare's OLED Hat](https://www.waveshare.com/wiki/1.3inch_OLED_HAT).
-
-**You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
-
-## Apply the new configuration
-
-Now you can run:
-
-    sudo service pwnagotchi restart
-
-...in order to restart the service with the new configuration.
-
-{{% notice warning %}}
-<p>You will need to either reboot your unit or perform this step every time you will change the configuration.</p>
-{{% /notice %}}
 
 ## Host connection sharing
 
