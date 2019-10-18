@@ -4,7 +4,7 @@
 
 <img src="https://media.giphy.com/media/f9GsXyfgEQbY65fnhu/source.gif"/>
 
-Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/sdcard/rootfs/root/pwnagotchi/config.yml#L54) over time to **get better at pwning WiFi things** in the real world environments you expose it to. 
+Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml#L100) over time to **get better at pwning WiFi things** in the real world environments you expose it to. 
 
 {{% notice tip %}}
 <p><strong>Learn more about <a href="/intro/#how-does-pwnagotchi-work">how Pwnagotchi works</a> and why it <a href="/intro/#wifi-handshakes-101">eats WPA handshakes</a> in the <i class='fas fa-star-of-life' style='color:#b33636;'></i> <a href="/intro/">Introduction</a> doc.</strong></p>
