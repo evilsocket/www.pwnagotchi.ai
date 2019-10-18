@@ -166,7 +166,7 @@ Check out [Anatomy of a Pwnagotchi Face](/usage/#anatomy-of-a-pwnagotchi-face)
 
 ---
 ### How do I whitelist my home network so Pwnagotchi stops pwning me?
-In `/etc/pwnagotchi/config.yml`, you need to add this and your networks. It will accept BSSID's and SSID's as input.
+In `/etc/pwnagotchi/config.yml`, `main` section, add the following with a list of your networks. It will accept BSSID's and SSID's as input.
 ```yaml
     # access points to ignore
     whitelist:
