@@ -95,7 +95,7 @@ If your display does not work after changing this setting, you might need to com
 
 Currently supported:
 
-* `waveshare_2` for the V2 version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT), [this is the recommended and officially supported display](http://localhost:1313/installation/#recommendations).
+* `waveshare_2` for the V2 version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT), [this is the recommended and officially supported display](/installation/#required-hardware).
 * `waveshare_1` for the V1 legacy version of [Waveshare's ePaper HAT](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT)
 * `inky` for [Pimoroni's Inky pHAT](https://shop.pimoroni.com/products/inky-phat).
 * `papirus` for [PaPiRus Zero](https://thepihut.com/products/papirus-zero-epaper-eink-screen-phat-for-pi-zero).

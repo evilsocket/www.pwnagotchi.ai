@@ -28,7 +28,7 @@ You can write any type of application on top of our [API](/api/), sky is the lim
 
 ## Adding a new Display
 
-Currently Pwnagotchi supports [several displays](http://localhost:1313/configuration/#select-your-display) and adding support for new ones is very easy! 
+Currently Pwnagotchi supports [several displays](/configuration/#select-your-display) and adding support for new ones is very easy! 
 All you have to do is copying the specific Python libraries of the hardware [into this folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/ui/hw/libs) 
 and then create a new class in its parent folder that implements the methods of the following abstract class:
 
