@@ -69,7 +69,7 @@ main:
 ```
 
 {{% notice warning %}}
-<p><b>PLEASE NOTE:</b>As we use ![YAML](https://yaml.org/) for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
+<p><b>PLEASE NOTE:</b>As we use [YAML](https://yaml.org/) for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
 or <b>@</b> or contains some other special characters, you should use <b>single quotes</b>, which allows you to
 use all kinds of characters in your string (you only need to escape the single quote itself).</p>
 {{% /notice %}}
