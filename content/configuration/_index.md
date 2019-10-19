@@ -6,7 +6,7 @@ weight: 3
 pre: "<i class='fas fa-cog'></i> "
 ---
 
-For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card. 
+For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
 This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
 
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
@@ -69,7 +69,7 @@ main:
 ```
 
 {{% notice warning %}}
-<p><b>PLEASE NOTE:</b>As we use [YAML](https://yaml.org/) for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
+<p><b>PLEASE NOTE:</b>As we use <a href="https://yaml.org/">YAML</a> for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
 or <b>@</b> or contains some other special characters, you should use <b>single quotes</b>, which allows you to
 use all kinds of characters in your string (you only need to escape the single quote itself).</p>
 {{% /notice %}}
@@ -105,7 +105,7 @@ Currently supported:
 
 ## First Boot
 
-Your `config.yml` file in the `boot` partition of the SD card should now look something like the following (with the 
+Your `config.yml` file in the `boot` partition of the SD card should now look something like the following (with the
 right differences if you're using different hardware):
 
 ```yaml
@@ -225,7 +225,7 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 
 ### Bluetooth
 
-If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully, you can use the `bt-tether`-plugin. 
+If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully, you can use the `bt-tether`-plugin.
 
 {{% notice warning %}}
 <p><b>PLEASE NOTE:</b>Please note this is reported (on Slack) to work fine with Android, but not on iOS.</p>
@@ -270,9 +270,9 @@ check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
 
 #### Known problems
 
-Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices. 
+Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices.
 Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
-you will be prompted on the phone to allow connection from your pwnagotchi hostname. 
+you will be prompted on the phone to allow connection from your pwnagotchi hostname.
 
 &nbsp;
 
