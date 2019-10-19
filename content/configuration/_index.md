@@ -270,7 +270,7 @@ check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
 
 #### Known problems
 
-Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by do the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices. 
+Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices. 
 Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
 you will be prompted on the phone to allow connection from your pwnagotchi hostname. 
 
