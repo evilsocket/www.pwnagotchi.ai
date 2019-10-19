@@ -27,7 +27,8 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 - Swedish
 - Macedonian
 - Irish
-- Japanese
+- Japanese (can't be displayed with the current font)
+- Polish
 
 {{% notice tip %}}
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
@@ -66,6 +67,12 @@ main:
           - MyHomeNetwork     # both ESSIDs and BSSIDs are supported
           - de:ad:be:ef:de:ad # both ESSIDs and BSSIDs are supported
 ```
+
+{{% notice warning %}}
+<p><b>PLEASE NOTE:</b>As we use [YAML](https://yaml.org/) for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
+or <b>@</b> or contains some other special characters, you should use <b>single quotes</b>, which allows you to
+use all kinds of characters in your string (you only need to escape the single quote itself).</p>
+{{% /notice %}}
 
 If instead you prefer to completely opt-out by also disabling signaling:
 
@@ -143,7 +150,7 @@ You can also connect to your Pwnagotchi via SSH.
 5. **Congratulations!** You should now be able to connect to your unit using SSH:
 
 ```bash
-ssh pi@10.0.0.2
+ssh pi@10.0.0.2 # default password: raspberry
 ```
 
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
@@ -218,12 +225,11 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 
 ### Bluetooth
 
-If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully,
-you can use the `bt-tether`-plugin. Please note this is reported (on Slack) to work fine with Android, but not on iOS.
+If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully, you can use the `bt-tether`-plugin. 
 
-First of all you need to pair the raspberry to your phone. Put your phone in *discoverable mode*, run `sudo bluetoothctl` and once in the shell
-type `scan`. That will list nearby bluetooth devices. Pick the mac of your phone and type `trust FF:FF:FF:FF:FF`. In short time (maybe not immediately)
-you will be prompted on the phone to allow connection from your pwnagotchi hostname. 
+{{% notice warning %}}
+<p><b>PLEASE NOTE:</b>Please note this is reported (on Slack) to work fine with Android, but not on iOS.</p>
+{{% /notice %}}
 
 Now in pwnagotchi's `config.yml` add the following:
 
@@ -233,7 +239,10 @@ main:
       bt-tether:
         enabled: true
         mac: 'FF:FF:FF:FF:FF'  # you need to put your phones bt-mac here (the same as above, or goto your phones settings > status)
-        ip: '192.168.44.44'    # adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
+        ip: 'xx.xx.xx.44'    # this is the static ip of your pwnagotchi
+                             # adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
+                             # if you feel lucky, try: 192.168.44.44 (Android) or 172.20.10.44 (iOS)
+                             # 44 is just an example, you can choose between 2-254 (if netmask is 24)
         netmask: 24
         interval: 1
         share_internet: true   # this will change the routing and nameserver on your pi
@@ -258,6 +267,12 @@ The status codes are:
 
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
+
+#### Known problems
+
+Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices. 
+Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
+you will be prompted on the phone to allow connection from your pwnagotchi hostname. 
 
 &nbsp;
 
