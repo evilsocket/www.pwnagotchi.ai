@@ -174,6 +174,13 @@ In `/etc/pwnagotchi/config.yml`, `main` section, add the following with a list o
         - ANOTHER_EXAMPLE_NETWORK
 
 ```
+
+If your access points still get's deauthed, try using **single quotes** or the **BSSID** instead.
+
+{{% notice tip %}}
+<p>Your access points handshakes get still captured. This only prevents the deauth of the clients.</p>
+{{% /notice %}}
+
 ---
 ### What is MANU mode? What is AUTO mode?
 #### MANU
