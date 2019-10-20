@@ -139,6 +139,7 @@ Once you have downloaded the latest Pwnagotchi image, you will need to use an im
 **To write your Pwnagotchi image with balenaEtcher:**
 
 - Download the latest **[Pwnagotchi .img file](https://github.com/evilsocket/pwnagotchi/releases).**
+  - Verify the SHA-256 checksum of the .img
 - Download **[balenaEtcher](https://www.balena.io/etcher/)** and install it.
 - Connect an SD card reader with the SD card inside.
 - Open **balenaEtcher** and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
