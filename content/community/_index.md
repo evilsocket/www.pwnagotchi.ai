@@ -18,6 +18,8 @@ If you test one of these hacks yourself and it still works, it's extra nice if y
 
 - [**Screens**](#screens)
   - [Waveshare 3.5" SPI TFT screen](#waveshare-3-5-spi-tft-screen)
+- [**Software Mods**](#software-modifications)
+  - [Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer](#static-rdnis-gadget-to-avoid-reconfiguration-everytime-you-plug-it-to-the-computer)
 - [**Hardware Mods**](#hardware-modifications)
   - [Adding an external antenna to the RPi0W](#adding-an-external-antenna-to-the-rpi0w)
   - [RPi0W with Waveshare V2 "Slim-agotchi"](#rpi0w-with-waveshare-v2-slim-agotchi)
@@ -53,6 +55,7 @@ fbi -T 1 -a -noverbose -t 15 -cachemem 0 /root/pwnagotchi_1.png /root/pwnagotchi
 
 And you should be good!
 
+## Software Modifications
 ### Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer
 
 You can execute these two commands and then each time you connect the pwnagotchi to your computer, the interface will be ready and configured:
