@@ -15,6 +15,7 @@ pre: "<i class='fas fa-brain'></i> "
      - [The web UI](/usage/#the-web-ui)
      - [The e-ink display](/usage/#the-e-ink-display-optional)
   - [Anatomy of a Pwnagotchi face](/usage/#anatomy-of-a-pwnagotchi-face)
+  - [Changing your Pwnagotchi's face](/usage/#changing-faces)
 - [**Files to know on your Pwnagotchi**](/usage/#files-to-know-on-your-pwnagotchi)
 - [**Training the AI**](/usage/#training-the-ai)
     - [The reward function](/usage/#the-reward-function)
@@ -96,6 +97,32 @@ If you've properly attached the optional [supported e-ink display](/installation
       - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
+
+### Changing Faces
+Your Pwnagotchi's face can be personalized by changing these variables in the `config.yml`
+```sh
+ui:
+    # here you can customize the faces
+    faces:
+        look_r: '( ⚆_⚆)'
+        look_l: '(☉_☉ )'
+        sleep: '(⇀‿‿↼)'
+        sleep2: '(≖‿‿≖)'
+        awake: '(◕‿‿◕)'
+        bored: '(-__-)'
+        intense: '(°▃▃°)'
+        cool: '(⌐■_■)'
+        happy: '(•‿‿•)'
+        excited: '(ᵔ◡◡ᵔ)'
+        motivated: '(☼‿‿☼)'
+        demotivated: '(≖__≖)'
+        smart: '(✜‿‿✜)'
+        lonely: '(ب__ب)'
+        sad: '(╥☁╥ )'
+        friend: '(♥‿‿♥)'
+        broken: '(☓‿‿☓)'
+        debug: '(#__#)'
+```
 
 ## Files to know on your Pwnagotchi
 
