@@ -131,7 +131,7 @@ Check out [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi).
 
 ---
 ### I want to change the faces. What do I hack?
-lorem ipsum dolor sit amet
+That is now very easy with no hacking required, check out [Changing your Pwnagotchi's face](/usage/#changing-faces).
 
 ---
 ### I want my Pwnagotchi to speak a different language. Can it?
