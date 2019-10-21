@@ -270,13 +270,6 @@ to update the configuration in `/etc/pwnagotchi/config.yml` to use the new crede
 
 ## Backup your Pwnagotchi
 
-{{% notice warning %}}
-<p>
-This script will access your unit as root, you must have previously configured a root password by switching from <code>pi</code> to 
-<code>root</code> with <code>sudo su</code> and then <code>passwd</code> to change the password.
-</p>
-{{% /notice %}}
-
 You can use the `scripts/backup.sh` script to backup the important files of your unit.
 
 ```shell
