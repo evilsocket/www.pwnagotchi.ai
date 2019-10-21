@@ -62,6 +62,10 @@ pre: "<i class='fas fa-question-circle'></i> "
 * [My Pwnagotchi's log timestamps seem...unreliable. Huh?](#my-pwnagotchis-log-timestamps-seemunreliable-huh)
 * [Help! My Pwnagotchi's SD card got corrupted. What gives?](#help-my-pwnagotchis-sd-card-got-corrupted-what-gives)
 
+[**Learning more**](#learning-more)
+* [Now I am so curious, can you recommend some books?](#now-i-am-so-curious-can-you-recommend-some-books)
+* [Any good link?](#any-good-link)
+
 ---
 
 ## **What can Pwnagotchi actually do?**
@@ -257,3 +261,16 @@ Since the rpi0w doesn't have a hardware clock, uptimes and timing in general can
 ---
 ### Help! My Pwnagotchi's SD card got corrupted. What gives?
 Make sure you are using a good quality SD card. Lower quality cards do not like the constant read/write that happens in a normal OS filesystem. SD cards made for 4k Video recording and photography are generally the best for this sort of use case.
+
+--------- 
+## **Learning more** 
+### Now I am so curious, can you recommend some books? 
+- [Deep Reinforcement Learning Hands-On: Apply modern RL methods, with deep Q-networks, value iteration, policy gradients, TRPO, AlphaGo Zero and more](https://www.amazon.it/gp/product/B076H9VQH6/) - _Maxim Lapan_ 
+- [Deep Learning with Keras: Implementing deep learning models and neural networks with the power of Python](https://www.amazon.it/gp/product/B06Y2YMRDW) - _Antonio Giulli_ 
+ 
+--- 
+### Any good link? 
+- [Wi-Fi deauthentication attack](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack) 
+- [PMKID client-less attack](https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/) 
+- [Deep Q-Learning with Keras and Gym](https://keon.io/deep-q-learning/) 
+- [Deep Reinforcement Learning Tutorial with Open AI Gym](https://towardsdatascience.com/deep-reinforcement-learning-tutorial-with-open-ai-gym-c0de4471f368)
