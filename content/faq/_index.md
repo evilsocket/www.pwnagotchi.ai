@@ -256,4 +256,4 @@ Since the rpi0w doesn't have a hardware clock, uptimes and timing in general can
 
 ---
 ### Help! My Pwnagotchi's SD card got corrupted. What gives?
-Make sure you are using a good quality SD card. Lessor quality cards do not like the constant read/write that happens in a normal OS filesystem. SD cards made for 4k Video recording and photography are generally the best for this sort of use case.
+Make sure you are using a good quality SD card. Lower quality cards do not like the constant read/write that happens in a normal OS filesystem. SD cards made for 4k Video recording and photography are generally the best for this sort of use case.
