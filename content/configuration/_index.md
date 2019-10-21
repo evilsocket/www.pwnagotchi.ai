@@ -121,7 +121,7 @@ main:
 
 ui:
     display:
-      type: 'inkyphat'
+      type: 'inky'
       color: 'black'
 ```
 
