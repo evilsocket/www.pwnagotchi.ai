@@ -266,7 +266,7 @@ Make sure you are using a good quality SD card. Lower quality cards do not like 
 ## **Learning more** 
 ### Now I am so curious, can you recommend some books? 
 - [Deep Reinforcement Learning Hands-On: Apply modern RL methods, with deep Q-networks, value iteration, policy gradients, TRPO, AlphaGo Zero and more](https://www.amazon.it/gp/product/B076H9VQH6/) - _Maxim Lapan_ 
-- [Deep Learning with Keras: Implementing deep learning models and neural networks with the power of Python](https://www.amazon.it/gp/product/B06Y2YMRDW) - _Antonio Giulli_ 
+- [Deep Learning with Keras: Implementing deep learning models and neural networks with the power of Python](https://www.amazon.it/gp/product/B06Y2YMRDW) - _Antonio Gulli_ 
  
 --- 
 ### Any good link? 
