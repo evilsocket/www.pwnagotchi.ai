@@ -150,6 +150,10 @@ Yes! To change what language Pwnagotchi displays it's status in, you can change 
 - Greek
 - Swedish
 - Macedonian
+- Portugese
+- Portugese (Brazilian)
+- Irish (Gaeilge)
+- Japanese
 
 {{% notice tip %}}
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
