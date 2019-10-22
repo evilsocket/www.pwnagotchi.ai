@@ -141,19 +141,19 @@ lorem ipsum dolor sit amet
 ### I want my Pwnagotchi to speak a different language. Can it?
 Yes! To change what language Pwnagotchi displays it's status in, you can change `main.lang` to one of the supported languages:
 
-- **English** *(default)*
-- German
-- Italian
-- French
-- Russian
-- Dutch
-- Greek
-- Swedish
-- Macedonian
-- Portugese
-- Portugese (Brazilian)
-- Irish (Gaeilge)
-- Japanese
+- **en (English)** *(default)*
+- de (German)
+- it (Italian)
+- fr (French)
+- ru (Russian)
+- nl (Dutch)
+- el (Greek)
+- sv (Swedish)
+- mk (Macedonian)
+- pt (Portugese)
+- pt-BR (Portugese (Brazilian))
+- ga (Irish (Gaeilge))
+- jp (Japanese)
 
 {{% notice tip %}}
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
