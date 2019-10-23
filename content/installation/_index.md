@@ -73,10 +73,13 @@ Pwnagotchi has a `ups_lite` plugin to display battery on the screen. Before usin
 
 If, instead, you want to fully enjoy walking around and literally looking at your unit's cute af face, the supported e-ink display models are:
 
-- **[Waveshare eInk Display (both V1 and V2)](https://www.waveshare.com/2.13inch-e-paper-hat.htm) \***
+- **[Waveshare eInk 2.13” Display (both V1 and V2)](https://www.waveshare.com/2.13inch-e-paper-hat.htm) \***
   - [Product comparison](https://www.waveshare.com/4.3inch-e-paper.htm) (scroll down to `Selection Guide`)
   - [GitHub](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python)
   - **\* The Waveshare V2 is the officially-supported e-ink display for Pwnagotchi. See [Recommendations](/installation/#recommendations) for more details.** The Waveshare V2 can be distinguished from the V1 by the presence of a [red sticker](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT#Versions) on the screen.
+- **[Waveshare eInk 2.7” Display](https://www.waveshare.com/2.7inch-e-paper-hat.htm)**
+  - [Product page](https://www.waveshare.com/2.7inch-e-paper-hat.htm)
+  - [GitHub](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python)
 - [Pimoroni Inky pHAT](https://shop.pimoroni.com/products/inky-phat)
   - [Product page](https://shop.pimoroni.com/products/inky-phat)
   - [GitHub](https://github.com/pimoroni/inky)
