@@ -13,6 +13,7 @@ pre: "<i class='fas fa-flask'></i> "
    - [Display](/installation/#display)
    - [Case](/installation/#case)
 - [**Flashing an Image**](/installation/#flashing-an-image)
+- [**Installing on any GNU/Linux**](/installation/#intalling-on-any-gnu-linux)
 
 ## Required Hardware
 
@@ -31,7 +32,7 @@ The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https:
 - Some users have gotten their Pwnagotchi running on other types of Raspberry Pi with no apparent issues (🤞). This includes:
   - Raspberry Pi 3
   - Raspberry Pi 4
-- In fact, **technically ANY** GNU/Linux computer with a WiFi interface that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
+- In fact, **technically ANY** [GNU/Linux computer with a WiFi interface](http://localhost:1313/installation/#intalling-on-any-gnu-linux) that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
 ### SD card
 
@@ -153,3 +154,124 @@ Once you have downloaded the latest Pwnagotchi image, you will need to use an im
 - Review your selections, then click `Flash!` to begin writing data to the SD card.
 
 **Wait before removing the SD card** as you will need to create one last file on it with the [initial configuration](/configuration/).
+
+## Intalling on any GNU/Linux
+
+If instead of using our image you prefer the hacker way and you want to configure the software components manually on any GNU/Linux box, you will need to follow these steps.
+
+### 1. bettercap
+
+First of all, download and install bettercap, its caplets and its web ui (change the URL to match the precompiled binary of the latest release according to your architecture):
+
+```sh
+wget "https://github.com/bettercap/bettercap/releases/download/v2.26/bettercap_linux_amd64_v2.26.zip"
+unzip bettercap_linux_amd64_v2.26.zip
+# ... check the sha256 digest before doing this ...
+sudo mv bettercap /usr/bin/
+# install the caplets and the web ui in /usr/local/share/bettercap and quit
+sudo bettercap -eval "caplets.update; ui.update; quit"
+```
+
+Depending on the name of the WiFi interface you're going to use, you'll need to edit the `/usr/local/share/bettercap/caplets/pwnagotchi-auto.cap` and `/usr/local/share/bettercap/caplets/pwnagotchi-manu.cap` caplet files accordingly.
+
+How to run bettercap and in which mode it's up to you as long as it's running one of those two caplets. In the default Pwnagotchi image bettercap is running as a systemd service through a launcher script.
+
+This is `/etc/systemd/system/bettercap.service`:
+
+```
+[Unit]
+Description=bettercap api.rest service.
+Documentation=https://bettercap.org
+Wants=network.target
+After=pwngrid.service
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+ExecStart=/usr/bin/bettercap-launcher
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+```
+
+And this is `/usr/bin/bettercap-launcher`:
+
+```bash
+#!/usr/bin/env bash
+/usr/bin/monstart
+if [[ $(ifconfig | grep usb0 | grep RUNNING) ]] || [[ $(cat /sys/class/net/eth0/carrier) ]]; then
+  # if override file exists, go into auto mode
+  if [ -f /root/.pwnagotchi-auto ]; then
+    /usr/bin/bettercap -no-colors -caplet pwnagotchi-auto -iface mon0
+  else
+    /usr/bin/bettercap -no-colors -caplet pwnagotchi-manual -iface mon0
+  fi
+else
+  /usr/bin/bettercap -no-colors -caplet pwnagotchi-auto -iface mon0
+fi
+```
+
+Even in this case the interface name and the command to start the monitor mode need to be adjusted for the specific computer and WiFi card.
+
+### 2. pwngrid
+
+The second service you will need is pwngrid, even in this case:
+
+```sh
+wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.1/pwngrid_linux_amd64_v1.10.1.zip"
+unzip pwngrid_linux_amd64_v1.10.1.zip
+# ... check the sha256 digest before doing this ...
+sudo mv pwngrid /usr/bin/
+# generate the keypair
+sudo pwngrid -generate -keys /etc/pwnagotchi
+```
+
+Pwngrid runs via the `/etc/systemd/system/pwngrid-peer.service` systemd service:
+
+```
+[Unit]
+Description=pwngrid peer service.
+Documentation=https://pwnagotchi.ai
+Wants=network.target
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+ExecStart=/usr/bin/pwngrid -keys /etc/pwnagotchi -address 127.0.0.1:8666 -client-token /root/.api-enrollment.json -wait -log /var/log/pwngrid-peer.log -iface mon0
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 3. pwnagotchi
+
+The last ingredient of this soup is going to be the python3 Pwnagotchi main codebase, that for any release can be installed with:
+
+```sh
+wget "https://github.com/evilsocket/pwnagotchi/archive/v1.0.1.zip"
+unzip v1.0.1.zip
+cd pwnagotchi-1.0.1
+# this will install the requirements and pwnagotchi itself
+sudo pip3 install .
+```
+
+Assuming both bettercap and pwngrid are configured and running correctly, you can now start pwnagotchi by simply:
+
+```sh
+# AUTO mode
+sudo pwnagotchi
+# AUTO mode with debug logs 
+sudo pwnagotchi --debug
+# MANU mode
+sudo pwnagotchi --manual
+# MANU mode with debug logs
+sudo pwnagotchi --manual --debug
+# show the other options
+pwnagotchi -h
+```
+
+This will install the default configuration file in `/etc/pwnagotchi/default.yml`, in order to apply customizations you'll need to create a new `/etc/pwnagotchi/config.yml` file [as explained in the configuration section](/configuration/).
