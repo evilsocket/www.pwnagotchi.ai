@@ -454,3 +454,15 @@ Refer to the <a href="/api/grid/#get-api-v1-unit-inbox-id">/api/v1/unit/inbox/{i
 }
 </code></pre>
 {{% /expand%}}
+
+## POST /api/v1/unit/report/aps
+
+To report multiple access points at once.
+
+{{%expand "Example Request"%}}
+<pre><code>[{
+    "essid": "SuperSecureNetwork",
+    "bssid": "de:ad:be:ef:de:ad"
+}, ...]
+</code></pre>
+{{% /expand%}}

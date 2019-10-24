@@ -110,6 +110,153 @@ Set the data that's used as advertisement. Fields that don't exist will be added
 </code></pre>
 {{% /expand%}}
 
+### GET /api/v1/mesh/memory
+
+Returns a list of all the units that have ever been met.
+
+{{%expand "Example Response"%}}
+<pre><code>[
+  {
+    "fingerprint": "b3ee4a482bdc6fb41d17961948dc8d19fb4d3e8cd10c475f2785c384fdb32c0f",
+    "met_at": "0001-01-01T00:00:00Z",
+    "detected_at": "2019-10-24T18:22:50.916146256+01:00",
+    "seen_at": "2019-10-24T18:38:26.352928748+01:00",
+    "prev_seen_at": "2019-10-24T18:38:26.026575031+01:00",
+    "encounters": 52339,
+    "channel": 4,
+    "rssi": -4,
+    "session_id": "fe:8c:cc:b7:28:3b",
+    "advertisement": {
+      "epoch": 94,
+      "face": "( ⚆_⚆)",
+      "grid_version": "1.7.6",
+      "identity": "b3ee4a482bdc6fb41d17961948dc8d19fb4d3e8cd10c475f2785c384fdb32c0f",
+      "name": "ribbon",
+      "policy": {
+        "advertise": true,
+        "ap_ttl": 30,
+        "associate": true,
+        "bored_num_epochs": 5,
+        "channels": [],
+        "deauth": true,
+        "excited_num_epochs": 5,
+        "hop_recon_time": 5,
+        "max_inactive_scale": 3,
+        "max_interactions": 1,
+        "max_misses_for_recon": 3,
+        "min_recon_time": 1,
+        "min_rssi": -200,
+        "recon_inactive_multiplier": 1,
+        "recon_time": 5,
+        "sad_num_epochs": 5,
+        "sta_ttl": 60
+      },
+      "pwnd_run": 4,
+      "pwnd_tot": 17,
+      "session_id": "fe:8c:cc:b7:28:3b",
+      "timestamp": 1571636023,
+      "uptime": 15382,
+      "version": "1.0.0RC5"
+    }
+  },
+  {
+    "fingerprint": "e322e903cade856a6ae687795640f6a0f6b78132c15963825e73f6502795487f",
+    "met_at": "0001-01-01T00:00:00Z",
+    "detected_at": "2019-10-24T18:22:55.533569911+01:00",
+    "seen_at": "2019-10-24T18:38:24.924140122+01:00",
+    "prev_seen_at": "2019-10-24T18:38:24.376309634+01:00",
+    "encounters": 41424,
+    "channel": 11,
+    "rssi": -55,
+    "session_id": "57:61:8e:d0:b7:99",
+    "advertisement": {
+      "epoch": 69,
+      "face": "(╥☁╥ )",
+      "grid_version": "1.7.6",
+      "identity": "e322e903cade856a6ae687795640f6a0f6b78132c15963825e73f6502795487f",
+      "name": "squid",
+      "policy": {
+        "advertise": true,
+        "ap_ttl": 30,
+        "associate": true,
+        "bored_num_epochs": 5,
+        "channels": [],
+        "deauth": true,
+        "excited_num_epochs": 5,
+        "hop_recon_time": 5,
+        "max_inactive_scale": 3,
+        "max_interactions": 1,
+        "max_misses_for_recon": 3,
+        "min_recon_time": 1,
+        "min_rssi": -200,
+        "recon_inactive_multiplier": 1,
+        "recon_time": 5,
+        "sad_num_epochs": 5,
+        "sta_ttl": 60
+      },
+      "pwnd_run": 2,
+      "pwnd_tot": 10,
+      "session_id": "57:61:8e:d0:b7:99",
+      "timestamp": 1571628821,
+      "uptime": 15389,
+      "version": "1.0.0RC5"
+    }
+  }
+]
+</code></pre>
+{{% /expand%}}
+
+### GET /api/v1/mesh/memory/{fingerprint}
+
+Return the historical information of a unit given its fingerprint.
+
+{{%expand "Example Response"%}}
+<pre><code>{
+  "fingerprint": "e322e903cade856a6ae687795640f6a0f6b78132c15963825e73f6502795487f",
+  "met_at": "0001-01-01T00:00:00Z",
+  "detected_at": "2019-10-24T18:22:55.533569911+01:00",
+  "seen_at": "2019-10-24T18:39:38.083348784+01:00",
+  "prev_seen_at": "2019-10-24T18:39:37.527044326+01:00",
+  "encounters": 41544,
+  "channel": 5,
+  "rssi": -12,
+  "session_id": "57:61:8e:d0:b7:99",
+  "advertisement": {
+    "epoch": 69,
+    "face": "(◕‿‿◕)",
+    "grid_version": "1.7.6",
+    "identity": "e322e903cade856a6ae687795640f6a0f6b78132c15963825e73f6502795487f",
+    "name": "squid",
+    "policy": {
+      "advertise": true,
+      "ap_ttl": 30,
+      "associate": true,
+      "bored_num_epochs": 5,
+      "channels": [],
+      "deauth": true,
+      "excited_num_epochs": 5,
+      "hop_recon_time": 5,
+      "max_inactive_scale": 3,
+      "max_interactions": 1,
+      "max_misses_for_recon": 3,
+      "min_recon_time": 1,
+      "min_rssi": -200,
+      "recon_inactive_multiplier": 1,
+      "recon_time": 5,
+      "sad_num_epochs": 5,
+      "sta_ttl": 60
+    },
+    "pwnd_run": 2,
+    "pwnd_tot": 10,
+    "session_id": "57:61:8e:d0:b7:99",
+    "timestamp": 1571628894,
+    "uptime": 15389,
+    "version": "1.0.0RC5"
+  }
+}
+</code></pre>
+{{% /expand%}}
+
 ## Grid
 
 ### GET /api/v1/data
