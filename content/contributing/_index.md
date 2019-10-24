@@ -142,7 +142,8 @@ sudo make clean
 
 ## Adding a Language
 
-#### Contributing a new translation
+### Contributing a new translation
+
 If you want to contribute a new translation of Pwnagotchi's status messages for the UI, do the following:
 
 1. Copy the language template (`voice.pot`); the template should NOT be changed manually.
@@ -163,7 +164,8 @@ If you want to contribute a new translation of Pwnagotchi's status messages for 
 4. Now just add it to the [GitHub repo](https://github.com/evilsocket/pwnagotchi) and submit a pull request.
 
 
-#### Updating an existing translation
+### Updating an existing translation
+
 Sometimes we change old or add new status messages in Pwnagotchi's UI. If that's happened and something in the `voice.py` the code has changed, users can submit updated translations using the following procedure:
 
 1. Update the template and merges it with the already translated po-file:

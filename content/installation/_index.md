@@ -6,15 +6,6 @@ weight: 2
 pre: "<i class='fas fa-flask'></i> "
 ---
 
-- [**Required Hardware**](/installation/#required-hardware)
-   - [Body](/installation/#body-nbsp)
-   - [SD card](/installation/#sd-card)
-   - [Battery](/installation/#battery)
-   - [Display](/installation/#display)
-   - [Case](/installation/#case)
-- [**Flashing an Image**](/installation/#flashing-an-image)
-- [**Installing on any GNU/Linux**](/installation/#intalling-on-any-gnu-linux)
-
 ## Required Hardware
 
 - A [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) *(see [here](/installation/#body-nbsp) for more details on alternative bodies).*

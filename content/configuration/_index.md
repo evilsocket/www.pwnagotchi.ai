@@ -276,9 +276,7 @@ you will be prompted on the phone to allow connection from your pwnagotchi hostn
 
 **All done configuring your new Pwnagotchi?** Time to learn how to take care of your new friend over in [**Usage**](/usage/)!
 
-## Troubleshooting
-
-##### If your network connection keeps flapping on your device connecting to your Pwnagotchi:
+If your network connection keeps flapping on your device connecting to your Pwnagotchi:
 * Check if `usb0` (or equivalent) device is being controlled by NetworkManager.
 * You can check this via `nmcli dev status`.
 * If you are having trouble connecting to your Pi via USB, be sure you are using a microUSB cord that is capable of data transfer

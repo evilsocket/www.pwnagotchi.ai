@@ -29,9 +29,7 @@ will provide basic hardware isolation and therefore improve the security of the 
 All requests go to https://api.pwnagotchi.ai/, paths indicated with <i class="fas fa-lock-open"></i> do not require authentication, the ones with <i class="fas fa-lock"></i> instead require 
 the aforementioned JWT token.
 
----
-
-#### GET /api/v1/units
+## GET /api/v1/units
 
 Get a paged list of all the enrolled units, use `?p=2` for pages other than the first one. <i class="fas fa-lock-open"></i>
 
@@ -108,7 +106,7 @@ Get a paged list of all the enrolled units, use `?p=2` for pages other than the 
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/units/by_country
+## GET /api/v1/units/by_country
 
 Get a list of countries and number of units registered for each. <i class="fas fa-lock-open"></i>
 
@@ -265,7 +263,7 @@ Get a list of countries and number of units registered for each. <i class="fas f
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/unit/{fingerprint}
+## GET /api/v1/unit/{fingerprint}
 
 Get information about a unit given its fingerprint. <i class="fas fa-lock-open"></i>
 
@@ -348,7 +346,7 @@ Get information about a unit given its fingerprint. <i class="fas fa-lock-open">
 </code></pre>
 {{% /expand%}}
 
-#### POST /api/v1/unit/enroll
+## POST /api/v1/unit/enroll
 
 Enroll a unit with its RSA keypair and give it a JWT token for further authenticated requests. <i class="fas fa-lock-open"></i>
 
@@ -376,7 +374,7 @@ unit's session, its current sent of parameters, etc. The reference Go code for t
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/unit/inbox
+## GET /api/v1/unit/inbox
 
 Get a paged list of all PwnMAIL inbox messages. <i class="fas fa-lock"></i>
 
@@ -397,7 +395,7 @@ Get a paged list of all PwnMAIL inbox messages. <i class="fas fa-lock"></i>
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/unit/inbox/{id} 
+## GET /api/v1/unit/inbox/{id} 
 
 Get a message given its identifier. The content is encrypted and must be decrypted. <i class="fas fa-lock"></i>
 
@@ -427,11 +425,11 @@ The data is composed of:
 The reference Go code for signature verification and dencryption can be <a href="https://github.com/evilsocket/pwngrid/blob/master/api/peer_inbox.go#L38">found here</a>.
 {{% /expand%}}
 
-#### GET /api/v1/unit/inbox/{id}/{mark}
+## GET /api/v1/unit/inbox/{id}/{mark}
 
 Mark a message given its identifier, mark can be `seen`, `unseen` or `deleted`. <i class="fas fa-lock"></i>
 
-#### POST /api/v1/unit/{fingerprint}/inbox
+## POST /api/v1/unit/{fingerprint}/inbox
 
 Send an encrypted message to a unit by its fingerprint. The content must be signed and encrypted. <i class="fas fa-lock"></i>
 
@@ -445,7 +443,7 @@ Send an encrypted message to a unit by its fingerprint. The content must be sign
 Refer to the <a href="/api/grid/#get-api-v1-unit-inbox-id">/api/v1/unit/inbox/{id}</a> for how the encrypted data field should be composed.
 {{% /expand%}}
 
-#### POST /api/v1/unit/report/ap
+## POST /api/v1/unit/report/ap
 
 [Fully opted-in](/configuration/#set-your-pwngrid-preferences) units can use this API to report a pwned access point. <i class="fas fa-lock"></i>
 

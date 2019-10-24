@@ -10,6 +10,6 @@ pre: "<i class='fas fa-globe-europe'></i> "
 
 <div id="unitsmap"></div>
 
-## Latest Units
+<strong>Newborns</strong>
 
 <ul id="unitslist"></ul>

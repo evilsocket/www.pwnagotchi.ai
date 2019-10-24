@@ -10,13 +10,13 @@ in background in peer mode and exposes an API on http://127.0.0.1:8666/ that is 
 but that can also be used easier access [the grid API](/api/grid/) through the unit itself and therefore without any need for authentication other than 
 the SSH authentication you need to access the unit and talk to the local API. 
 
----
+## Mesh
 
-#### GET /api/v1/mesh/{status}
+### GET /api/v1/mesh/{status}
 
 If `status` is one of `true` or `enabled` it will enable WiFi advertising to nearby units, if `false` or `disabled` it will disable it.
 
-#### GET /api/v1/mesh/peers 
+### GET /api/v1/mesh/peers 
 
 Returns a list of detected nearby units and their data updated in realtime, sorted by strongest signal first.
 
@@ -61,7 +61,7 @@ Returns a list of detected nearby units and their data updated in realtime, sort
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/mesh/data
+### GET /api/v1/mesh/data
 
 Get the data that's currently used as advertisement.
 
@@ -98,7 +98,7 @@ Get the data that's currently used as advertisement.
 </code></pre>
 {{% /expand%}}
 
-#### POST /api/v1/mesh/data
+### POST /api/v1/mesh/data
 
 Set the data that's used as advertisement. Fields that don't exist will be added, fields set to null will be deleted.
 
@@ -110,7 +110,9 @@ Set the data that's used as advertisement. Fields that don't exist will be added
 </code></pre>
 {{% /expand%}}
 
-#### GET /api/v1/data
+## Grid
+
+### GET /api/v1/data
 
 Get the data that's currently being sent to the [enrollment API](/api/grid/#post-api-v1-unit-enroll).
 
@@ -143,7 +145,7 @@ Get the data that's currently being sent to the [enrollment API](/api/grid/#post
 </code></pre>
 {{% /expand%}}
 
-#### POST /api/v1/data
+### POST /api/v1/data
 
 Set the data that's currently being sent to the [enrollment API](/api/grid/#post-api-v1-unit-enroll). Fields that don't exist will be added, fields set to null will be deleted.
 Server side features will be available depending on what you decide to remove from the sent data.
@@ -155,71 +157,7 @@ Server side features will be available depending on what you decide to remove fr
 </code></pre>
 {{% /expand%}}
 
-#### POST /api/v1/report/ap
-
-[Fully opted-in](/configuration/#set-your-pwngrid-preferences) units can use this API to report a pwned access point. 
-
-{{%expand "Example Request"%}}
-<pre><code>{
-    "essid": "SuperSecureNetwork",
-    "bssid": "de:ad:be:ef:de:ad"
-}
-</code></pre>
-{{% /expand%}}
-
-#### GET /api/v1/inbox
-
-Get a paged list of all PwnMAIL inbox messages.
-
-{{%expand "Example Response"%}}
-<pre><code>{
-	"pages": 1,
-	"records": 1,
-	"messages": [{
-        "id": 123,
-        "created_at": "2019-10-06T22:56:06Z",
-        "updated_at": "2019-10-06T22:56:06Z",
-        "deleted_at": null,
-        "seen_at": null,
-        "sender_name": "alpha",
-        "sender": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea"
-    }]
-}
-</code></pre>
-{{% /expand%}}
-
-#### GET /api/v1/inbox/{id} 
-
-Get a message given its identifier. The content is decrypted and its signature verified by the pwngrid binary itself.
-
-{{%expand "Example Response"%}}
-<pre><code>{
-    "id": 123,
-    "created_at": "2019-10-06T22:56:06Z",
-    "updated_at": "2019-10-06T22:56:06Z",
-    "deleted_at": null,
-    "seen_at": null,
-    "sender_name": "alpha",
-    "sender": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea",
-    "data": "base64 encoded cleartext message data",
-    "signature": "base64 encoded RSA-PSS signature of the encrypted data"
-}
-</code></pre>
-{{% /expand%}}
-
-#### GET /api/v1/inbox/{id}/{mark}
-
-Mark a message given its identifier, mark can be `seen`, `unseen` or `deleted`.
-
-#### POST /api/v1/unit/{fingerprint}/inbox
-
-Send a message to a unit by its fingerprint. The content will be automatically encrypted and signed **locally** by pwngrid.
- 
-{{%expand "Example Request"%}}
-<pre><code>Anything that's sent as POST data will be used as a message.</code></pre>
-{{% /expand%}}
-
-#### GET /api/v1/units
+### GET /api/v1/units
 
 Get a paged list of all the enrolled units, use `?p=2` for pages other than the first one.
 
@@ -294,4 +232,70 @@ Get a paged list of all the enrolled units, use `?p=2` for pages other than the 
     ...]
 }
 </code></pre>
+{{% /expand%}}
+
+### POST /api/v1/report/ap
+
+[Fully opted-in](/configuration/#set-your-pwngrid-preferences) units can use this API to report a pwned access point. 
+
+{{%expand "Example Request"%}}
+<pre><code>{
+    "essid": "SuperSecureNetwork",
+    "bssid": "de:ad:be:ef:de:ad"
+}
+</code></pre>
+{{% /expand%}}
+
+## PwnMAIL
+
+### GET /api/v1/inbox
+
+Get a paged list of all PwnMAIL inbox messages.
+
+{{%expand "Example Response"%}}
+<pre><code>{
+	"pages": 1,
+	"records": 1,
+	"messages": [{
+        "id": 123,
+        "created_at": "2019-10-06T22:56:06Z",
+        "updated_at": "2019-10-06T22:56:06Z",
+        "deleted_at": null,
+        "seen_at": null,
+        "sender_name": "alpha",
+        "sender": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea"
+    }]
+}
+</code></pre>
+{{% /expand%}}
+
+### GET /api/v1/inbox/{id} 
+
+Get a message given its identifier. The content is decrypted and its signature verified by the pwngrid binary itself.
+
+{{%expand "Example Response"%}}
+<pre><code>{
+    "id": 123,
+    "created_at": "2019-10-06T22:56:06Z",
+    "updated_at": "2019-10-06T22:56:06Z",
+    "deleted_at": null,
+    "seen_at": null,
+    "sender_name": "alpha",
+    "sender": "ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea",
+    "data": "base64 encoded cleartext message data",
+    "signature": "base64 encoded RSA-PSS signature of the encrypted data"
+}
+</code></pre>
+{{% /expand%}}
+
+### GET /api/v1/inbox/{id}/{mark}
+
+Mark a message given its identifier, mark can be `seen`, `unseen` or `deleted`.
+
+### POST /api/v1/unit/{fingerprint}/inbox
+
+Send a message to a unit by its fingerprint. The content will be automatically encrypted and signed **locally** by pwngrid.
+ 
+{{%expand "Example Request"%}}
+<pre><code>Anything that's sent as POST data will be used as a message.</code></pre>
 {{% /expand%}}

@@ -25,6 +25,7 @@ If you test one of these hacks yourself and it still works, it's extra nice if y
   - [RPi0W with Waveshare V2 "Slim-agotchi"](#rpi0w-with-waveshare-v2-slim-agotchi)
 
 ## Screens
+
 ### Waveshare 3.5" SPI TFT screen
 
 Last tested on | Pwnagotchi version | Hardware | Working? | Reference

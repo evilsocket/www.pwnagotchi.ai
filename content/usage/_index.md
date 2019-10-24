@@ -6,24 +6,6 @@ draft: false
 pre: "<i class='fas fa-brain'></i> "
 ---
 
-- [**Modes**](/usage/#auto-ai-and-manu-modes)
-  - [MANU](/usage/#manu)
-  - [AUTO](/usage/#auto)
-  - [AI](/usage/#ai)
-- [**User Interface**](/usage/#user-interface)
-  - [Viewing Pwnagotchi's face](/usage/#viewing-pwnagotchi-s-face)
-     - [The web UI](/usage/#the-web-ui)
-     - [The e-ink display](/usage/#the-e-ink-display-optional)
-  - [Anatomy of a Pwnagotchi face](/usage/#anatomy-of-a-pwnagotchi-face)
-- [**Files to know on your Pwnagotchi**](/usage/#files-to-know-on-your-pwnagotchi)
-- [**Training the AI**](/usage/#training-the-ai)
-    - [The reward function](/usage/#the-reward-function)
-- [**PwnMAIL**](/usage/#pwnmail)
-- [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
-- [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
-- [**Update your Pwnagotchi**](/usage/#update-your-pwnagotchi)
-- [**Known Issues**](/usage/#known-issues)
-
 ## AUTO, AI and MANU Modes
 
 Your unit can operate in one of three different "modes" that determines how it behaves:
@@ -283,7 +265,7 @@ the new image and restore the backup by extracting the files back in the root fi
 
 ## Known Issues
 
-#### Pwnagotchi goes blind and detects no APs on any channel
+Pwnagotchi goes blind and detects no APs on any channel
 
 Every once in a while, nexmon dies with: 
 
