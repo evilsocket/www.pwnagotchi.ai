@@ -251,15 +251,6 @@ main:
         share_internet: true   # this will change the routing and nameserver on your pi
 ```
 
-Also don't forget to bind your pwnagotchi to all interfaces:
-
-```yaml
-ui:
-  display:
-    video:
-      address: 0.0.0.0
-```
-
 Your pwnagotchi will indicate the status via a little `BT` symbol at the top of the screen.
 The status codes are:
 
