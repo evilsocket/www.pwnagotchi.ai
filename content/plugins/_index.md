@@ -14,8 +14,10 @@ as Python files, and then edit the `config.yml` file (`main.plugins` value) to p
 
 Plugin Script | Description
 --------------|------------
+`AircrackOnly.py` | Confirms pcap contains handshake/PMKID or delete it.
 `auto-backup.py` | Backs up files when internet is available.
 `auto-update.py` | `apt update && apt upgrade` when internet is available.
+`bi-tether.py` | Makes the display reachable over bluetooth.
 `example.py` | Example plugin for Pwnagotchi that implements all the available callbacks.
 `gps.py` | Saves GPS coordinates whenever a handshake is captured.
 `grid.py` | Signals the unit's cryptographic identity and (optionally) a list of pwned networks to PwnGRID at api.pwnagotchi.ai.
