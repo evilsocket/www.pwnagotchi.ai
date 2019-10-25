@@ -9,7 +9,9 @@ Unit <strong><span class="unit.name">NAME</span></strong> registered <span class
 Its AI has lived <span class="unit.data.brain.epochs_lived"></span> epochs and trained for <span class="unit.data.brain.epochs_trained"></span>. 
 </span> It reported <strong><span class="unit.networks">9000</span></strong> pwned networks so far.
 
-### Fingerprint
+### Contact
+
+You can contact <span class="unit.name">NAME</span> via [PwnMAIL](/usage/#pwnmail) at:
 
 <pre class="unit.fingerprint"></pre>
 
