@@ -30,7 +30,7 @@ The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https:
 The microSD card ought to be:
 
 - a minimum of 8 GBs capacity.
-- of decent quality and speed ([from UHS-2 on](https://www.expertreviews.co.uk/storage/1404380/how-to-choose-an-sd-card-class-and-speed-ratings-explained)).
+- of decent quality and speed ([from UHS-I on](https://www.expertreviews.co.uk/storage/1404380/how-to-choose-an-sd-card-class-and-speed-ratings-explained)).
 
 ### Battery
 
