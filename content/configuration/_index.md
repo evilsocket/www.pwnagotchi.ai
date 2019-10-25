@@ -258,10 +258,11 @@ main:
 Your pwnagotchi will indicate the status via a little `BT` symbol at the top of the screen.
 The status codes are:
 
-- **CON** Connected: This means the connection to the device has been established
-- **NF** Not found: This means the connection to the device could not be established (probably because it could not be found)
-- **ERR1** Error 1: This error occures, when the address (ip/netmask) could not be set to the `bnep0` interface
-- **ERR2** Error 2: This error occures, when the `bnep0` interface could not be found
+- **C** Connected: This means the connection to the device has been established.
+- **NF** Not found: This means the connection to the device could not be established (probably because it could not be found).
+- **PE** Pairing Error: This error occures on a pairing problem.
+- **BE** Bnep Error: This error occures, when the `bnep0` interface could not be found.
+- **AE** Address Error: The ip could not be assigned to the `bnep0` interface.
 
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
