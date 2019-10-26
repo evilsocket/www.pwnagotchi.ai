@@ -6,10 +6,50 @@ weight: 3
 pre: "<i class='fas fa-cog'></i> "
 ---
 
-For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
-This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
-
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
+
+## Initial Configuration
+
+For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
+This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32. 
+
+In this process you might define your unit's name, which network to whitelist and the type of display you use. The following
+is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the 
+sections below.
+
+```yaml
+main:
+  name: 'pwnagotchi'
+  whitelist:
+    - 'YourHomeNetworkMaybe'
+  plugins:
+    grid:
+      enabled: true
+      report: true
+      exclude:
+        - 'YourHomeNetworkMaybe'
+
+ui:
+    display:
+      type: 'waveshare_2'
+      color: 'black'
+```
+
+The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot. 
+
+After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD 
+card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with 
+your custom values.
+
+## Restoring a Backup
+
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped 
+folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair 
+will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate 
+a new RSA keypair, operation that takes time and would be completely pointless if a backup needs to be restored anyway.
+
+Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card,
+if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
 
 ## Choose your unit's language
 
@@ -113,26 +153,27 @@ right differences if you're using different hardware):
 
 ```yaml
 main:
+  name: 'pwnagotchi'
   whitelist:
-    - YourHomeNetworkMaybe
+    - 'YourHomeNetworkMaybe'
   plugins:
     grid:
       enabled: true
       report: true
       exclude:
-        - YourHomeNetworkMaybe
+        - 'YourHomeNetworkMaybe'
 
 ui:
-    display:
-      type: 'inky'
-      color: 'black'
+  display:
+    type: 'inky'
+    color: 'black'
 ```
 
 **Congratulations! Your SD card is now ready for the first boot!** 👾 🎉
 
 ## Connect to your Pwnagotchi
 
-You can also connect to your Pwnagotchi via SSH.
+You can connect to your Pwnagotchi via SSH.
 
 {{% notice warning %}}
 <p><b>PLEASE NOTE:</b> If you cannot connect to your Pwnagotchi <b>no matter what you try</b>, ensure that the micro-USB you are using <b>allows data transfer</b> and doesn't ONLY provide charge. Cheaper quality micro-USB cords often do not support data transfer and will NOT allow you to actually connect to your Pwnagotchi. :'( <b>Use a quality cord!</b></p>
@@ -206,12 +247,6 @@ If you want to login directly without entering a password (recommended and neces
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub pi@10.0.0.2
 ```
-
-## Name your new Pwnagotchi
-
-You can give your new Pwnagotchi unit its own name by [changing its hostname](https://geek-university.com/raspberry-pi/change-raspberry-pis-hostname/). By default, your new Pwnagotchi's name will be `Pwnagotchi`.
-
-Open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
 
 ## Host connection sharing
 
