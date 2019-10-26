@@ -76,13 +76,14 @@ If, instead, you want to fully enjoy walking around and literally looking at you
   - [Product page](https://shop.pimoroni.com/products/inky-phat)
   - [GitHub](https://github.com/pimoroni/inky)
 - [PaPiRus eInk Screen](https://uk.pi-supply.com/products/papirus-zero-epaper-screen-phat-pi-zero)
+- [DFRobot eInk Screen](https://www.dfrobot.com/product-1867.html)
 
 Before purchasing a display, see [Recommendations](/installation/#recommendations) for more details about choosing the right display. If you find yourself struggling with the screen you've chosen, there are dedicated #waveshare and #inky channels for troubleshooting in the [Pwnagotchi Slack](https://pwnagotchi.herokuapp.com/).
 
 Needless to say, we are always happy to receive pull requests updating support for existing models as well as adding support for new models. ❤️
 
 {{% notice warning %}}
-<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported displays are I2C displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
+<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported eInk displays are SPI displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
 {{% /notice %}}
 
 #### Color vs. Black & White e-ink displays
@@ -105,6 +106,7 @@ The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effec
 ![Difference between Waveshare 2.13inch V1 and V2 display. Image ghosting effect on V1.](https://i.imgur.com/IUTJ4Ia.jpg)
 - Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.
+- The DFRobot display has partial refresh support, two hardware GPIO buttons, as well as a passthrough header for connecting other things, like serial GPS modules, RTCs, LEDs, etc.
 
 
 ### Case
