@@ -23,7 +23,7 @@ The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https:
 - Some users have gotten their Pwnagotchi running on other types of Raspberry Pi with no apparent issues (🤞). This includes:
   - Raspberry Pi 3
   - Raspberry Pi 4
-- In fact, **technically ANY** [GNU/Linux computer with a WiFi interface](http://localhost:1313/installation/#installing-on-any-gnu-linux) that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
+- In fact, **technically ANY** [GNU/Linux computer with a WiFi interface](/installation/#installing-on-any-gnu-linux) that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
 ### SD card
 
