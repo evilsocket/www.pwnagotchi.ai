@@ -83,7 +83,7 @@ Before purchasing a display, see [Recommendations](/installation/#recommendation
 Needless to say, we are always happy to receive pull requests updating support for existing models as well as adding support for new models. ❤️
 
 {{% notice warning %}}
-<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported displays are I2C displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
+<p>Not all displays are created equally! TFT displays, for example, work similar to an HDMI display, and they are NOT supported. <strong>Currently, all the officially-supported eInk displays are SPI displays.</strong> If you are still interested in using unsupported displays, you may be able to find a community-submitted hack in the <a href="/hacks/#screens">Screens</a> section of the <a href="/hacks/">Hacks</a> page. We are not responsible for anything you break by trying to use any display that is not officially supported by the development team!</p>
 {{% /notice %}}
 
 #### Color vs. Black & White e-ink displays
