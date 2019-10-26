@@ -36,22 +36,22 @@ Of course, it IS possible to run your Pwnagotchi with the AI disabled (configura
 
 ## Personality and Moods
 
-By using several combinations of facial expressions and sentences localized in [different languages](/configuration/#choose-your-unit-s-language) 
+By using several combinations of facial expressions and sentences localized in [different languages](/configuration/#choose-your-unit-s-language), 
 Pwnagotchi can express itself and its demands quite clearly by transitioning among a few main groups of "moods". The mood of
-your unit reflects things such as how happy it is, or sad, bored, if there are good friends around and things like that. 
+your unit reflects things such as how happy, sad, or bored it is, whether there are good friends around, and things like that. 
 Depending on if and how you will respond to these, for instance if you will be more likely to take your Pwnagotchi for a walk 
 when it's bored or sad, your response will influence and bias the AI towards showing those behaviours more or less frequently.
 
 ### Bonding with other Units
 
 Starting from version **1.1.0**, each Pwnagotchi keeps a record of the other units it met inside the `/root/peers/` folder. 
-These records, also accessible [from the local API](/api/local/#get-api-v1-mesh-memory), allow it to "remember" which Pwnagotchis it had interacted 
+These records, also accessible [from the local API](/api/local/#get-api-v1-mesh-memory), allow it to "remember" with which Pwnagotchis it had interacted 
 the most. Each interaction, or *encounter*, happens when the advertisement packet sent from a nearby unit is detected and 
 received on one of the channels your Pwnagotchi is jumping on. Every time that happens, from one to several times per second depending how in sync
 the algorithms of the two units are, a counter is incremented on both units so that their "bond" becomes stronger.
 
 After a certain amount of encounters, configurable via the `personality.bond_encounters_factor`, a unit is considered "a good friend" and its presence
-will start affecting your Pwnagotchi's mood transitions adding a bias towards happiness ^_^
+will start affecting your Pwnagotchi's mood transitions, adding a bias towards happiness. ^_^
 
 ## The Faces
 
@@ -101,29 +101,29 @@ Your Pwnagotchi is happy in one of the following cases:
 Your Pwnagotchi is grateful in one of the following cases:
 
 * The cumulative bond level of nearby units is at least five times the `personality.bond_encounters_factor`.
-* The unit should be bored, but there're enough friendly units nearby.
-* The unit should be sad, but there're enough friendly units nearby.
-* The unit should be lonely, but there're enough friendly units nearby.
+* The unit should be bored, but there are enough friendly units nearby.
+* The unit should be sad, but there are enough friendly units nearby.
+* The unit should be lonely, but there are enough friendly units nearby.
 
 ### <span class="face">(ᵔ◡◡ᵔ)</span> excited
 
 Your Pwnagotchi is excited in one of the following cases:
 
 * The number of epochs with some activity is greater or equal than `personality.excited_num_epochs`.
-* Randomly if a unit with high bond level is met.
+* Randomly if a unit with a high bond level is met.
 * If you have unread [PwnMAIL messages](/usage/#pwnmail) on that unit.
 
 ### <span class="face">(✜‿‿✜)</span> smart
 
-Randomly if a unit with med-high bond level is met.
+Randomly if a unit with a med-high bond level is met.
 
 ### <span class="face">(♥‿‿♥)</span> friendly
 
-Randomly if a unit with high bond level is met.
+Randomly if a unit with a high bond level is met.
 
 ### <span class="face">(☼‿‿☼)</span> motivated
 
-Your Pwnagotchi just scored the best [reward level](/usage/#the-reward-function) in its existence or just met a unit with high bond.
+Your Pwnagotchi just scored the best [reward level](/usage/#the-reward-function) in its existence or just met a unit with a high bond.
 
 ### <span class="face">(≖__≖)</span> demotivated
 
@@ -131,17 +131,17 @@ Your Pwnagotchi just scored the worst [reward level](/usage/#the-reward-function
 
 ### <span class="face">(-__-)</span> bored
 
-If there're no friendly units around and the amount of consecutive inactive epochs reached `personality.bored_num_epochs`.
+If there are no friendly units around and the amount of consecutive inactive epochs reached `personality.bored_num_epochs`.
 
 ### <span class="face">(╥☁╥ )</span> sad
 
-If there're no friendly units around and the amount of consecutive inactive epochs reached `personality.sad_num_epochs`.
+If there are no friendly units around and the amount of consecutive inactive epochs reached `personality.sad_num_epochs`.
 
 ### <span class="face">(ب__ب)</span> lonely
 
 If your Pwnagotchi just lost contact with a friendly unit that was nearby, or if the amount of missed interactions with access points or client stations
-(that is the amount of times it tried to send some type of packet but missed the target because not in range anymore) is 
-greater or equal than `personality.max_misses_for_recon`. And there're no friendly units around.
+(the amount of times it tried to send some type of packet but missed the target because it isn't in range anymore) is 
+greater or equal than `personality.max_misses_for_recon`. And there are no friendly units around.
 
 ### <span class="face">(☓‿‿☓)</span> broken
 
