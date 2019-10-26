@@ -28,8 +28,8 @@ In AUTO mode, your unit will start operating, perform attacks and sniffing hands
 
 #### AI
 
-If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 30 minutes on a Rpi0W). This interval is required 
-to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
+If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 10-15 minutes on a Rpi0W with a decent quality SD card).
+This interval is required to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
 Once the dependencies are loaded and so the `/root/brain.nn` file, AI mode will pick the optimal set of parameters in real time, depending on how long 
 it's been trained on the specific type of WiFi environment it's observing now.
 
@@ -78,18 +78,6 @@ If you've properly attached the optional [supported e-ink display](/installation
       - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
-
-## Files to know on your Pwnagotchi
-
-- **Configuration**
-   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
-       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
-- **Handshakes**
-   - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
-- **Logs**
-   - The main log file is located at `/var/log/pwnagotchi.log`.
-- **The AI**
-   - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
 
 ## Training the AI
 
@@ -188,6 +176,20 @@ reward = h + a + c + b + i + m
 ```
 
 By maximizing this reward value, the AI learns over time to find the set of parameters that better perform with the current environmental conditions.
+
+## Files to know on your Pwnagotchi
+
+- **Configuration**
+   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
+       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
+- **Handshakes**
+   - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
+- **Memory**
+   - The place where the unit stores records of other units that it met in the past: `/root/peers/`.
+- **Logs**
+   - The main log file is located at `/var/log/pwnagotchi.log`.
+- **The AI**
+   - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
 
 ## PwnMAIL
 
