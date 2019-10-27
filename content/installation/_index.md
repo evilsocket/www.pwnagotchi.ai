@@ -72,6 +72,9 @@ If, instead, you want to fully enjoy walking around and literally looking at you
 - **[Waveshare eInk 2.7” Display](https://www.waveshare.com/2.7inch-e-paper-hat.htm)**
   - [Product page](https://www.waveshare.com/2.7inch-e-paper-hat.htm)
   - [GitHub](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python)
+- [Waveshare eInk 1.54” Display Module (B)](https://www.waveshare.com/wiki/1.54inch_e-Paper_Module_(B\))
+  - [Product page](https://www.waveshare.com/wiki/1.54inch_e-Paper_Module_(B\))
+  - [GitHub](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python)
 - [Pimoroni Inky pHAT](https://shop.pimoroni.com/products/inky-phat)
   - [Product page](https://shop.pimoroni.com/products/inky-phat)
   - [GitHub](https://github.com/pimoroni/inky)
