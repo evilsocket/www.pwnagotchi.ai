@@ -102,7 +102,7 @@ Some of the supported displays support both **Black & White** and **Colored** ve
    - will always have the most updated and best supported UI elements; Pwnagotchi's primary developer ([@evilsocket](https://twitter.com/evilsocket)) will be testing new features exclusively on Waveshare V2s.
    - the continued support for other e-ink display models like the Inky pHAT depends entirely on users' continued contributions to the code.
 - **Difference between Waveshare V2 and V1 displays**
-The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effect. This issue appears when partial image update is used. V2 has less ghosting issue than V1. Full screen refresh can clear old ghosting traces, so you can use plugin `screen_refresh` to redraw screen at a given interval in minutes. 
+The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effect. This issue appears when partial image update is used. V2 has less ghosting issue than V1. Full screen refresh can clear old ghosting traces, so you can use plugin `screen_refresh` to redraw the screen after a configurable amount of screen updates. 
 ![Difference between Waveshare 2.13inch V1 and V2 display. Image ghosting effect on V1.](https://i.imgur.com/IUTJ4Ia.jpg)
 - Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.

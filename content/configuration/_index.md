@@ -271,7 +271,7 @@ If you want to upload your handshakes while walking, want to use your smartphone
 {{% /notice %}}
 
 {{% notice info %}}
-<p>Make sure to explicitly enable Bluetooth Tethering on your Android Phone (usually in Settings -> Hotspot or similar. Otherwise your Pwnagotchi will tether with your phone but you won't be able to connect to it.</p>
+<p>Make sure to explicitly enable Bluetooth Tethering on your Android Phone (usually in Settings -> Hotspot or similar). Otherwise your Pwnagotchi will pair with your phone but you won't be able to connect to it.</p>
 {{% /notice %}}
 
 Now in pwnagotchi's `config.yml` add the following:
