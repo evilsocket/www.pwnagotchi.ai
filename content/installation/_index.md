@@ -107,7 +107,7 @@ Some of the supported displays support both **Black & White** and **Colored** ve
 - **Difference between Waveshare V2 and V1 displays**
 The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effect. This issue appears when partial image update is used. V2 has less ghosting issue than V1. Full screen refresh can clear old ghosting traces, so you can use plugin `screen_refresh` to redraw the screen after a configurable amount of screen updates. 
 ![Difference between Waveshare 2.13inch V1 and V2 display. Image ghosting effect on V1.](https://i.imgur.com/IUTJ4Ia.jpg)
-- Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds.
+- Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds. It can be over-driven much faster with a slight risk of burn-in by setting the color to 'fastAndFurious', which brings the refresh down to about 1 second. This **might** damage the display, so use it only if you understand the risk.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.
 - The DFRobot display has partial refresh support, two hardware GPIO buttons, as well as a passthrough header for connecting other things, like serial GPS modules, RTCs, LEDs, etc.
 
