@@ -211,6 +211,8 @@ fi
 
 Even in this case the interface name and the command to start the monitor mode need to be adjusted for the specific computer and WiFi card.
 
+Note: you need  also libpcap to be installed
+
 ### 2. pwngrid
 
 The second service you will need is pwngrid, even in this case:
