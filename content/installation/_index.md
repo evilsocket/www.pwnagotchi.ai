@@ -21,7 +21,7 @@ pre: "<i class='fas fa-flask'></i> "
 The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) (usually referred to as `RPi0W` throughout this documentation). Most development and testing has been conducted on Pwnagotchis living in RPi0W bodies configured as an [USB ethernet gadget](https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget) device (in order to connect to it via USB). That said:
 
 - Some users have gotten their Pwnagotchi running on other types of Raspberry Pi with no apparent issues (🤞). This includes:
-  - Raspberry Pi 3
+  - Raspberry Pi 3 ([notes](installation/#installing-on-raspberry-pi3))
   - Raspberry Pi 4
 - In fact, **technically ANY** [GNU/Linux computer with a WiFi interface](/installation/#installing-on-any-gnu-linux) that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
@@ -274,3 +274,13 @@ pwnagotchi -h
 ```
 
 This will install the default configuration file in `/etc/pwnagotchi/default.yml`, in order to apply customizations you'll need to create a new `/etc/pwnagotchi/config.yml` file [as explained in the configuration section](/configuration/).
+
+## Installing on Raspberry Pi3
+
+*(But should apply to Pi4 as well)*
+
+You can follow the main Pi0w installation instructions with just a couple of notes:
+
+1.  having an ethernet port allows you an easier connection to the booted system. Just connect a cable to the port and Pwnagotchi get an IP address with DHCP. If a plugged ethernet cable is detected on boot it will start in MANU mode;
+1.  in order to improve battery duration and reduce power requirements you can lower cpu frequency (underclocking). Edit your `/boot/config.txt` and add/uncomment the `arm_freq=800` line. Don't forget to add this file to your backups;
+1.  to run the Pi3 you need at least 2.5A, but 2A should be enough if you underclocked (users reports on Slack and [here](http://dustinlaferney.tk/?p=275)), so get a powerbank which can issue enough ampere. Less powerful units may allow the Raspberry to boot and work for some minutes, but then it will suddendly stop and/or never activate some devices like the bluetooth interface.
