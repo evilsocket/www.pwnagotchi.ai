@@ -109,6 +109,7 @@ The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effec
 ![Difference between Waveshare 2.13inch V1 and V2 display. Image ghosting effect on V1.](https://i.imgur.com/IUTJ4Ia.jpg)
 - Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds. It can be over-driven much faster with a slight risk of burn-in by setting the color to 'fastAndFurious', which brings the refresh down to about 1 second. This **might** damage the display, so use it only if you understand the risk.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.
+- The Pimoroni Inky pHAT has a refresh time of several seconds. An update is available to lower the refresh time to sub-second, though increasing the risk of burn-in or artifacts by setting the color to 'fastAndFurious' This **might** damage the display, so use it only if you understand the risk.
 - The DFRobot display has partial refresh support, two hardware GPIO buttons, as well as a passthrough header for connecting other things, like serial GPS modules, RTCs, LEDs, etc.
 
 
