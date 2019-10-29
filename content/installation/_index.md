@@ -169,7 +169,7 @@ sudo mv bettercap /usr/bin/
 sudo bettercap -eval "caplets.update; ui.update; quit"
 ```
 
-Depending on the name of the WiFi interface you're going to use, you'll need to edit the `/usr/local/share/bettercap/caplets/pwnagotchi-auto.cap` and `/usr/local/share/bettercap/caplets/pwnagotchi-manu.cap` caplet files accordingly.
+Depending on the name of the WiFi interface you're going to use, you'll need to edit the `/usr/local/share/bettercap/caplets/pwnagotchi-auto.cap` and `/usr/local/share/bettercap/caplets/pwnagotchi-manual.cap` caplet files accordingly.
 
 How to run bettercap and in which mode it's up to you as long as it's running one of those two caplets. In the default Pwnagotchi image bettercap is running as a systemd service through a launcher script.
 
@@ -211,6 +211,8 @@ fi
 ```
 
 Even in this case the interface name and the command to start the monitor mode need to be adjusted for the specific computer and WiFi card.
+
+Note: you need  also libpcap to be installed
 
 ### 2. pwngrid
 
