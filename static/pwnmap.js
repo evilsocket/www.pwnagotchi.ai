@@ -90,14 +90,10 @@ function doPoll() {
 
         document.title = total + ' Pwnagotchis'
 
-        if( map == null ) {
-            map = new svgMap({
-                targetElementID: 'unitsmap',
-                data: data
-            });
-        } else {
-            map.applyData(data);
-        }
+        map = new svgMap({
+            targetElementID: 'unitsmap',
+            data: data
+        });
 
         prev = byCountry;
         setTimeout(doPoll, 5000);
