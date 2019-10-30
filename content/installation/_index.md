@@ -81,7 +81,7 @@ If, instead, you want to fully enjoy walking around and literally looking at you
 - [PaPiRus eInk Screen](https://uk.pi-supply.com/products/papirus-zero-epaper-screen-phat-pi-zero)
 - [DFRobot eInk Screen](https://www.dfrobot.com/product-1867.html)
 
-Before purchasing a display, see [Recommendations](/installation/#recommendations) for more details about choosing the right display. If you find yourself struggling with the screen you've chosen, there are dedicated #waveshare and #inky channels for troubleshooting in the [Pwnagotchi Slack](https://pwnagotchi.herokuapp.com/).
+Before purchasing a display, see [Recommendations](/installation/#recommendations) for more details about choosing the right display. If you find yourself struggling with the screen you've chosen, there are dedicated #waveshare and #inky channels for troubleshooting in the [Pwnagotchi Slack](https://invite.pwnagotchi.ai/).
 
 Needless to say, we are always happy to receive pull requests updating support for existing models as well as adding support for new models. ❤️
 

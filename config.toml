@@ -20,8 +20,8 @@ url = "https://twitter.com/intent/follow?screen_name=pwnagotchi"
 weight = 1
 
 [[menu.shortcuts]]
-name = "<img alt='Slack' src='https://pwnagotchi.herokuapp.com/badge.svg'>"
-url = "https://pwnagotchi.herokuapp.com/"
+name = "<img alt='Slack' src='https://invite.pwnagotchi.ai/badge.svg'>"
+url = "https://invite.pwnagotchi.a/"
 weight = 2
 
 [[menu.shortcuts]]
