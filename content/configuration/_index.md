@@ -268,12 +268,8 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 
 If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully, you can use the `bt-tether`-plugin.
 
-{{% notice warning %}}
-<p><b>PLEASE NOTE:</b>Please note this is reported (on Slack) to work fine with Android, but not on iOS.</p>
-{{% /notice %}}
-
 {{% notice info %}}
-<p>Make sure to explicitly enable Bluetooth Tethering on your Android Phone (usually in Settings -> Hotspot or similar). Otherwise your Pwnagotchi will pair with your phone but you won't be able to connect to it.</p>
+<p>Make sure to explicitly enable Bluetooth Tethering on your Phone (usually in Settings -> Hotspot or similar). Otherwise your Pwnagotchi will pair with your phone but you won't be able to create a Personal Area Network (PAN).</p>
 {{% /notice %}}
 
 Now in pwnagotchi's `config.yml` add the following:
@@ -283,15 +279,31 @@ main:
     plugins:
       bt-tether:
         enabled: true
-        mac: 'FF:FF:FF:FF:FF'  # you need to put your phones bt-mac here (the same as above, or goto your phones settings > status)
-        ip: 'xx.xx.xx.44'    # this is the static ip of your pwnagotchi
-                             # adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
-                             # if you feel lucky, try: 192.168.44.44 (Android) or 172.20.10.44 (iOS)
-                             # 44 is just an example, you can choose between 2-254 (if netmask is 24)
-        netmask: 24
-        interval: 1
-        share_internet: true   # this will change the routing and nameserver on your pi
+        devices:
+          my-phone1:              # you can choose your phones name here
+            enabled: true         # enables the device
+            search_order: 1       # in which order the devices should be searched. E.g. this is #1.
+            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above, 
+                                  ## or goto your phones   settings > status)
+            ip: 'xx.xx.xx.44'     # this is the static ip of your pwnagotchi
+                                  ## adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
+                                  ## if you feel lucky, try: 192.168.44.44 (Android) or 172.20.10.6 (iOS)
+                                  ## 44 is just an example, you can choose between 2-254 (if netmask is 24)
+            netmask: 24           # netmask of the PAN
+            interval: 1           # in minues, how often should the device be searched
+            scantime: 15          # in seconds, how long should be searched on each interval
+            share_internet: true  # this will change the routing and nameserver on your pi
+            priority: 99          # if you have multiple devices which can share internet; the highest priority wins 
+            max_tries: 0          # how often should be tried to find the device until it is disabled (to save power)
+                                  ## 0 means infinity
+          macbook:
+            enabled: false
+            # ...
 ```
+
+{{% notice warning %}}
+<p>The legacy configuration (without the `devices` key) is still supported, but should be converted as soon as possible.</p>
+{{% /notice %}}
 
 Your pwnagotchi will indicate the status via a little `BT` symbol at the top of the screen.
 The status codes are:
@@ -299,8 +311,8 @@ The status codes are:
 - **C** Connected: This means the connection to the device has been established.
 - **NF** Not found: This means the connection to the device could not be established (probably because it could not be found).
 - **PE** Pairing Error: This error occures on a pairing problem.
-- **BE** Bnep Error: This error occures, when the `bnep0` interface could not be found.
-- **AE** Address Error: The ip could not be assigned to the `bnep0` interface.
+- **BE** Bnep Error: This error occures, when the NAP could not be created.
+- **AE** Address Error: The ip could not be assigned to the NAP interface.
 
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
