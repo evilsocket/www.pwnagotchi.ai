@@ -59,12 +59,12 @@ Pwnagotchi has a `ups_lite` plugin to display battery on the screen. Before usin
 
 ### Hardware Clock
 
-If you're using a Raspberry Pi 0 W for the body of your Pwnagotchi, you should be aware of the fact that **the rpi0w does not
+If you're using a Raspberry Pi 0 W for the body of your Pwnagotchi, you should be aware of the fact that **it does not
 have an hardware clock**. This means that unless it's connected to the internet somehow (either by USB cable and host 
 connection sharing or BT tethering), when the unit is off its time will go out of sync with the real world, presenting wrong
  uptimes and generally using wrong date and times in the logs and whenever another absolute-time-based action is performed.
 
-This problem can be solved for cheap with an hardware clock, a small chip with a battery and stays on while the
+This problem can be solved for cheap with an hardware clock, a small chip with a battery that can stay on while the
 rest of the unit is off ... it's like giving your Pwnagotchi a wristwatch! :D 
 
 ![rtc](https://i.imgur.com/KThnkIA.png)
