@@ -12,7 +12,7 @@ pre: "<i class='fas fa-flask'></i> "
 - A [**microSD card**](/installation/#sd-card) (8GB minimum recommended, **preferably of good quality and speed**).
 - A decent quality **micro-USB cord** that **allows data transfer** (not just charging!)
 - A portable **power bank** *(see [here](/installation/#battery) for benchmarks with popular portable batteries).*
-- **Optional:** One of the [supported displays](/installation/#display).
+- **Optional:** An [hardware clock](/installation/#hardware-clock) and one of the [supported displays](/installation/#display).
 
 <p align="center">{{% button href="#flashing-an-image" %}}<b>Already got all your hardware?</b> Skip to flashing the SD card!{{% /button %}}</p>
 
@@ -56,6 +56,28 @@ UPS-Lite V1.1 is nice and feature-rich battery hat. It has battery charge contro
 Pwnagotchi has a `ups_lite` plugin to display battery on the screen. Before using it i2c interface should be enabled in `raspi-config`.
 
 ![Pwnagotchi UPS-Lite V1.1 Battery level indicator plugin](https://i.imgur.com/5cncoXL.jpg)
+
+### Hardware Clock
+
+If you're using a Raspberry Pi 0 W for the body of your Pwnagotchi, you should be aware of the fact that **the rpi0w does not
+have an hardware clock**. This means that unless it's connected to the internet somehow (either by USB cable and host 
+connection sharing or BT tethering), when the unit is off its time will go out of sync with the real world, presenting wrong
+ uptimes and generally using wrong date and times in the logs and whenever another absolute-time-based action is performed.
+
+This problem can be solved for cheap with an hardware clock, a small chip with a battery and stays on while the
+rest of the unit is off ... it's like giving your Pwnagotchi a wristwatch! :D 
+
+![rtc](https://i.imgur.com/KThnkIA.png)
+
+Any I2C compatible model can be used (usually PCF8523, DSL1307 or DS3231 based) and easily installed by [following this guide](https://learn.adafruit.com/adding-a-real-time-clock-to-raspberry-pi/set-rtc-time).
+
+Usually they would be plugged directly to the GPIO via their connector but it is possible to desolder the connector and just solder
+them directly to the ports on the PCB in order to save space (make sure to isolate the chip with duct tape).
+
+![wires 1](https://i.imgur.com/llvMe0I.png)
+![wires 2](https://i.imgur.com/eggI3BM.png)
+![wires 3](https://i.imgur.com/HJaFnZY.png)
+
 
 ### Display
 
