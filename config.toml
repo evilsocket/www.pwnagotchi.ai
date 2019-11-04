@@ -14,15 +14,16 @@ disableShortcutsTitle=true
 disableBreadcrumb = true
 disableNextPrev = true
 
-[[menu.shortcuts]]
-name = "<i class='fas fa-comment'></i> Join our Community!"
-url = "https://community.pwnagotchi.ai/"
-weight = 0
 
 [[menu.shortcuts]]
 name = "<br/><img src='https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter' alt='follow on Twitter'>"
 url = "https://twitter.com/intent/follow?screen_name=pwnagotchi"
 weight = 1
+
+[[menu.shortcuts]]
+name = '<img alt="Discourse posts" src="https://img.shields.io/discourse/posts?server=https%3A%2F%2Fcommunity.pwnagotchi.ai%2F&style=flat-square">'
+url = "https://community.pwnagotchi.ai/"
+weight = 1.5
 
 [[menu.shortcuts]]
 name = "<img alt='Slack' src='https://invite.pwnagotchi.ai/badge.svg'>"
