@@ -31,6 +31,7 @@ main:
 
 ui:
     display:
+      enabled: true
       type: 'waveshare_2'
       color: 'black'
 ```
