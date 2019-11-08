@@ -47,7 +47,7 @@ Anker | AstroMini 79AN7913S | 3200 | (alpha) | RPi0W | AI | 10:18:00 | 2019-10-0
 Anker | PowerCore [A1109](https://www.anker.com/products/variant/powercore-5000/A1109011) | 5000 | (alpha) | RPi0W | AUTO | 05:MM:SS | 2019-09-DD
 Anker | PowerCore [20100](https://www.anker.com/products/variant/powercore-20100/A1271012) | 20000 | (alpha) | RPi0W | AI | 19:44:00 | 2019-10-07
 Anker | Astro E7 [A1210](https://www.anker.com/products/variant/astro-e7-26800mah-portable-charger/A1210012) | 25600 | (alpha) | RPi0W | AUTO | 49:MM:SS | 2019-09-DD
-Anker | Astro E1 6700 [A1211](https://www.anker.com/products/variant/astro-e1/A1211025) | 6700 | (alpha) | RPi0W | AI | 23:16:00 | 2019-10-11
+Anker | Astro E1 6700 [A1211](https://www.anker.com/products/variant/astro-e1/A1211025) | 6700 | (alpha) | RPi0W | AI | 23:16:00 | 2019-11-08
 *unknown* | *unknown* | 4400 | (alpha) | *unknown* | *unknown* | 08:XX:XX | [2019-10-05](https://twitter.com/BosAnon1/status/1180644126309720064?s=20)
 
 #### UPS-Lite Battery level indicator plugin
