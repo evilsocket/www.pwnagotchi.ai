@@ -173,9 +173,9 @@ Once you have downloaded the latest Pwnagotchi image, you will need to use an im
 - Select the SD card you wish to write your image to.
 - Review your selections, then click `Flash!` to begin writing data to the SD card.
 
-**As an alternative you can use dd under linux:**
+**As an alternative you can use dd on GNU/Linux or macOS:**
 
-Change the path to your image file. `/dev/sdcard` is the path to you SD card device.
+Change the path to your image file, `/dev/sdcard` is the path to you SD card device.
 
 ```sh
 dd if=path/to/pwnagotchi-raspbian-lite-XXX.img of=/dev/sdcard bs=1M
