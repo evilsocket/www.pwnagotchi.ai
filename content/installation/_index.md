@@ -21,7 +21,7 @@ pre: "<i class='fas fa-flask'></i> "
 The "vanilla" hardware setup for a Pwnagotchi is a [**Raspberry Pi 0 W**](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) (usually referred to as `RPi0W` throughout this documentation). Most development and testing has been conducted on Pwnagotchis living in RPi0W bodies configured as an [USB ethernet gadget](https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget) device (in order to connect to it via USB). That said:
 
 - Some users have gotten their Pwnagotchi running on other types of Raspberry Pi with no apparent issues (🤞). This includes:
-  - Raspberry Pi 3 ([notes](installation/#installing-on-raspberry-pi3))
+  - Raspberry Pi 3 ([notes](/installation/#installing-on-raspberry-pi3))
   - Raspberry Pi 4
 - In fact, **technically ANY** [GNU/Linux computer with a WiFi interface](/installation/#installing-on-any-gnu-linux) that supports monitor mode could be used to host a Pwnagotchi—given the appropriate configuration tweaks.
 
