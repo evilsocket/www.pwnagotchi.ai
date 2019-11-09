@@ -34,19 +34,20 @@ The microSD card ought to be:
 
 ### Battery
 
-If you're going to be taking your Pwnagotchi out into the world to find new and exciting WiFi environments (!), you're going to need to power it with an external battery. Depending on your priorities, you may only need a small battery if you're just going to be out for a couple hours. But if you're going to be out all day, you might need something bigger. *How do you know what you'll need to keep your Pwnagotchi pwning?* 
+If you're going to be taking your Pwnagotchi out into the world to find new and exciting WiFi environments (!), you're going to need to power it with an external battery. Depending on your priorities, you may only need a small battery if you're just going to be out for a couple hours. But if you're going to be out all day, you might need something bigger. *How do you know what you'll need to keep your Pwnagotchi pwning?*
 
 Happily, our users have submitted some preliminary benchmarks using some popular batteries to help give you a sense for how long a particular battery is likely to be able to power your Pwnagotchi when you take it out into the WiFi wilderness. :)
 
 Manufact. | Model | mAh | Pwn Version | Body | Mode | Observed Duration | Date Tested
 ----------|-------|-----|-------------|------|------|-------------------|------------
-PiSugar | [PowerPack L](https://github.com/PiSugar/PiSugar) | 1200 | (alpha) | RPi0W | AI | 04:49:42 | 2019-10-07 
-UPS-Lite | [UPS-Lite V1.1](https://aliexpress.com/item/32954180664.html) | 1000 | (alpha) | RPi0W | AI | 03:10:00 | 2019-10-19 
-*unbranded* | *unknown* | 2000 | (alpha) | RPi0W | AI | 08:24:00 | 2019-10-07 
+PiSugar | [PowerPack L](https://github.com/PiSugar/PiSugar) | 1200 | (alpha) | RPi0W | AI | 04:49:42 | 2019-10-07
+UPS-Lite | [UPS-Lite V1.1](https://aliexpress.com/item/32954180664.html) | 1000 | (alpha) | RPi0W | AI | 03:10:00 | 2019-10-19
+*unbranded* | *unknown* | 2000 | (alpha) | RPi0W | AI | 08:24:00 | 2019-10-07
 Anker | AstroMini 79AN7913S | 3200 | (alpha) | RPi0W | AI | 10:18:00 | 2019-10-08
-Anker | PowerCore [A1109](https://www.anker.com/products/variant/powercore-5000/A1109011) | 5000 | (alpha) | RPi0W | AUTO | 05:MM:SS | 2019-09-DD 
+Anker | PowerCore [A1109](https://www.anker.com/products/variant/powercore-5000/A1109011) | 5000 | (alpha) | RPi0W | AUTO | 05:MM:SS | 2019-09-DD
 Anker | PowerCore [20100](https://www.anker.com/products/variant/powercore-20100/A1271012) | 20000 | (alpha) | RPi0W | AI | 19:44:00 | 2019-10-07
 Anker | Astro E7 [A1210](https://www.anker.com/products/variant/astro-e7-26800mah-portable-charger/A1210012) | 25600 | (alpha) | RPi0W | AUTO | 49:MM:SS | 2019-09-DD
+Anker | Astro E1 6700 [A1211](https://www.anker.com/products/variant/astro-e1/A1211025) | 6700 | (alpha) | RPi0W | AI | 23:16:00 | 2019-11-08
 *unknown* | *unknown* | 4400 | (alpha) | *unknown* | *unknown* | 08:XX:XX | [2019-10-05](https://twitter.com/BosAnon1/status/1180644126309720064?s=20)
 
 #### UPS-Lite Battery level indicator plugin
@@ -60,12 +61,12 @@ Pwnagotchi has a `ups_lite` plugin to display battery on the screen. Before usin
 ### Hardware Clock
 
 If you're using a Raspberry Pi 0 W for the body of your Pwnagotchi, you should be aware of the fact that **it does not
-have an hardware clock**. This means that unless it's connected to the internet somehow (either by USB cable and host 
+have an hardware clock**. This means that unless it's connected to the internet somehow (either by USB cable and host
 connection sharing or BT tethering), when the unit is off its time will go out of sync with the real world, presenting wrong
  uptimes and generally using wrong date and times in the logs and whenever another absolute-time-based action is performed.
 
 This problem can be solved for cheap with an hardware clock, a small chip with a battery that can stay on while the
-rest of the unit is off ... it's like giving your Pwnagotchi a wristwatch! :D 
+rest of the unit is off ... it's like giving your Pwnagotchi a wristwatch! :D
 
 ![rtc](https://i.imgur.com/KThnkIA.png)
 
@@ -127,7 +128,7 @@ Some of the supported displays support both **Black & White** and **Colored** ve
    - will always have the most updated and best supported UI elements; Pwnagotchi's primary developer ([@evilsocket](https://twitter.com/evilsocket)) will be testing new features exclusively on Waveshare V2s.
    - the continued support for other e-ink display models like the Inky pHAT depends entirely on users' continued contributions to the code.
 - **Difference between Waveshare V2 and V1 displays**
-The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effect. This issue appears when partial image update is used. V2 has less ghosting issue than V1. Full screen refresh can clear old ghosting traces, so you can use plugin `screen_refresh` to redraw the screen after a configurable amount of screen updates. 
+The main difference between Waveshare 2.13inch V1 and V2 is image ghosting effect. This issue appears when partial image update is used. V2 has less ghosting issue than V1. Full screen refresh can clear old ghosting traces, so you can use plugin `screen_refresh` to redraw the screen after a configurable amount of screen updates.
 ![Difference between Waveshare 2.13inch V1 and V2 display. Image ghosting effect on V1.](https://i.imgur.com/IUTJ4Ia.jpg)
 - Avoid the Waveshare eInk **3-color** display. The refresh time is 15 seconds. It can be over-driven much faster with a slight risk of burn-in by setting the color to 'fastAndFurious', which brings the refresh down to about 1 second. This **might** damage the display, so use it only if you understand the risk.
 - Avoid the Pimoroni Inky pHAT **v1.** They're discontinued due to a faulty hardware part source used in manufacturing that resulted in high failure rates.
@@ -149,14 +150,14 @@ A few users have already designed custom cases you can 3D print (If you don't ha
 
 If you're looking for a ready-made case that fits (albeit bulkily):
 
-- [This enclosure on Amazon](https://www.amazon.com/gp/product/B072FS3W7X) works if you drill a hole in the side. 
+- [This enclosure on Amazon](https://www.amazon.com/gp/product/B072FS3W7X) works if you drill a hole in the side.
 - A RPi0W+Waveshare screen also fits in a large classic Altoid tin. You can [cut holes](https://www.head-fi.org/threads/best-way-to-create-holes-in-an-altoids-tin.406228/#post-5370959) in the side for the wires with a paper-hole punch.
 
 There are many creative Pwnagotchi case set-ups. We have a dedicated `#cases` channel in our Slack for all your case-related discussion needs!
 
 ## Flashing an Image
 
-The easiest way to create a new Pwnagotchi is downloading the latest stable image from [our release page](https://github.com/evilsocket/pwnagotchi/releases) and writing it to your SD card. 
+The easiest way to create a new Pwnagotchi is downloading the latest stable image from [our release page](https://github.com/evilsocket/pwnagotchi/releases) and writing it to your SD card.
 
 <p align="center">{{% button href="https://github.com/evilsocket/pwnagotchi/releases" icon="fas fa-download" %}}Download the latest Pwnagotchi release{{% /button %}}<br /><br /></p>
 
@@ -285,7 +286,7 @@ Assuming both bettercap and pwngrid are configured and running correctly, you ca
 ```sh
 # AUTO mode
 sudo pwnagotchi
-# AUTO mode with debug logs 
+# AUTO mode with debug logs
 sudo pwnagotchi --debug
 # MANU mode
 sudo pwnagotchi --manual
