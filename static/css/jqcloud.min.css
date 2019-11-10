@@ -6,7 +6,8 @@
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 .jqcloud {
-  font: 10px "Helvetica", "Arial", sans-serif;
+  font-family: monospace;
+  font-size: 10px;
   line-height: normal;
   overflow: hidden;
   position: relative;
@@ -15,6 +16,7 @@
 .jqcloud-word {
   margin: 0;
   padding: 0;
+
 }
 .jqcloud-word.w1 {
   font-size: 100%;
