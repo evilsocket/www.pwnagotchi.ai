@@ -8,11 +8,8 @@ pre: "<i class='fas fa-chart-line'></i> "
 
 A few statistics generated [with Joe](https://github.com/evilsocket/joe) from [this repository](https://github.com/evilsocket/pwngrid-queries-joe).
 
-<img src="https://joe.pwnagotchi.ai/api/v1/query/top_players/bars.png?limit=10" width="100%"/>
+<img src="https://joe.pwnagotchi.ai/api/v1/query/top_players/bars.svg?limit=10" width="100%"/>
 
-<img src="https://joe.pwnagotchi.ai/api/v1/query/aps_per_day/chart.png" width="100%"/>
+<img src="https://joe.pwnagotchi.ai/api/v1/query/aps_per_day/chart.svg" width="100%"/>
 
-<img src="https://joe.pwnagotchi.ai/api/v1/query/units_per_day/chart.png" width="100%"/>
-
-
-
+<img src="https://joe.pwnagotchi.ai/api/v1/query/units_per_day/chart.svg" width="100%"/>
