@@ -18,3 +18,5 @@ A few statistics generated [with Joe](https://github.com/evilsocket/joe) from [t
 <img src="https://joe.pwnagotchi.ai/api/v1/query/aps_per_day/chart.svg" width="100%"/>
 
 <img src="https://joe.pwnagotchi.ai/api/v1/query/units_per_day/chart.svg" width="100%"/>
+
+<img src="https://joe.pwnagotchi.ai/api/v1/query/messages_per_day/chart.svg" width="100%"/>
