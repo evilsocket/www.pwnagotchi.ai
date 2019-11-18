@@ -204,8 +204,6 @@ ssh pi@10.0.0.2 # default password: raspberry
 
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
 
-* Works for Release RC5 *
-
 {{% notice warning %}}
 <p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
 {{% /notice %}}
