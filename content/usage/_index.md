@@ -44,7 +44,7 @@ Ideally, the `laziness` value should be very low at the beginning (say 0.1) and 
 
 #### The web UI
 
-Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
+Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.web` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local` whenever your Pwnagotchi is set to [MANUAL](/usage/#auto-ai-and-manu-modes) mode.
