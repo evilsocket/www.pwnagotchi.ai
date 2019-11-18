@@ -49,6 +49,15 @@ Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local` whenever your Pwnagotchi is set to [MANUAL](/usage/#auto-ai-and-manu-modes) mode.
 
+The username and password for the web UI are both `changeme` by default
+You should change these by updating the `config.yml` to include the new username and password. For example:
+
+```yaml
+    web:
+      username: my_new_username
+      password: my_new_password
+```
+
 #### The e-ink display (optional)
 
 If you've properly attached the optional [supported e-ink display](/installation/#display) to your Pwnagotchi's body and successfully [configured it](/configuration/#select-your-display) to use that display, you will also be able to see Pwnagotchi's UI displayed on that screen.
