@@ -53,9 +53,10 @@ The username and password for the web UI are both `changeme` by default.
 You should change these by updating the `config.yml` to include the new username and password. For example:
 
 ```yaml
+ui:
     web:
-      username: my_new_username
-      password: my_new_password
+        username: my_new_username
+        password: my_new_password
 ```
 
 #### The e-ink display (optional)
