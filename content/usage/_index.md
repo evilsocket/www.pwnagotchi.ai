@@ -213,6 +213,8 @@ read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint` or by runni
 
 To check your PwnMAIL inbox, you'll need to [SSH into your unit](/configuration/) and then use the `pwngrid` binary:
 
+You can also check your [webUI](/usage/#the-web-ui), there is a tab there just for checking your inbox
+
 ```sh
 sudo pwngrid -inbox
 # and for all other pages if more than one
