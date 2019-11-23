@@ -144,6 +144,7 @@ If you're running your Pwnagotchi in headless mode (AKA without a screen) and ar
 
 A few users have already designed custom cases you can 3D print (If you don't have access to a 3D printer yourself, you can use a service like Shapeways or treatstock.com to have a case printed on demand):
 
+- [@ohaithear](https://twitter.com/ohaithear)'s [10 Pwnagotchi Cases](https://www.thingiverse.com/thing:3920904) is a collection of cases for all popular Pwnagotchi configurations: Waveshare and Inky screens, [slimagotchi](/community/#rpi0w-with-waveshare-v2-slim-agotchi) builds, PiSugar external battery, and an optional carabiner loop.
 - [@DorkfeastTeam](https://twitter.com/dorkfeastteam)'s [Pwnagotchi case on Thingiverse](https://www.thingiverse.com/thing:3849519) for use with a Raspberry Pi 0 and a Waveshare e-ink screen.
 - [@elkentaro](https://twitter.com/elkentaro)'s [Pwnagotchi case on Thingiverse](https://www.thingiverse.com/thing:3879459) for use with a Raspberry Pi 0 and a Waveshare e-ink screen. There is 71.5x34x20mm available for the acrylic plate on the 3D printed model. (MK3S, PET, 0.25mm extruder, 0.15mm layer height.)
 - [@3MUl0R](https://twitter.com/3mul0r)'s [Pwnagotchi case for RPi0W with Inky pHAT](https://www.thingiverse.com/thing:3897860) is the only case (that we are aware of) designed to fit the RPi0Ws fitted with the Inky pHAT e-ink display.
