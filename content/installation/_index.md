@@ -43,6 +43,7 @@ Manufact. | Model | mAh | Pwn Version | Body | Mode | Observed Duration | Date T
 PiSugar | [PowerPack L](https://github.com/PiSugar/PiSugar) | 1200 | (alpha) | RPi0W | AI | 04:49:42 | 2019-10-07
 UPS-Lite | [UPS-Lite V1.1](https://aliexpress.com/item/32954180664.html) | 1000 | (alpha) | RPi0W | AI | 03:10:00 | 2019-10-19
 *unbranded* | *unknown* | 2000 | (alpha) | RPi0W | AI | 08:24:00 | 2019-10-07
+Forclaz/Decathlon | ONPOWER 110 | 2600 | 1.2.1 | RPi0W | AI | 10:26:22 | 2019-11-20
 Anker | AstroMini 79AN7913S | 3200 | (alpha) | RPi0W | AI | 10:18:00 | 2019-10-08
 Anker | PowerCore [A1109](https://www.anker.com/products/variant/powercore-5000/A1109011) | 5000 | (alpha) | RPi0W | AUTO | 05:MM:SS | 2019-09-DD
 Anker | PowerCore [20100](https://www.anker.com/products/variant/powercore-20100/A1271012) | 20000 | (alpha) | RPi0W | AI | 19:44:00 | 2019-10-07
