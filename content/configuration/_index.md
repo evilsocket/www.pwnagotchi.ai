@@ -11,10 +11,10 @@ Once you've [written the image file onto the SD card](/installation/#flashing-an
 ## Initial Configuration
 
 For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
-This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32. 
+This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
 
 In this process you might define your unit's name, which network to whitelist and the type of display you use. The following
-is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the 
+is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the
 sections below.
 
 ```yaml
@@ -36,17 +36,17 @@ ui:
       color: 'black'
 ```
 
-The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot. 
+The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot.
 
-After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD 
-card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with 
+After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD
+card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with
 your custom values.
 
 ## Restoring a Backup
 
-If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped 
-folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair 
-will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate 
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped
+folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair
+will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate
 a new RSA keypair, operation that takes time and would be completely pointless if a backup needs to be restored anyway.
 
 Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card,
@@ -205,20 +205,22 @@ ssh pi@10.0.0.2 # default password: raspberry
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
 
 {{% notice warning %}}
-<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
+<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. It will also work on Lenovo's running Ubuntu 19.10. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
 {{% /notice %}}
 
 ### Pre-Face
 
 * If you have any wired interfaces on your host PC, you will need to remove them from Network Manager so we can be sure you have everything set correctly, on the correct interface.
 * If you are using Wi-Fi on your host computer, you need to be certain that your routers IP address scheme is not in the `10.0.0.1/24` range. If it is, you should turn Wi-Fi off initially to best troubleshoot your connectivity issues, then change the interface IP scheme on your Pi once you can `ssh` to it.
-* These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is RC5,* and **4.** a *completely* vanilla image(*plug-in and whitelist configuration is fine, but if you have previously adjusted the UI: from `10.0.0.2` to `0.0.0.0`, you need to revert those changes by deleting anything related to `UI:` in your `config.yml`.*)
+* These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is v1.3.0*.
+
 ![ui](https://i.imgur.com/uLdQYqF.png)
+
 #### Steps to complete on your host (the pc that you are connecting the Pi to)
 1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
 2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port seen in the picture shown above .
 3. Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.**
-***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3**.
+***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3.***
     - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!*
 4. On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
@@ -283,7 +285,7 @@ main:
           my-phone1:              # you can choose your phones name here
             enabled: true         # enables the device
             search_order: 1       # in which order the devices should be searched. E.g. this is #1.
-            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above, 
+            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above,
                                   ## or goto your phones   settings > status)
             ip: 'xx.xx.xx.44'     # this is the static ip of your pwnagotchi
                                   ## adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
@@ -293,7 +295,7 @@ main:
             interval: 1           # in minues, how often should the device be searched
             scantime: 15          # in seconds, how long should be searched on each interval
             share_internet: true  # this will change the routing and nameserver on your pi
-            priority: 99          # if you have multiple devices which can share internet; the highest priority wins 
+            priority: 99          # if you have multiple devices which can share internet; the highest priority wins
             max_tries: 0          # how often should be tried to find the device until it is disabled (to save power)
                                   ## 0 means infinity
           macbook:
