@@ -6,22 +6,6 @@ draft: false
 pre: "<i class='fas fa-brain'></i> "
 ---
 
-- [**Modes**](/usage/#auto-ai-and-manu-modes)
-  - [MANU](/usage/#manu)
-  - [AUTO](/usage/#auto)
-  - [AI](/usage/#ai)
-- [**User Interface**](/usage/#user-interface)
-  - [Viewing Pwnagotchi's face](/usage/#viewing-pwnagotchi-s-face)
-     - [The web UI](/usage/#the-web-ui)
-     - [The e-ink display](/usage/#the-e-ink-display-optional)
-  - [Anatomy of a Pwnagotchi face](/usage/#anatomy-of-a-pwnagotchi-face)
-- [**Files to know on your Pwnagotchi**](/usage/#files-to-know-on-your-pwnagotchi)
-- [**Training the AI**](/usage/#training-the-ai)
-    - [The reward function](/usage/#the-reward-function)
-- [**bettercap's web UI**](/usage/#bettercap-s-web-ui)
-- [**Backup your Pwnagotchi**](/usage/#backup-your-pwnagotchi)
-- [**Known Issues**](/usage/#known-issues)
-
 ## AUTO, AI and MANU Modes
 
 Your unit can operate in one of three different "modes" that determines how it behaves:
@@ -44,8 +28,8 @@ In AUTO mode, your unit will start operating, perform attacks and sniffing hands
 
 #### AI
 
-If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 30 minutes on a Rpi0W). This interval is required 
-to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
+If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 10-15 minutes on a Rpi0W with a decent quality SD card).
+This interval is required to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
 Once the dependencies are loaded and so the `/root/brain.nn` file, AI mode will pick the optimal set of parameters in real time, depending on how long 
 it's been trained on the specific type of WiFi environment it's observing now.
 
@@ -60,10 +44,20 @@ Ideally, the `laziness` value should be very low at the beginning (say 0.1) and 
 
 #### The web UI
 
-Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.video` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
+Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.web` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local` whenever your Pwnagotchi is set to [MANUAL](/usage/#auto-ai-and-manu-modes) mode.
+
+The username and password for the web UI are both `changeme` by default.
+You should change these by updating the `config.yml` to include the new username and password. For example:
+
+```yaml
+ui:
+    web:
+        username: my_new_username
+        password: my_new_password
+```
 
 #### The e-ink display (optional)
 
@@ -94,18 +88,6 @@ If you've properly attached the optional [supported e-ink display](/installation
       - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
-
-## Files to know on your Pwnagotchi
-
-- **Configuration**
-   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
-       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
-- **Handshakes**
-   - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
-- **Logs**
-   - The main log file is located at `/var/log/pwnagotchi.log`.
-- **The AI**
-   - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
 
 ## Training the AI
 
@@ -205,26 +187,82 @@ reward = h + a + c + b + i + m
 
 By maximizing this reward value, the AI learns over time to find the set of parameters that better perform with the current environmental conditions.
 
+## Files to know on your Pwnagotchi
+
+- **Configuration**
+   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
+       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
+- **Handshakes**
+   - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
+- **Memory**
+   - The place where the unit stores records of other units that it met in the past: `/root/peers/`.
+- **Logs**
+   - The main log file is located at `/var/log/pwnagotchi.log`.
+- **The AI**
+   - The neural network is located at `/root/brain.nn`, while the information about its age at `/root/brain.json`. If you want to save your Pwnagotchi's memories, these are the files to [back up](/usage/#backup-your-pwnagotchi).
+
+## PwnMAIL
+
+You probably don't know yet, but Pwnagotchi is also a "crypto-pager"! By using the [PwnGRID](/configuration/#set-your-pwngrid-preferences) API (and [internet connectivity](/configuration/#host-connection-sharing) of course), your unit is able to exchange [end to end encrypted messages](https://en.wikipedia.org/wiki/End-to-end_encryption) with other units enrolled in the grid. Each message is encrypted on your Raspberry with the recipient RSA public key before being sent, therefore **we only have access to encrypted data and we have absolutely no way to see the cleartext** as 
+it can only be done by the original recipient via his private key.
+
+Your PwnMAIL address is your unit's cryptographic fingerprint (which is the SHA256 checksum of its public key in PEM format), you can 
+read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint` or by running `sudo pwngrid -whoami`. You can also use this address to open (and share) your ["pwnfile"](/pwnfile/#!ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea).
+ 
+**Each unit corresponds to a single cryptographically signed and hardware isolated address.**
+
+To check your PwnMAIL inbox, you'll need to [SSH into your unit](/configuration/) and then use the `pwngrid` binary:
+
+You can also check your [webUI](/usage/#the-web-ui), there is a tab there just for checking your inbox
+
+```sh
+sudo pwngrid -inbox
+# and for all other pages if more than one
+sudo pwngrid -inbox -page 2
+```
+
+To fetch a message given its id (123 in this example), verify the sender signature and decryp it:
+
+```sh
+sudo pwngrid -inbox -id 123
+# in case you want to save the decrypted message body to a file
+sudo pwngrid -inbox -id 123 -output picture.jpg
+```
+
+This will automatically mark the message as read, to mark it back as unread:
+ 
+```sh
+sudo pwngrid -inbox -id 123 -unread
+```
+
+To delete it:
+
+```sh
+sudo pwngrid -inbox -id 123 -delete
+```
+
+To send an encrypted message (max size is 512KB) to another unit having its fingerprint (`ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea` in this example):
+
+```sh
+sudo pwngrid -send ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea -message "hi there, how are you doing?"
+# in case you want to send a file instead
+sudo pwngrid -send ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea -message @/path/to/file.jpg
+```
+
 ## BetterCAP's Web UI
 
 Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local`.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face). 
+- The default authentication credentials are `pwnagotchi:pwnagotchi`, if you decide to change them in `/usr/local/share/bettercap/caplets/pwnagotchi-*.cap`, you'll also need
+to update the configuration in `/etc/pwnagotchi/config.yml` to use the new credentials.
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
 
 {{% notice info %}}
 <p><b>Why can't I use bettercap's web UI while my Pwnagotchi is eating handshakes?</b> This is because when Pwnagotchi is running in AUTO or AI modes, it is basically instrumenting bettercap in order to sniff packets and capture and record handshakes. You and Pwnagotchi cannot BOTH use bettercap at the same time; for this reason, it is only when your Pwnagotchi <b>isn't</b> hunting for handshakes to eat—AKA, when it is in MANUAL mode—that you are free to use bettercap (and its web UI) yourself.</p>
 {{% /notice %}}
-
-<!--
-## Update your Pwnagotchi
-
-TODO
-
-
--->
 
 ## Backup your Pwnagotchi
 
@@ -234,9 +272,30 @@ You can use the `scripts/backup.sh` script to backup the important files of your
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
 
+## Update your Pwnagotchi
+
+The recommended update procedure is to backup your Pwnagotchi as explained in the previous section, flash the SD card with
+the new image and restore the backup by extracting the files back in the root filesystem.
+
+
+## Handy one-liner/aliases
+
+### pwnlog
+Putting this into your .bashrc will create the `pwnlog` alias which is a pretty and uncluttered view on the pwnagotchi logs.
+```shell
+alias pwnlog='tail -f -n300 /var/log/pwn* | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-'
+```
+
+### pwnver
+Putting this into your .bashrc will create the `pwnver` alias, useful for printing the version of Pwnagotchi currently running.
+```shell
+alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'
+```
 
 ## Known Issues
-#### Pwnagotchi goes blind and detects no APs on any channel
+
+Pwnagotchi goes blind and detects no APs on any channel
+
 Every once in a while, nexmon dies with: 
 
 ```shell
@@ -258,10 +317,3 @@ Every once in a while, nexmon dies with:
 ```
 
 ...and only a reboot can fix the WiFi and fix Pwnagotchi's apparent blindness. This is why the `mon_max_blind_epochs` parameter exists—to reboot the RPi0W board automatically whenever this happens. This `mon_max_blind_epochs` parameter is the number of epochs (or rounds of recon) during which Pwnagotchi has no detection of any APs on any channels it hops on.  Maybe someday somebody will fix this, but until that happens, `mon_max_blind_epochs` will be the existing work-around. See GitHub issue [#267](https://github.com/evilsocket/pwnagotchi/issues/267) and [this tweet](https://twitter.com/evilsocket/status/1170631160197779457) from @evilsocket for more details.
-
-## Random Info
-
-* **On a rpi0w, it'll take approximately 30 minutes to load the AI**.
-* `/var/log/pwnagotchi.log` is your friend.
-* if connected to a laptop via usb data port, with internet connectivity shared, magic things will happen.
-* If you get `[FAILED] Failed to start Remount Root and Kernel File Systems.` while booting pwnagotchi, make sure the `PARTUUID`s for `rootfs` and `boot` partitions are the same in `/etc/fstab`. Use `sudo blkid` to find those values when you are using `create_sibling.sh`.

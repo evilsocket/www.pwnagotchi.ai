@@ -14,8 +14,10 @@ as Python files, and then edit the `config.yml` file (`main.plugins` value) to p
 
 Plugin Script | Description
 --------------|------------
+`AircrackOnly.py` | Confirms pcap contains handshake/PMKID or delete it.
 `auto-backup.py` | Backs up files when internet is available.
 `auto-update.py` | `apt update && apt upgrade` when internet is available.
+`bt-tether.py` | Makes the display reachable over bluetooth.
 `example.py` | Example plugin for Pwnagotchi that implements all the available callbacks.
 `gps.py` | Saves GPS coordinates whenever a handshake is captured.
 `grid.py` | Signals the unit's cryptographic identity and (optionally) a list of pwned networks to PwnGRID at api.pwnagotchi.ai.
@@ -33,49 +35,47 @@ Plugin Script | Description
 To illustrate how easy it is to add additional functionality via the plugin system, here is the code for the GPS plugin (`gps.py`):
 
 ```python
-__author__ = 'evilsocket@gmail.com'
-__version__ = '1.0.0'
-__name__ = 'gps'
-__license__ = 'GPL3'
-__description__ = 'Save GPS coordinates whenever an handshake is captured.'
-
 import logging
 import json
 import os
-
-running = False
-OPTIONS = dict()
+import pwnagotchi.plugins as plugins
 
 
-def on_loaded():
-    logging.info("gps plugin loaded for %s" % OPTIONS['device'])
+class GPS(plugins.Plugin):
+    __author__ = 'evilsocket@gmail.com'
+    __version__ = '1.0.0'
+    __license__ = 'GPL3'
+    __description__ = 'Save GPS coordinates whenever an handshake is captured.'
 
+    def __init__(self):
+        self.running = False
 
-def on_ready(agent):
-    global running
+    def on_loaded(self):
+        logging.info("gps plugin loaded for %s" % self.options['device'])
 
-    if os.path.exists(OPTIONS['device']):
-        logging.info("enabling gps bettercap's module for %s" % OPTIONS['device'])
-        try:
-            agent.run('gps off')
-        except:
-            pass
+    def on_ready(self, agent):
+        if os.path.exists(self.options['device']):
+            logging.info("enabling gps bettercap's module for %s" % self.options['device'])
+            try:
+                agent.run('gps off')
+            except:
+                pass
 
-        agent.run('set gps.device %s' % OPTIONS['device'])
-        agent.run('set gps.speed %d' % OPTIONS['speed'])
-        agent.run('gps on')
-        running = True
-    else:
-        logging.warning("no GPS detected")
+            agent.run('set gps.device %s' % self.options['device'])
+            agent.run('set gps.speed %d' % self.options['speed'])
+            agent.run('gps on')
+            running = True
+        else:
+            logging.warning("no GPS detected")
 
+    def on_handshake(self, agent, filename, access_point, client_station):
+        if self.running:
+            info = agent.session()
+            gps = info['gps']
+            gps_filename = filename.replace('.pcap', '.gps.json')
 
-def on_handshake(agent, filename, access_point, client_station):
-    if running:
-        info = agent.session()
-        gps = info['gps']
-        gps_filename = filename.replace('.pcap', '.gps.json')
+            logging.info("saving GPS to %s (%s)" % (gps_filename, gps))
+            with open(gps_filename, 'w+t') as fp:
+                json.dump(gps, fp)
 
-        logging.info("saving GPS to %s (%s)" % (gps_filename, gps))
-        with open(gps_filename, 'w+t') as fp:
-            json.dump(gps, fp)
 ```

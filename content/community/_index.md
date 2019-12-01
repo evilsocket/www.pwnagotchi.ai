@@ -18,12 +18,14 @@ If you test one of these hacks yourself and it still works, it's extra nice if y
 
 - [**Screens**](#screens)
   - [Waveshare 3.5" SPI TFT screen](#waveshare-3-5-spi-tft-screen)
-  - [Pwnagotchi face via Bluetooth](#pwnagotchi-face-via-bluetooth)
+- [**Software Mods**](#software-modifications)
+  - [Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer](#static-rdnis-gadget-to-avoid-reconfiguration-everytime-you-plug-it-to-the-computer)
 - [**Hardware Mods**](#hardware-modifications)
   - [Adding an external antenna to the RPi0W](#adding-an-external-antenna-to-the-rpi0w)
   - [RPi0W with Waveshare V2 "Slim-agotchi"](#rpi0w-with-waveshare-v2-slim-agotchi)
 
 ## Screens
+
 ### Waveshare 3.5" SPI TFT screen
 
 Last tested on | Pwnagotchi version | Hardware | Working? | Reference
@@ -54,77 +56,7 @@ fbi -T 1 -a -noverbose -t 15 -cachemem 0 /root/pwnagotchi_1.png /root/pwnagotchi
 
 And you should be good!
 
-### Pwnagotchi face via Bluetooth
-
-Last tested on | Pwnagotchi version | Hardware | Working? | Reference
----------------|--------------------|----------|----------|-----------|
-2019-10-06 | Unknown | Android | ✅ | Slack
-2019-10-06 | Unknown | iPad iOS 9.3.5 | ✅ | Slack
-
-A way to view your Pwnagotchi's ~~face~~ UI wirelessly via Bluetooth on a separate device. Refresh rate is the same as the e-ink display (every few seconds). 
-
-**Please note:** This is NOT Bluetooth tethering; this is only Bluetooth as a server on Pi side; you connect the Bluetooth and get a DHCP IP address and that's it. This hack cannot leverage the data connection.
-
-Contributed by Systemic in the Slack.
-
-#### 1. First Step!
-- Comment out the Bluetooth disable line from `/boot/config.txt` : `#dtoverlay=pi3-disable-bt`
-- Change `/root/pwnagotchi/config.yml` to have `0.0.0.0` instead of `10.0.0.2` to listen as well on Bluetooth.
-- Then launch the following commands:
-
-#### 2. Install required packages:
-
-```
-sudo apt-get install bluez bluez-tools bridge-utils dnsmasq
-```
-
-#### 3. Configure Bluetooth and start it:
-```
-sudo modprobe bnep
-sudo brctl addbr pan0
-sudo brctl setfd pan0 0
-sudo brctl stp pan0 off
-sudo ifconfig pan0 172.26.0.1 netmask 255.255.255.0
-sudo ip link set pan0 up
-
-cat <<- EOF > /tmp/dnsmasq_bt.conf
-
-bind-interfaces
-port=0
-interface=pan0
-listen-address=172.26.0.1
-dhcp-range=172.26.0.2,172.26.0.100,255.255.255.0,5m
-dhcp-leasefile=/tmp/dnsmasq_bt.leases
-dhcp-authoritative
-log-dhcp
-EOF
-
-sudo dnsmasq -C /tmp/dnsmasq_bt.conf
-sudo bt-agent -c NoInputNoOutput&
-sudo bt-adapter -a hci0 --set Discoverable 1
-sudo bt-adapter -a hci0 --set DiscoverableTimeout 0
-sudo bt-adapter -a hci0 --set Pairable 1
-sudo bt-adapter -a hci0 --set PairableTimeout 0
-sudo bt-network -a hci0 -s nap pan0 &
-```
-
-#### 4. Finally: on your phone, you have to disable all existing interfaces:
-
-- Shutdown WiFi.
-- Shutdown mobile data.
-- Connect to the newly available Bluetooth device (which has the name of your Pwnagotchi).
-   - Once connected, you can test: `http://172.26.0.1:8080`
-- You can also install bettercap's UI (`sudo bettercap` then `ui.update`) 
-   - You'll need to change the http caplets to change `127.0.0.1` to `0.0.0.0`.
-- You can connect to the shell with a terminal emulator ...
-
-Happy tweaking.
-
-
-### Pwnagotchi Bluetooth Tethering with access to internet, webui, ssh
-
-New guide is available here : https://github.com/systemik/pwnagotchi-bt-tether
-
+## Software Modifications
 ### Static RDNIS gadget to avoid reconfiguration everytime you plug it to the computer
 
 You can execute these two commands and then each time you connect the pwnagotchi to your computer, the interface will be ready and configured:
@@ -133,7 +65,6 @@ You can execute these two commands and then each time you connect the pwnagotchi
 export RDNIS=' g_ether.host_addr='$(dmesg | awk '/: HOST MAC/{print $NF}')' g_ether.dev_addr='$(dmesg | awk '/: MAC/{print $NF}')
 sudo sed -i '$ s/$/ \'"$RDNIS"'/' /boot/cmdline.txt
 ```
-
 
 ## Hardware Modifications
 

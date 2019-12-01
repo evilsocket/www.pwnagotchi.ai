@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/jqcloud.min.css?v=1.1">
+
 <style type="text/css">
 code {
   color: #444;
@@ -31,6 +33,11 @@ h1 {
   font-size: 2.5rem;
 }
 
+#logo > h1 > img {
+    border: 10px solid #312525;
+    border-radius: 10px;
+}
+
 h1 code, 
 h2 code, 
 h3 code, 
@@ -61,7 +68,36 @@ a.highlight span.copy-to-clipboard {
 }
 
 .dd-item > a > i.fas {
+    width: 25px;
     color: #c78d08;
+}
+
+ul#unitslist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.face, span.face {
+    font-family: monospace;
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+
+div.toc > nav#TableOfContents {
+  margin: 0;
+  padding: 0 !important;
+  font-size: initial !important;
+}
+
+div.toc > nav#TableOfContents > ul {
+  margin: 0;
+  padding: 0 !important;
+}
+
+#moodcloud {
+    width: 100%;
+    height: 300px;
 }
 </style>
 
@@ -73,6 +109,8 @@ a.highlight span.copy-to-clipboard {
 <link href="/map.min.css" rel="stylesheet">
 <script src="/map.min.js"></script>
 <script src="/jquery.timeago.js"></script>
+<script src="/jqcloud.min.js"></script>
 
-<script src="/pwnmap.js?v=2"></script>
-<script src="/pwnfile.js?v=4"></script>
+<script src="/pwnmap.js?v=2.4"></script>
+<script src="/pwnfile.js?v=5.3"></script>
+<script src="/moodcloud.js?v=1.0"></script>
