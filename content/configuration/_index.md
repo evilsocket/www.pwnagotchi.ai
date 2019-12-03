@@ -42,7 +42,7 @@ After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either
 
 ## Restoring a Backup
 
-If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, operation that takes time and would be completely pointless if a backup needs to be restored anyway.
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, an operation that takes time and would be completely pointless if a backup needs to be restored anyway.
 
 Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card, if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
 
