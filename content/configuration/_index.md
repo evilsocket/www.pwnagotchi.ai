@@ -86,7 +86,7 @@ By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This m
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
 
-If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
+If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a data point in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
 
 - The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
 
@@ -225,7 +225,8 @@ ssh pi@10.0.0.2 # default password: raspberry
 4. On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
-5. Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3** and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
+     - DNS (If Required): `8.8.8.8` (or whatever)
+5. Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3**, and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
 
 ```bash
 inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
@@ -233,8 +234,9 @@ inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
 6. **Congratulations!** You should now be able to connect to your unit using SSH:
 
 ```bash
-ssh pi@10.0.0.2
+ssh pi@10.0.0.2 # default password: raspberry
 ```
+
 {{% notice tip %}}
 <p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before your PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
 {{% /notice %}}
@@ -312,9 +314,9 @@ The status codes are:
 
 - **C** Connected: This means the connection to the device has been established.
 - **NF** Not found: This means the connection to the device could not be established (probably because it could not be found).
-- **PE** Pairing Error: This error occures on a pairing problem.
-- **BE** Bnep Error: This error occures, when the NAP could not be created.
-- **AE** Address Error: The ip could not be assigned to the NAP interface.
+- **PE** Pairing Error: This error occurs on a pairing problem.
+- **BE** Bnep Error: This error occurs, when the NAP could not be created.
+- **AE** Address Error: The IP could not be assigned to the NAP interface.
 
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
