@@ -15,6 +15,22 @@ You can contact <span class="unit.name">NAME</span> via [PwnMAIL](/usage/#pwnmai
 
 <pre class="unit.fingerprint"></pre>
 
+<button onclick="myCopy()">Copy fingerprint to ClipBoard</button>
+function myCopy() {
+  /* Get the text field */
+  var copyText = document.getElementById("unit.fingerprint");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the fingerprint: " + copyText.value);
+}
+
 <div id="unitsession" style="display: none">
     <h3>Last Session</h3>
     <table width="100%">
