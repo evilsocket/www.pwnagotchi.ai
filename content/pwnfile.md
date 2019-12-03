@@ -14,6 +14,7 @@ Its AI has lived <span class="unit.data.brain.epochs_lived"></span> epochs and t
 You can contact <span class="unit.name">NAME</span> via [PwnMAIL](/usage/#pwnmail) at:
 
 <pre class="unit.fingerprint"></pre>
+<script>
 
 <button onclick="myCopy()">Copy fingerprint to ClipBoard</button>
 function myCopy() {
@@ -24,6 +25,7 @@ function myCopy() {
   alert("Copied the fingerprint: " + copyText.value);
 }
 
+</script>
 <div id="unitsession" style="display: none">
     <h3>Last Session</h3>
     <table width="100%">
