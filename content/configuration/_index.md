@@ -42,13 +42,14 @@ After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either
 
 ## Restoring a Backup
 
-If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, an operation that takes time and would be completely pointless if a backup needs to be restored anyway.
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`. 
+This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, an operation that takes time and would be completely pointless if a backup needs to be restored anyway.
 
 Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card, if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
 
 ## Choose your unit's language
 
-Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
+Pwnagotchi displays it's UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
 
 But if you **do** want to change what language Pwnagotchi displays its status in, you can change `main.lang` to one of the supported languages:
 
@@ -199,7 +200,7 @@ ssh pi@10.0.0.2 # default password: raspberry
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
 
 {{% notice warning %}}
-<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. It will also work on Lenovo's running Ubuntu 19.10. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
+<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. It will also work on Lenovo's running Ubuntu 19.04 and 19.10. We can not guarantee these specific directions work on any other OS.</p>
 {{% /notice %}}
 
 ### Pre-Face
