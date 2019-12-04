@@ -42,7 +42,7 @@ After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either
 
 ## Restoring a Backup
 
-If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`. 
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`.
 This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, an operation that takes time and would be completely pointless if a backup needs to be restored anyway.
 
 Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card, if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
@@ -215,8 +215,8 @@ ssh pi@10.0.0.2 # default password: raspberry
 1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
 2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port seen in the picture shown above .
 3. Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.**
-***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3.***
-    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!*
+***(Take EXTRA note of the new interfaces mac address, I will be referencing this mac address on multiple occasions as Step 3.)***
+    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
 4. On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
