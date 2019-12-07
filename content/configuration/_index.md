@@ -11,10 +11,10 @@ Once you've [written the image file onto the SD card](/installation/#flashing-an
 ## Initial Configuration
 
 For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
-This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32. 
+This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
 
 In this process you might define your unit's name, which network to whitelist and the type of display you use. The following
-is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the 
+is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the
 sections below.
 
 ```yaml
@@ -36,25 +36,20 @@ ui:
       color: 'black'
 ```
 
-The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot. 
+The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot.
 
-After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD 
-card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with 
-your custom values.
+After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
 
 ## Restoring a Backup
 
-If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped 
-folder in the FAT32 boot partition as `/boot/pwnagotchi`. This way the whole folder containing the configuration and the RSA keypair 
-will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate 
-a new RSA keypair, operation that takes time and would be completely pointless if a backup needs to be restored anyway.
+If you want to [restore a backup](/usage/#backup-your-pwnagotchi) instead, you can copy the contents of the `/etc/pwnagotchi` backupped folder in the FAT32 boot partition as `/boot/pwnagotchi`.
+This way the whole folder containing the configuration and the RSA keypair will be moved to `/etc/pwnagotchi` during boot. Restoring this folder this way will allow the unit to boot without the need to generate a new RSA keypair, an operation that takes time and would be completely pointless if a backup needs to be restored anyway.
 
-Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card,
-if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
+Given that the FAT32 boot partition is limited in size, other folders and files that are part of the backup will need to be copied manually either to the SD card, if it's possible to mount it on a host computer, or via SSH with cable or bluetooth connectivity as explained in the following sections.
 
 ## Choose your unit's language
 
-Pwnagotchi displays its UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
+Pwnagotchi displays it's UI in English by default, but it can speak several other languages! If you're fine with English, you don't need to do anything special here.
 
 But if you **do** want to change what language Pwnagotchi displays its status in, you can change `main.lang` to one of the supported languages:
 
@@ -86,7 +81,7 @@ By default, the `grid` [plugin](/plugins/) is **only partially** enabled. This m
 - The cryptographic identity of the unit, generated at first boot and used for authentication.
 - The output of the `uname -a` command on the unit used to determine the type of hardware.
 
-If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a datapoint in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
+If you would like your unit to participate in PwnGrid's community rankings and scoreboards (PwnGrid is like Pokémon Go, but for WiFi!), as well as be a data point in regional (country-level) statistics, you can **fully opt-in** to PwnGrid by enabling your unit to send the PwnGrid API some basic information about the networks it has pwned. **None of your unit's captured cryptographic material is sent to the PwnGrid server;** ONLY the minimum information to enroll the unit in the PwnGrid database (see above) and calculate how many networks it has "conquered" so far, namely:
 
 - The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
 
@@ -205,25 +200,28 @@ ssh pi@10.0.0.2 # default password: raspberry
 ## Connecting to Pi0w with MicroUSB cable on Linux Host
 
 {{% notice warning %}}
-<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. We can not guarantee these specific directions work on any other OS. Hopefully further write ups will be provided at a later date.</p>
+<p><b>DEV NOTE:</b> These are directions for the recommended hardware, a Pi0w - and connecting to it from a Linux based host via a Micro-USB through the data port. This was written while connecting to a Pi0w with a Data Capable MicroUSB to a Macbook Pro late 2012 running Ubuntu 19.04. It will also work on Lenovo's running Ubuntu 19.04 and 19.10. We can not guarantee these specific directions work on any other OS.</p>
 {{% /notice %}}
 
 ### Pre-Face
 
 * If you have any wired interfaces on your host PC, you will need to remove them from Network Manager so we can be sure you have everything set correctly, on the correct interface.
 * If you are using Wi-Fi on your host computer, you need to be certain that your routers IP address scheme is not in the `10.0.0.1/24` range. If it is, you should turn Wi-Fi off initially to best troubleshoot your connectivity issues, then change the interface IP scheme on your Pi once you can `ssh` to it.
-* These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is RC5,* and **4.** a *completely* vanilla image(*plug-in and whitelist configuration is fine, but if you have previously adjusted the UI: from `10.0.0.2` to `0.0.0.0`, you need to revert those changes by deleting anything related to `UI:` in your `config.yml`.*)
+* These settings are only verified to work on, **1.** *a Pi0w*, with a **2.** *MicroUSB data capable cable,* **3.** the newest released image found on [our Github](https://github.com/evilsocket/pwnagotchi/releases/) *which at the time of writing is v1.3.0*.
+
 ![ui](https://i.imgur.com/uLdQYqF.png)
+
 #### Steps to complete on your host (the pc that you are connecting the Pi to)
 1. First, type `ifconfig` to check and take note of the names of your current interfaces, and what is now recognized as an adapter on your system. **Take note of the Mac Addresses that you see in this output.**
 2. Starting with a clean slate in your Network Manager (remove all wired interface profiles that you have on your Network Manager,) plug your unpowered Pi0w into your computer through the data port seen in the picture shown above .
 3. Wait until your Pi boots into Manu mode. Once you see the breakdown that Pwnagotchi does when in MANU mode, type `ifconfig` again on your host machine and look for a new interface that was not there during **Step 1.**
-***Take EXTRA note of the new interfaces mac address** I will be referencing this mac address on multiple occasions as **Step 3**.
-    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!*
+***(Take EXTRA note of the new interfaces mac address, I will be referencing this mac address on multiple occasions as Step 3.)***
+    - **If you have never booted your Pwnagotchi before:** it will take a few minutes to boot up &/or become visible or responsive. **DO NOT INTERRUPT YOUR PWNAGOTCHI DURING THIS PROCESS.** That extra time it takes to boot the first time you turn your Pwnagotchi on? It's because it is generating its RSA keys; if you interrupt this process, the generated keys may be corrupted!
 4. On Network Manager on your PC/Host, (if there are no interfaces automatically added, you can attempt to add a new interface by selecting the mac address noted in **Step 3** for the interface profile) select Settings > IPv4 and then change from `automatic` to `manual`, then for your address, you'll need to configure it with a static IP address and then press apply in the top right:
      - IP: `10.0.0.1`
      - Netmask: `255.255.255.0`
-5. Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3** and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
+     - DNS (If Required): `8.8.8.8` (or whatever)
+5. Back in your terminal, type `ifconfig` and look for the interface that you found in **Step 3**, and that you edited the settings for in **Step 4**. If you see the following on the second line of the interface that matches the mac address from **Step 3**, you should now be able to enter `ping 10.0.0.2` and receive a response from your pi.
 
 ```bash
 inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
@@ -231,8 +229,9 @@ inet 10.0.0.1  netmask 255.255.255.0  broadcast 10.0.0.255
 6. **Congratulations!** You should now be able to connect to your unit using SSH:
 
 ```bash
-ssh pi@10.0.0.2
+ssh pi@10.0.0.2 # default password: raspberry
 ```
+
 {{% notice tip %}}
 <p><b>TIP:</b> you may need to use the `linux_connection_share.sh` script before your PC will allow you to ssh to your Pi. [Host connection sharing](/configuration/#host-connection-sharing)</p>
 {{% /notice %}}
@@ -283,7 +282,7 @@ main:
           my-phone1:              # you can choose your phones name here
             enabled: true         # enables the device
             search_order: 1       # in which order the devices should be searched. E.g. this is #1.
-            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above, 
+            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above,
                                   ## or goto your phones   settings > status)
             ip: 'xx.xx.xx.44'     # this is the static ip of your pwnagotchi
                                   ## adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
@@ -293,7 +292,7 @@ main:
             interval: 1           # in minues, how often should the device be searched
             scantime: 15          # in seconds, how long should be searched on each interval
             share_internet: true  # this will change the routing and nameserver on your pi
-            priority: 99          # if you have multiple devices which can share internet; the highest priority wins 
+            priority: 99          # if you have multiple devices which can share internet; the highest priority wins
             max_tries: 0          # how often should be tried to find the device until it is disabled (to save power)
                                   ## 0 means infinity
           macbook:
@@ -310,9 +309,9 @@ The status codes are:
 
 - **C** Connected: This means the connection to the device has been established.
 - **NF** Not found: This means the connection to the device could not be established (probably because it could not be found).
-- **PE** Pairing Error: This error occures on a pairing problem.
-- **BE** Bnep Error: This error occures, when the NAP could not be created.
-- **AE** Address Error: The ip could not be assigned to the NAP interface.
+- **PE** Pairing Error: This error occurs on a pairing problem.
+- **BE** Bnep Error: This error occurs, when the NAP could not be created.
+- **AE** Address Error: The IP could not be assigned to the NAP interface.
 
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
