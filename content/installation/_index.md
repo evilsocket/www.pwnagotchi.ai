@@ -194,8 +194,8 @@ If instead of using our image you prefer the hacker way and you want to configur
 First of all, download and install bettercap, its caplets and its web ui (change the URL to match the precompiled binary of the latest release according to your architecture):
 
 ```sh
-wget "https://github.com/bettercap/bettercap/releases/download/v2.26/bettercap_linux_amd64_v2.26.zip"
-unzip bettercap_linux_amd64_v2.26.zip
+wget "https://github.com/bettercap/bettercap/releases/download/v2.26.1/bettercap_linux_amd64_v2.26.1.zip"
+unzip bettercap_linux_amd64_v2.26.1.zip
 # ... check the sha256 digest before doing this ...
 sudo mv bettercap /usr/bin/
 # install the caplets and the web ui in /usr/local/share/bettercap and quit
@@ -252,8 +252,8 @@ Note: you need  also libpcap to be installed
 The second service you will need is pwngrid, even in this case:
 
 ```sh
-wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.1/pwngrid_linux_amd64_v1.10.1.zip"
-unzip pwngrid_linux_amd64_v1.10.1.zip
+wget "https://github.com/evilsocket/pwngrid/releases/download/v1.10.3/pwngrid_linux_amd64_v1.10.3.zip"
+unzip pwngrid_linux_amd64_v1.10.3.zip
 # ... check the sha256 digest before doing this ...
 sudo mv pwngrid /usr/bin/
 # generate the keypair
@@ -284,10 +284,11 @@ WantedBy=multi-user.target
 The last ingredient of this soup is going to be the python3 Pwnagotchi main codebase, that for any release can be installed with:
 
 ```sh
-wget "https://github.com/evilsocket/pwnagotchi/archive/v1.0.1.zip"
-unzip v1.0.1.zip
-cd pwnagotchi-1.0.1
+wget "https://github.com/evilsocket/pwnagotchi/archive/v1.4.3.zip"
+unzip v1.4.3.zip
+cd pwnagotchi-1.4.3
 # this will install the requirements and pwnagotchi itself
+sudo pip3 install -r requirements.txt
 sudo pip3 install .
 ```
 
@@ -316,4 +317,4 @@ You can follow the main Pi0w installation instructions with just a couple of not
 
 1.  having an ethernet port allows you an easier connection to the booted system. Just connect a cable to the port and Pwnagotchi get an IP address with DHCP. If a plugged ethernet cable is detected on boot it will start in MANU mode;
 1.  in order to improve battery duration and reduce power requirements you can lower cpu frequency (underclocking). Edit your `/boot/config.txt` and add/uncomment the `arm_freq=800` line. Don't forget to add this file to your backups;
-1.  to run the Pi3 you need at least 2.5A, but 2A should be enough if you underclocked (users reports on Slack and [here](http://dustinlaferney.tk/?p=275)), so get a powerbank which can issue enough ampere. Less powerful units may allow the Raspberry to boot and work for some minutes, but then it will suddendly stop and/or never activate some devices like the bluetooth interface.
+1.  to run the Pi3 you need at least 2.5A, but 2A should be enough if you underclocked (users reports on Slack and [here](http://dustinlaferney.tk/?p=275)), so get a powerbank which can issue enough ampere. Less powerful units may allow the Raspberry to boot and work for some minutes, but then it will suddenly stop and/or never activate some devices like the bluetooth interface.
