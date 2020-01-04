@@ -47,7 +47,7 @@ Plugin Script | Description
 `screen_refresh.py` | Refreshes the e-ink display after X amount of updates.
 `twitter.py` | Creates tweets about the recent activity of Pwnagotchi.
 
-### Usage of the communiy plugins
+### Usage of the community plugins
 In order to use these plugins, clone the repository anywhere on your unit and then
 add its path to `/etc/pwnagotchi/config.yml` as:
 
