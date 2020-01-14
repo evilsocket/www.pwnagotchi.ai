@@ -268,7 +268,7 @@ Windows | `scripts/win_connection_share.ps1` | [link](https://github.com/evilsoc
 If you want to upload your handshakes while walking, want to use your smartphone as a display or simply shutdown your pwnagotchi gracefully, you can use the `bt-tether`-plugin.
 
 {{% notice info %}}
-<p>Make sure to explicitly enable Bluetooth Tethering on your Phone (usually in Settings -> Hotspot or similar). Otherwise your Pwnagotchi will pair with your phone but you won't be able to create a Personal Area Network (PAN).</p>
+<p>Make sure to explicitly enable Bluetooth Tethering on your Phone (usually in Settings -> Hotspot or similar) before pairing. Otherwise your Pwnagotchi will pair with your phone but you won't be able to create a Personal Area Network (PAN) even if you enable it after.</p>
 {{% /notice %}}
 
 Now in pwnagotchi's `config.yml` add the following:
