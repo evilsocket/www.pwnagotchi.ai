@@ -73,7 +73,13 @@ Check out [Name your new Pwnagotchi](/configuration/#name-your-new-pwnagotchi).
 
 ---
 ### I want to change the faces. What do I hack?
-The faces can be customized by overriding the `ui.faces` section in your `/etc/pwnagotchi/config.yml` file.
+The faces can be customized by overriding the `ui.faces` section in your `/etc/pwnagotchi/config.toml` file.
+
+---
+### I want to use a different font! Can I?
+Yes! You have to install the font on the system and adjust the `ui.font.name` parameter in your configuration.
+This will only affect the **status** field of your pwnagotchi, because the position of all the UI elements are 
+calculated based on **DejaVuSansMono**.
 
 ---
 ### I want my Pwnagotchi to speak a different language. Can it?
@@ -120,16 +126,17 @@ Check out [Anatomy of a Pwnagotchi Face](/usage/#anatomy-of-a-pwnagotchi-face)
 
 ---
 ### How do I whitelist my home network so Pwnagotchi stops pwning me?
-In `/etc/pwnagotchi/config.yml`, `main` section, add the following with a list of your networks. It will accept BSSID's and SSID's as input.
-```yaml
-    # access points to ignore
-    whitelist:
-        - EXAMPLE_NETWORK
-        - ANOTHER_EXAMPLE_NETWORK
-
+In `/etc/pwnagotchi/config.toml`, add the following with a list of your networks. It will accept BSSID's and SSID's as input.
+```toml
+main.whitelist = [
+  "EXAMPLE_NETWORK",
+  "ANOTHER_EXAMPLE_NETWORK",
+  "fo:od:ba:be:fo:od",
+  "fo:od:ba"
+]
 ```
 
-If your access points still get's deauthed, try using **single quotes** or the **BSSID** instead.
+If your access points still get's deauthed, try using the **BSSID** instead.
 
 {{% notice tip %}}
 <p>Your access points handshakes get still captured. This only prevents the deauth of the clients.</p>

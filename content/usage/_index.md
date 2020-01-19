@@ -14,7 +14,7 @@ Your unit can operate in one of three different "modes" that determines how it b
 
 #### MANU
 
-If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode. 
+If connected to the USB **data port** of your computer (or a tablet, phone, etc), your Pwnagotchi will start in MANUAL mode.
 This means it will read the log of the last session and report a few statistics on the screen. This is the mode you should be using your unit when you want to transfer data from/to it. Moreover, in MANU mode, you'll be able to access [bettercap's web UI](/usage/#bettercap-s-web-ui) from your computer by pointing your browser to `http://pwnagotchi.local`.
 
 {{% notice tip %}}
@@ -23,19 +23,19 @@ This means it will read the log of the last session and report a few statistics 
 
 #### AUTO
 
-This is the default mode your unit will start if only connected to the USB **power port**, for instance when connected to a powerbank without any host computer on the data port. 
+This is the default mode your unit will start if only connected to the USB **power port**, for instance when connected to a powerbank without any host computer on the data port.
 In AUTO mode, your unit will start operating, perform attacks and sniffing handshakes only by using the default `personality` configuration parameters.
 
 #### AI
 
 If AI is enabled in your configuration (as it is by default), AUTO mode will transition to AI mode after a few minutes (on average, about 10-15 minutes on a Rpi0W with a decent quality SD card).
-This interval is required to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D 
-Once the dependencies are loaded and so the `/root/brain.nn` file, AI mode will pick the optimal set of parameters in real time, depending on how long 
+This interval is required to load all the dependencies the AI module will be using and initialize the neural network. You can think about this as your Pwnagotchi waking up :D
+Once the dependencies are loaded and so the `/root/brain.nn` file, AI mode will pick the optimal set of parameters in real time, depending on how long
 it's been trained on the specific type of WiFi environment it's observing now.
 
-Moreover, depending on the `laziness` configuration parameter, it will more or less frequently start to learn continuously for a given amount of time. 
-While this is happening and the AI is "training", the algorithm tends to explore wider ranges of parameters in order to determine how those changes affect the reward. 
-While during simple inference epochs (when the unit is not learning but just picking the parameters using previous knowledge), the AI tends to be more conservative and 
+Moreover, depending on the `laziness` configuration parameter, it will more or less frequently start to learn continuously for a given amount of time.
+While this is happening and the AI is "training", the algorithm tends to explore wider ranges of parameters in order to determine how those changes affect the reward.
+While during simple inference epochs (when the unit is not learning but just picking the parameters using previous knowledge), the AI tends to be more conservative and
 only use parameters in smaller ranges that are known to work in that situation.
 
 Ideally, the `laziness` value should be very low at the beginning (say 0.1) and you should manually increase over time in order to reduce the amount of training vs inference epochs.
@@ -67,24 +67,24 @@ If you've properly attached the optional [supported e-ink display](/installation
 
 ![ui](https://i.imgur.com/c7xh4hN.png)
 
-* **CH**: This displays the current channel the unit is operating on. 
+* **CH**: This displays the current channel the unit is operating on.
    - When the unit is performing recon and hopping on all channels, it will display `*` instead of a number. It is gathering the number of APs on each channel when it is conducting recon. Recon signals the start of a new epoch.
 * **APS**: Number of access points on the current channel.
    - The total visible access points across all channels (according to the last recon) is displayed in parentheses.
 * **UP**: The uptime of the unit, since its last reboot. It is displayed in hh:mm:ss format.
-* **PWND**: Number of handshakes captured during this current session. 
+* **PWND**: Number of handshakes captured during this current session.
    - The number of unique networks your Pwnagotchi has eaten **at least one** handshake of, from the beginning of its life, is displayed in parentheses.
    - The SSID of the latest network handshake your Pwnagotchi has acquired is displayed in brackets.
 * **MODE**: Mode indicates how Pwnagotchi is currently functioning. See [above](/usage/#auto-ai-and-manu-modes) for more info about modes.
    * **MANU:** This appears when the unit is running in [MANUAL](/usage/#manu) mode, which is triggered when you start up your unit with the [USB network cable connected](/configuration/#connect-to-your-pwnagotchi).
-      - This mode is good for [updating](/usage/#update-your-pwnagotchi) and [backing up](/usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](/usage/#bettercap-s-web-ui). 
+      - This mode is good for [updating](/usage/#update-your-pwnagotchi) and [backing up](/usage/#backup-your-pwnagotchi) your unit and using [bettercap's web UI](/usage/#bettercap-s-web-ui).
       - Pwnagotchi does NOT sniff or capture handshakes when it is in MANUAL mode.
       - Stuck in MANUAL mode? Turn on the unit **without** the USB network cable connected.
    * **AUTO:** This indicates that the Pwnagotchi algorithm is running in [AUTOMATIC](/usage/#auto) mode, with AI disabled (or still loading).
       - Pwnagotchi will still sniff and capture handshakes in this mode; it is *mostly* functional—the primary difference between AUTO and AI mode is its actions are being determined by a static algorithm instead of the AI deciding what the Pwnagotchi should do for optimal pwnage.
       - This disappears once the AI dependencies have been bootstrapped and the neural network has finished loading. (On a RPi0W, this process takes about 20–30 minutes.)
       - If you are running your Pwnagotchi **without** the AI enabled, this is the mode you'll stay in.
-   * **AI:** [AI](/usage/#ai) mode appears once the AI dependencies have finished loading and the neural network is functional. 
+   * **AI:** [AI](/usage/#ai) mode appears once the AI dependencies have finished loading and the neural network is functional.
       - Once this appears, your Pwnagotchi is all ready to begin learning from its pwnage! 🎉
 * **FRIEND DETECTED!:** If another unit is nearby, its presence will be indicated between the bottom stats bar and your Pwnagotchi's status face.
   - **NOTE:** If more than one unit is nearby, only one—whichever has the stronger signal strength—will be displayed here.
@@ -203,12 +203,12 @@ By maximizing this reward value, the AI learns over time to find the set of para
 
 ## PwnMAIL
 
-You probably don't know yet, but Pwnagotchi is also a "crypto-pager"! By using the [PwnGRID](/configuration/#set-your-pwngrid-preferences) API (and [internet connectivity](/configuration/#host-connection-sharing) of course), your unit is able to exchange [end to end encrypted messages](https://en.wikipedia.org/wiki/End-to-end_encryption) with other units enrolled in the grid. Each message is encrypted on your Raspberry with the recipient RSA public key before being sent, therefore **we only have access to encrypted data and we have absolutely no way to see the cleartext** as 
+You probably don't know yet, but Pwnagotchi is also a "crypto-pager"! By using the [PwnGRID](/configuration/#set-your-pwngrid-preferences) API (and [internet connectivity](/configuration/#host-connection-sharing) of course), your unit is able to exchange [end to end encrypted messages](https://en.wikipedia.org/wiki/End-to-end_encryption) with other units enrolled in the grid. Each message is encrypted on your Raspberry with the recipient RSA public key before being sent, therefore **we only have access to encrypted data and we have absolutely no way to see the cleartext** as
 it can only be done by the original recipient via his private key.
 
-Your PwnMAIL address is your unit's cryptographic fingerprint (which is the SHA256 checksum of its public key in PEM format), you can 
+Your PwnMAIL address is your unit's cryptographic fingerprint (which is the SHA256 checksum of its public key in PEM format), you can
 read it from your unit's filesystem at `/etc/pwnagotchi/fingerprint` or by running `sudo pwngrid -whoami`. You can also use this address to open (and share) your ["pwnfile"](/pwnfile/#!ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05aea).
- 
+
 **Each unit corresponds to a single cryptographically signed and hardware isolated address.**
 
 To check your PwnMAIL inbox, you'll need to [SSH into your unit](/configuration/) and then use the `pwngrid` binary:
@@ -230,7 +230,7 @@ sudo pwngrid -inbox -id 123 -output picture.jpg
 ```
 
 This will automatically mark the message as read, to mark it back as unread:
- 
+
 ```sh
 sudo pwngrid -inbox -id 123 -unread
 ```
@@ -254,7 +254,7 @@ sudo pwngrid -send ca1225b86dc35fef90922d83421d2fc9c824e95b864cfa62da7bea64ffb05
 Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.bettercap.org/)! Conveniently, this means your Pwnagotchi can double as a portable WiFi penetration testing station when you access [bettercap's web UI](https://www.bettercap.org/usage/#web-ui) at `http://pwnagotchi.local`.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
-- In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face). 
+- In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face).
 - The default authentication credentials are `pwnagotchi:pwnagotchi`, if you decide to change them in `/usr/local/share/bettercap/caplets/pwnagotchi-*.cap`, you'll also need
 to update the configuration in `/etc/pwnagotchi/config.yml` to use the new credentials.
 
@@ -296,7 +296,7 @@ alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'
 
 Pwnagotchi goes blind and detects no APs on any channel
 
-Every once in a while, nexmon dies with: 
+Every once in a while, nexmon dies with:
 
 ```shell
 [ 4341.527847] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4101, -110

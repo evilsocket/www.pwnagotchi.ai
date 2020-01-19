@@ -307,7 +307,7 @@ sudo pwnagotchi --manual --debug
 pwnagotchi -h
 ```
 
-This will install the default configuration file in `/etc/pwnagotchi/default.yml`, in order to apply customizations you'll need to create a new `/etc/pwnagotchi/config.yml` file [as explained in the configuration section](/configuration/).
+This will install the default configuration file in `/etc/pwnagotchi/default.toml`, in order to apply customizations you'll need to create a new `/etc/pwnagotchi/config.toml` file [as explained in the configuration section](/configuration/).
 
 ## Installing on Raspberry Pi3
 

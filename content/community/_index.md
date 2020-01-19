@@ -34,7 +34,7 @@ Last tested on | Pwnagotchi version | Hardware | Working? | Reference
 
 Some of this guide will work with other framebuffer-based displays.
 
-- First: SSH into your Pwnagotchi, and give it some internet! 
+- First: SSH into your Pwnagotchi, and give it some internet!
   - Don't forget to check your default gateway and `apt-get update`.
 - Follow the guide here: [www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)#Method_1._Driver_installation](https://www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)#Method_1._Driver_installation)
   - At the step with `./LCD35-show`, add `lite` to the command prompt (e.g., `./LCD35-show lite`).
@@ -45,10 +45,10 @@ Some of this guide will work with other framebuffer-based displays.
   - `ln -s pwnagotchi.png pwnagotchi_2.png`
   - `ln -s pwnagotchi.png pwnagotchi_3.png`
 - `apt install fbi`
-- Change display type to `inky` in `config.yml`
+- Change display type to `inky` in `config.toml`
 - Add `modules-load=dwc2,g_ether` to your kernel command line (`/boot/cmdline.txt`) or it will break!
 - Also must add `dtoverlay=dwc2` to the bottom of (`/boot/config.txt`)
-- Edit `/etc/rc.local` and add: 
+- Edit `/etc/rc.local` and add:
 ```
 fbi -T 1 -a -noverbose -t 15 -cachemem 0 /root/pwnagotchi_1.png /root/pwnagotchi_2.png /root/pwnagotchi_3.png &
 ```
@@ -130,18 +130,18 @@ If you want to slim down the thickness of your RPi0W for a slim Pwnagotchi, it c
 
 #### Instructions:
 
-1. Place some flux on the wick. 
+1. Place some flux on the wick.
 ![ui](https://i.imgur.com/X6jSEzc.png)
 
-2. Place some flux on the connector pins. 
+2. Place some flux on the connector pins.
  ![ui](https://i.imgur.com/ObnCH1a.png)
 
-3. Set your soldering iron to around 300˚ C; you want it hot enough to flow solder into the wick. 
+3. Set your soldering iron to around 300˚ C; you want it hot enough to flow solder into the wick.
 
-4. Place the wick above the pins and heat with the soldering iron. 
+4. Place the wick above the pins and heat with the soldering iron.
 ![ui](https://i.imgur.com/GanjyiX.png)
 
-5. When you get to the side pads, you can use a side cutter like this one if you need to cut the pins. (Sometimes these are difficult to remove because of the size and solder amount.) 
+5. When you get to the side pads, you can use a side cutter like this one if you need to cut the pins. (Sometimes these are difficult to remove because of the size and solder amount.)
 ![ui](https://i.imgur.com/j9sTmuf.png)
 
 6. When finished, your pads should look like this:
