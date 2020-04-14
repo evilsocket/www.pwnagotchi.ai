@@ -12,7 +12,7 @@ pre: "<i class='fas fa-star-of-life'></i> "
 
 ## How does Pwnagotchi work?
 
-Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/sdcard/rootfs/root/pwnagotchi/config.yml#L54) over time to **get better at pwning WiFi things** in the environments you expose it to. 
+Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.toml#L137) over time to **get better at pwning WiFi things** in the environments you expose it to. 
 
 To be more precise, Pwnagotchi is using an [LSTM with MLP feature extractor](https://stable-baselines.readthedocs.io/en/master/modules/policies.html#stable_baselines.common.policies.MlpLstmPolicy) as its policy network for the [A2C agent](https://stable-baselines.readthedocs.io/en/master/modules/a2c.html). If you're unfamiliar with A2C, here is a very good [introductory explanation](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752) *(in comic form!)* of the basic principles behind how Pwnagotchi learns. Be sure to check out the [Usage](/usage/#training-the-ai) doc for more pragmatic details of how to help your Pwnagotchi learn as quickly as possible.
 
@@ -28,7 +28,7 @@ Multiple units within close physical proximity can "talk" to each other, adverti
 
 Depending on the status of the unit, several states and states transitions are configurable and represented on the display as different moods, expressions and sentences. Pwnagotchi speaks [many languages](/configuration/#choose-your-unit-s-language), too!
 
-Of course, it IS possible to run your Pwnagotchi with the AI disabled (configurable in `config.yml`). Why might you want to do this? Perhaps you simply want to use your own fixed parameters (instead of letting the AI decide for you), or maybe you want to save battery and CPU cycles, or maybe it's just you have strong concerns about aiding and abetting baby Skynet. Whatever your particular reasons may be: an AI-disabled Pwnagotchi is still a simple and very effective automated deauther, WPA handshake sniffer, and portable [bettercap](https://www.bettercap.org/) + [webui](/usage/#bettercap-s-web-ui) dedicated hardware.
+Of course, it IS possible to run your Pwnagotchi with the AI disabled (configurable in `config.toml`). Why might you want to do this? Perhaps you simply want to use your own fixed parameters (instead of letting the AI decide for you), or maybe you want to save battery and CPU cycles, or maybe it's just you have strong concerns about aiding and abetting baby Skynet. Whatever your particular reasons may be: an AI-disabled Pwnagotchi is still a simple and very effective automated deauther, WPA handshake sniffer, and portable [bettercap](https://www.bettercap.org/) + [webui](/usage/#bettercap-s-web-ui) dedicated hardware.
 
 {{% notice info %}}
 <p><strong>In case you're curious about the name:</strong> <em>Pwnagotchi</em> is a combination of <em>pwn</em> and <em>-gotchi</em>. It is a nostalgic reference made in homage to a very popular children's toy from the 1990s called the <a href="https://en.wikipedia.org/wiki/Tamagotchi">Tamagotchi</a>. The Tamagotchi (たまごっち, derived from <em>tamago</em> (たまご) "egg" + <em>uotchi</em> (ウオッチ) "watch") is a cultural touchstone for many Millennial hackers as a formative electronic toy from our collective childhoods. Were you lucky enough to possess a Tamagotchi as a kid? Well, with your Pwnagotchi, you too can enjoy the nostalgic delight of being strangely emotionally attached to a handheld automata <em>yet again!</em> Except, this time around...you get to #HackThePlanet. >:D</p>
@@ -55,8 +55,8 @@ will start affecting your Pwnagotchi's mood transitions, adding a bias towards h
 
 ## The Faces
 
-The following is the default set of faces that can be customized by overriding the [ui.faces section](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml#L177) in 
-your `/etc/pwnagotchi/config.yml` file.
+The following is the default set of faces that can be customized by overriding the [ui.faces section](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.toml#L160) in 
+your `/etc/pwnagotchi/config.toml` file.
 
 ### <span class="face">(⇀‿‿↼)</span> sleeping
 

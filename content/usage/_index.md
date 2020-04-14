@@ -44,19 +44,17 @@ Ideally, the `laziness` value should be very low at the beginning (say 0.1) and 
 
 #### The web UI
 
-Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.web` section `config.yml`). You can think of this as a Pwnagotchi in "headless" mode.
+Pwnagotchi's face—otherwise known as the UI—is available at a dedicated web interface located at `http://pwnagotchi.local:8080/` if you've already [connected to the unit](/configuration/#connect-to-your-pwnagotchi) via `usb0` (by using the RPi0W's data port) and set a static address on the network interface (see the `ui.web` section `config.toml`). You can think of this as a Pwnagotchi in "headless" mode.
 
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local:8080/` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - You can also view [bettercap's webUI](/usage/#bettercap-s-web-ui) in your browser at `http://pwnagotchi.local` whenever your Pwnagotchi is set to [MANUAL](/usage/#auto-ai-and-manu-modes) mode.
 
 The username and password for the web UI are both `changeme` by default.
-You should change these by updating the `config.yml` to include the new username and password. For example:
+You should change these by updating the `config.toml` to include the new username and password. For example:
 
-```yaml
-ui:
-    web:
-        username: my_new_username
-        password: my_new_password
+```toml
+ui.web.username = "my_new_username"
+ui.web.password = "my_new_password"
 ```
 
 #### The e-ink display (optional)
@@ -116,44 +114,43 @@ while True:
 
 Despite its simplicity, this logic is controlled by several parameters that regulate the wait times, the timeouts, on which channels to hop, and so on.
 
-From `config.yml`:
+From `config.toml`:
 
-```yaml
-personality:
-    # advertise our presence
-    advertise: true
-    # perform a deauthentication attack to client stations in order to get full or half handshakes
-    deauth: true
-    # send association frames to APs in order to get the PMKID
-    associate: true
-    # list of channels to recon on, or empty for all channels
-    channels: []
-    # minimum WiFi signal strength in dBm
-    min_rssi: -200
-    # number of seconds for wifi.ap.ttl
-    ap_ttl: 120
-    # number of seconds for wifi.sta.ttl
-    sta_ttl: 300
-    # time in seconds to wait during channel recon
-    recon_time: 30
-    # number of inactive epochs after which recon_time gets multiplied by recon_inactive_multiplier
-    max_inactive_scale: 2
-    # if more than max_inactive_scale epochs are inactive, recon_time *= recon_inactive_multiplier
-    recon_inactive_multiplier: 2
-    # time in seconds to wait during channel hopping if activity has been performed
-    hop_recon_time: 10
-    # time in seconds to wait during channel hopping if no activity has been performed
-    min_recon_time: 5
-    # maximum amount of deauths/associations per BSSID per session
-    max_interactions: 3
-    # maximum amount of misses before considering the data stale and triggering a new recon
-    max_misses_for_recon: 5
-    # number of active epochs that triggers the excited state
-    excited_num_epochs: 10
-    # number of inactive epochs that triggers the bored state
-    bored_num_epochs: 15
-    # number of inactive epochs that triggers the sad state
-    sad_num_epochs: 25
+```toml
+# advertise our presence
+personality.advertise = true
+# perform a deauthentication attack to client stations in order to get full or half handshakes
+personality.deauth = true
+# send association frames to APs in order to get the PMKID
+personality.associate = true
+# list of channels to recon on, or empty for all channels
+personality.channels = []
+# minimum WiFi signal strength in dBm
+personality.min_rssi = -200
+# number of seconds for wifi.ap.ttl
+personality.ap_ttl = 120
+# number of seconds for wifi.sta.ttl
+personality.sta_ttl = 300
+# time in seconds to wait during channel recon
+personality.recon_time = 30
+# number of inactive epochs after which recon_time gets multiplied by recon_inactive_multiplier
+personality.max_inactive_scale = 2
+# if more than max_inactive_scale epochs are inactive, recon_time *= recon_inactive_multiplier
+personality.recon_inactive_multiplier = 2
+# time in seconds to wait during channel hopping if activity has been performed
+personality.hop_recon_time = 10
+# time in seconds to wait during channel hopping if no activity has been performed
+personality.min_recon_time = 5
+# maximum amount of deauths/associations per BSSID per session
+personality.max_interactions = 3
+# maximum amount of misses before considering the data stale and triggering a new recon
+personality.max_misses_for_recon = 5
+# number of active epochs that triggers the excited state
+personality.excited_num_epochs = 10
+# number of inactive epochs that triggers the bored state
+personality.bored_num_epochs = 15
+# number of inactive epochs that triggers the sad state
+personality.sad_num_epochs = 25
 ```
 
 There is no optimal set of parameters for every situation: when the unit is moving (during a walk for instance) smaller timeouts and RSSI thresholds might be preferred in order to quickly remove routers that are not in range anymore, while when stationary in high density areas (like an office) other parameters might be better. The role of the AI is to observe what's going on at the WiFi level, and adjust those parameters in order to maximize the cumulative reward of that loop / epoch.
@@ -190,8 +187,8 @@ By maximizing this reward value, the AI learns over time to find the set of para
 ## Files to know on your Pwnagotchi
 
 - **Configuration**
-   - `/etc/pwnagotchi/config.yml`: This is where you put your custom configurations.
-       - Do NOT add customizations to `default.yml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
+   - `/etc/pwnagotchi/config.toml`: This is where you put your custom configurations.
+       - Do NOT add customizations to `default.toml`! They will be overwritten whenever you [update your unit](/usage/#update-your-pwnagotchi)!
 - **Handshakes**
    - All the [handshakes Pwnagotchi captures](/intro/#wifi-handshakes-101) are saved to `/root/handshakes/`
 - **Memory**
@@ -256,7 +253,7 @@ Whenever Pwnagotchi is pwning, it is being powered by [bettercap](https://www.be
 - Obviously, change the `pwnagotchi` in `http://pwnagotchi.local` to the [new hostname](/configuration/#name-your-new-pwnagotchi) you've given your unit.
 - In order to use [bettercap's web UI](https://www.bettercap.org/usage/#web-ui), you will need to boot your Pwnagotchi in [MANUAL mode](/usage/#anatomy-of-a-pwnagotchi-face).
 - The default authentication credentials are `pwnagotchi:pwnagotchi`, if you decide to change them in `/usr/local/share/bettercap/caplets/pwnagotchi-*.cap`, you'll also need
-to update the configuration in `/etc/pwnagotchi/config.yml` to use the new credentials.
+to update the configuration in `/etc/pwnagotchi/config.toml` to use the new credentials.
 
 ![webui](https://raw.githubusercontent.com/bettercap/media/master/ui-events.png)
 
@@ -268,7 +265,7 @@ to update the configuration in `/etc/pwnagotchi/config.yml` to use the new crede
 
 You can use the `scripts/backup.sh` script to backup the important files of your unit.
 
-```shell
+```bash
 usage: ./scripts/backup.sh HOSTNAME backup.zip
 ```
 
@@ -282,13 +279,13 @@ the new image and restore the backup by extracting the files back in the root fi
 
 ### pwnlog
 Putting this into your .bashrc will create the `pwnlog` alias which is a pretty and uncluttered view on the pwnagotchi logs.
-```shell
+```bash
 alias pwnlog='tail -f -n300 /var/log/pwn* | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-'
 ```
 
 ### pwnver
 Putting this into your .bashrc will create the `pwnver` alias, useful for printing the version of Pwnagotchi currently running.
-```shell
+```bash
 alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'
 ```
 
@@ -298,7 +295,7 @@ Pwnagotchi goes blind and detects no APs on any channel
 
 Every once in a while, nexmon dies with:
 
-```shell
+```bash
 [ 4341.527847] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4101, -110
 [ 4344.327806] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4097, -110
 [ 4347.127853] brcmfmac: brcmf_cfg80211_nexmon_set_channel: Set Channel failed: chspec=4098, -110
