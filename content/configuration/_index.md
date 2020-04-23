@@ -261,7 +261,7 @@ If you want to upload your handshakes while walking, want to use your smartphone
 <p>Make sure to explicitly enable Bluetooth Tethering on your Phone (usually in Settings -> Hotspot or similar) before pairing. Otherwise your Pwnagotchi will pair with your phone but you won't be able to create a Personal Area Network (PAN) even if you enable it after.</p>
 {{% /notice %}}
 
-Now in pwnagotchi's `config.yml` add the following:
+Now in pwnagotchi's `config.toml` add the following:
 
 ```toml
 main.plugins.bt-tether.enabled = false
@@ -311,6 +311,12 @@ The status codes are:
 If you want to fix these problems, the first step should be to start pwnagotchi with `--debug` and
 check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
 
+#### Known problems
+
+Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices.
+Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
+you will be prompted on the phone to allow connection from your pwnagotchi hostname.
+
 ## Sdcard protection
 
 As you may know, sdcards have a limited count of write cycles and can break from time to time. A
@@ -348,12 +354,12 @@ Pwnagotchi will look for the file **/root/.pwnagotchi-crypted**.
 Every line in this file represents a [luks](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)-container that will be decrypted and mounted before pwnagotchi starts.
 
 Each line must be in the following format:
-```shell
+```bash
 $name $container_path $mountpoint
 ```
 
 **Example**
-```shell
+```bash
 config /cryptobox1 /etc/pwnagotchi # /cryptobox1 is some file
 handshakes /dev/sdb /root/handshakes # /dev/sdb is some external storage
 ```
@@ -378,9 +384,9 @@ The following will happen do make it possible:
 
 Let's do this together! やりましょう！
 
-```shell
+```bash
 # create a container file
-dd if=/dev/zero of=/cryptobox bs=1M count=100M
+dd if=/dev/zero of=/cryptobox bs=1M count=100
 # make it luks-ready! You'll be asked for a password. Remember it,
 # because you will have to type it everytime you start your pwnagotchi.
 cryptsetup luksFormat /cryptobox
@@ -398,11 +404,7 @@ rm /etc/pwnagotchi/*
 echo "cryptobox /cryptobox /etc/pwnagotchi" > /root/.pwnagotchi-crypted
 ```
 
-#### Known problems
 
-Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices.
-Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
-you will be prompted on the phone to allow connection from your pwnagotchi hostname.
 
 &nbsp;
 
