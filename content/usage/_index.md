@@ -280,7 +280,7 @@ the new image and restore the backup by extracting the files back in the root fi
 ### pwnlog
 Putting this into your .bashrc will create the `pwnlog` alias which is a pretty and uncluttered view on the pwnagotchi logs.
 ```bash
-alias pwnlog='tail -f -n300 /var/log/pwn* | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-'
+alias pwnlog='tail -f -n300 /var/log/pwn*.log | sed --unbuffered "s/,[[:digit:]]\{3\}\]//g" | cut -d " " -f 2-'
 ```
 
 ### pwnver
