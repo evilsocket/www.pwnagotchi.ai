@@ -281,7 +281,7 @@ main.plugins.bt-tether.devices.android-phone.ip = "192.168.44.44"     # this is 
                                                                       ## 44 is just an example, you can choose
                                                                       ## between 2-254 (if netmask is 24)
 main.plugins.bt-tether.devices.android-phone.netmask = 24             # netmask of the PAN
-main.plugins.bt-tether.devices.android-phone.interval = 1             # in minues, how often should
+main.plugins.bt-tether.devices.android-phone.interval = 1             # in minutes, how often should
                                                                       ## the device be searched
 main.plugins.bt-tether.devices.android-phone.scantime = 10            # in seconds, how long should be searched
                                                                       ## on each interval
