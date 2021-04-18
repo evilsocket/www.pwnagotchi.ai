@@ -7,8 +7,7 @@ pre: "<i class='fas fa-puzzle-piece'></i> "
 
 ---
 
-Pwnagotchi has a simple plugin system that you can use to customize your unit and its behavior. You can place your plugins anywhere
-as Python files, and then edit the `config.toml` file (`main.plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/plugins/default) in the main Pwnagotchi repo for a list of  plugins included by default as well as all the callbacks that you can define for your own customizations.
+Pwnagotchi has a simple plugin system that you can use to customize your unit and its behavior. You can place your plugins anywhere as Python files, and then edit the `config.toml` file (`main.custom_plugins` value) to point to their containing folder. Check the [plugins folder](https://github.com/evilsocket/pwnagotchi/tree/master/pwnagotchi/plugins/default) in the main Pwnagotchi repo for a list of  plugins included by default as well as all the callbacks that you can define for your own customizations.
 
 ## Default plugins
 These plugins are maintained in the main `pwnagotchi` repository. New versions will be automatically
