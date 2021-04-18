@@ -286,7 +286,7 @@ alias pwnlog='tail -f -n300 /var/log/pwn* | sed --unbuffered "s/,[[:digit:]]\{3\
 ### pwnver
 Putting this into your .bashrc will create the `pwnver` alias, useful for printing the version of Pwnagotchi currently running.
 ```bash
-alias pwnver='python3 -c "import pwnagotchi as p; print(p.version)"'
+alias pwnver='python3 -c "import pwnagotchi as p; print(p.__version__)"'
 ```
 
 ## Known Issues
