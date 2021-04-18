@@ -8,37 +8,43 @@ pre: "<i class='fas fa-cog'></i> "
 
 Once you've [written the image file onto the SD card](/installation/#flashing-an-image), there're a few steps you'll have to follow in order to configure your new Pwnagotchi properly.
 
+{{% notice warning %}}
+<p><b>PLEASE NOTE:</b>As we migraded from <b>yaml</b> to <b>toml</b> as our configuration language, you probably want to have a look at <a href="https://github.com/toml-lang/toml">the toml reference</a>. If you update from an old pwnagotchi version, your old configuration will be loaded and automatically saved in the new toml format. The old configuration won't be deleted, but not be used anymore. In the future yaml-support will be completly dropped.</p>
+{{% /notice %}}
+
 ## Initial Configuration
 
-For the initial configuration, the easiest way is creating a new `config.yml` file of the `boot` partition of the SD card.
+For the initial configuration, the easiest way is creating a new `config.toml` file of the `boot` partition of the SD card.
 This partition should be easily accessible from your computer regardless of your operating system as it is a simple FAT32.
 
 In this process you might define your unit's name, which network to whitelist and the type of display you use. The following
 is the example configuration for a unit with a Waveshare V2 display, for more detailed configuration instructions refer to the
 sections below.
 
-```yaml
-main:
-  name: 'pwnagotchi'
-  whitelist:
-    - 'YourHomeNetworkMaybe'
-  plugins:
-    grid:
-      enabled: true
-      report: true
-      exclude:
-        - 'YourHomeNetworkMaybe'
+```toml
+main.name = "pwnagotchi"
+main.lang = "en"
+main.whitelist = [
+  "EXAMPLE_NETWORK",
+  "ANOTHER_EXAMPLE_NETWORK",
+  "fo:od:ba:be:fo:od",
+  "fo:od:ba"
+]
 
-ui:
-    display:
-      enabled: true
-      type: 'waveshare_2'
-      color: 'black'
+main.plugins.grid.enabled = true
+main.plugins.grid.report = true
+main.plugins.grid.exclude = [
+  "YourHomeNetworkHere"
+]
+
+ui.display.enabled = true
+ui.display.type = "waveshare_2"
+ui.display.color = "black"
 ```
 
-The software will install this file to `/etc/pwnagotchi/config.yml` (and it will **remove** it from the SD card) during boot.
+The software will install this file to `/etc/pwnagotchi/config.toml` (and it will **remove** it from the SD card) during boot.
 
-After the first boot, you can open the `/etc/pwnagotchi/config.yml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.yml) with your custom values.
+After the first boot, you can open the `/etc/pwnagotchi/config.toml` file (either via SSH or by directly editing the SD card's contents from a computer with a card reader) to override the [default configuration](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.toml) with your custom values.
 
 ## Restoring a Backup
 
@@ -63,12 +69,13 @@ But if you **do** want to change what language Pwnagotchi displays its status in
 - Swedish
 - Macedonian
 - Irish
-- Japanese (can't be displayed with the current font)
+- Japanese (*set ui.font.name to **"fonts-japanese-gothic"***)
 - Polish
 - Portugese
 - Portugese (Brazilian)
 - Bulgarian
 - Ukrainian
+- Czech
 
 {{% notice tip %}}
 <p>If you want to contribute a new language (or improve an existing translation!), you can check out the <a href="/contributing/#adding-a-language">Adding a Language</a> doc for more details.</p>
@@ -85,43 +92,29 @@ If you would like your unit to participate in PwnGrid's community rankings and s
 
 - The list of networks that the unit collected handshakes of (consisting of their `BSSID` and `ESSID`).
 
-In order to **fully opt-in** to PwnGrid, you must make the following change in your `/etc/pwnagotchi/config.yml` file:
+In order to **fully opt-in** to PwnGrid, you must make the following change in your `/etc/pwnagotchi/config.toml` file:
 
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: true
-        report: true # full-opt in
+```toml
+main.plugins.grid.enabled = true
+main.plugins.grid.report = true # full-opt in
 ```
 
 Even if you have decided to **fully opted-in** to PwnGrid, you can still disable reporting for specific networks—for instance, if you don't want your home network to be in the system:
 
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: true
-        report: true
-        exclude:
-          - MyHomeNetwork     # both ESSIDs and BSSIDs are supported
-          - de:ad:be:ef:de:ad # both ESSIDs and BSSIDs are supported
+```toml
+main.plugins.grid.enabled = true
+main.plugins.grid.report = true # full-opt in
+main.plugins.grid.exclude = [
+  "YourHomeNetworkHere", # both ESSIDs and BSSIDs are supported
+  "de:ad:be:ef:de:ad"    # both ESSIDs and BSSIDs are supported
+]
 ```
-
-{{% notice warning %}}
-<p><b>PLEASE NOTE:</b>As we use <a href="https://yaml.org/">YAML</a> for the configuration, you should know some YAML rules. Especially when it comes to quotation, some things <b>can go wrong!</b> E.g. if your ESSIDs starts with <b>0x</b>
-or <b>@</b> or contains some other special characters, you should use <b>single quotes</b>, which allows you to
-use all kinds of characters in your string (you only need to escape the single quote itself).</p>
-{{% /notice %}}
 
 If instead you prefer to completely opt-out by also disabling signaling:
 
-```yaml
-main:
-    plugins:
-      grid:
-        enabled: false # full opt-out
-        report: false
+```toml
+main.plugins.grid.enabled = false
+main.plugins.grid.report = false
 ```
 
 ## Select your display
@@ -148,25 +141,23 @@ Currently supported:
 
 ## First Boot
 
-Your `config.yml` file in the `boot` partition of the SD card should now look something like the following (with the
+Your `config.toml` file in the `boot` partition of the SD card should now look something like the following (with the
 right differences if you're using different hardware):
 
-```yaml
-main:
-  name: 'pwnagotchi'
-  whitelist:
-    - 'YourHomeNetworkMaybe'
-  plugins:
-    grid:
-      enabled: true
-      report: true
-      exclude:
-        - 'YourHomeNetworkMaybe'
+```toml
+main.name = "pwnagotchi"
+main.whitelist = [
+  "YourHomeNetworkMaybe"
+]
 
-ui:
-  display:
-    type: 'inky'
-    color: 'black'
+main.plugins.grid.enabled = true
+main.plugins.grid.report = true
+main.plugins.grid.exclude = [
+  "YourHomeNetworkMaybe"
+]
+
+ui.display.type = "inky"
+ui.display.color = "black"
 ```
 
 **Congratulations! Your SD card is now ready for the first boot!** 👾 🎉
@@ -271,33 +262,38 @@ If you want to upload your handshakes while walking, want to use your smartphone
 <p>Make sure to explicitly enable Bluetooth Tethering on your Phone (usually in Settings -> Hotspot or similar) before pairing. Otherwise your Pwnagotchi will pair with your phone but you won't be able to create a Personal Area Network (PAN) even if you enable it after.</p>
 {{% /notice %}}
 
-Now in pwnagotchi's `config.yml` add the following:
+Now in pwnagotchi's `config.toml` add the following:
 
-```yaml
-main:
-    plugins:
-      bt-tether:
-        enabled: true
-        devices:
-          my-phone1:              # you can choose your phones name here
-            enabled: true         # enables the device
-            search_order: 1       # in which order the devices should be searched. E.g. this is #1.
-            mac: 'FF:FF:FF:FF:FF' # you need to put your phones bt-mac here (the same as above,
-                                  ## or goto your phones   settings > status)
-            ip: 'xx.xx.xx.44'     # this is the static ip of your pwnagotchi
-                                  ## adjust this to your phones pan-network (run "ifconfig bt-pan" on your phone)
-                                  ## if you feel lucky, try: 192.168.44.44 (Android) or 172.20.10.6 (iOS)
-                                  ## 44 is just an example, you can choose between 2-254 (if netmask is 24)
-            netmask: 24           # netmask of the PAN
-            interval: 1           # in minues, how often should the device be searched
-            scantime: 15          # in seconds, how long should be searched on each interval
-            share_internet: true  # this will change the routing and nameserver on your pi
-            priority: 99          # if you have multiple devices which can share internet; the highest priority wins
-            max_tries: 0          # how often should be tried to find the device until it is disabled (to save power)
-                                  ## 0 means infinity
-          macbook:
-            enabled: false
-            # ...
+```toml
+main.plugins.bt-tether.enabled = false
+
+main.plugins.bt-tether.devices.android-phone.enabled = false          # the name of this entry is android-phone
+main.plugins.bt-tether.devices.android-phone.search_order = 1         # in which order the devices should
+                                                                      ## be searched. E.g. this is #1
+main.plugins.bt-tether.devices.android-phone.mac = ""                 # you need to put your phones
+                                                                      ## bt-mac here (settings > status)
+main.plugins.bt-tether.devices.android-phone.ip = "192.168.44.44"     # this is the static ip of your pwnagotchi
+                                                                      ## adjust this to your phones pan-network
+                                                                      ## (run "ifconfig bt-pan" on your phone)
+                                                                      ## if you feel lucky,
+                                                                      ## try: 192.168.44.44 (Android) or
+                                                                      ## 172.20.10.6 (iOS)
+                                                                      ## 44 is just an example, you can choose
+                                                                      ## between 2-254 (if netmask is 24)
+main.plugins.bt-tether.devices.android-phone.netmask = 24             # netmask of the PAN
+main.plugins.bt-tether.devices.android-phone.interval = 1             # in minutes, how often should
+                                                                      ## the device be searched
+main.plugins.bt-tether.devices.android-phone.scantime = 10            # in seconds, how long should be searched
+                                                                      ## on each interval
+main.plugins.bt-tether.devices.android-phone.max_tries = 10           # how many times it should try to find the
+                                                                      ## phone (0 = endless)
+main.plugins.bt-tether.devices.android-phone.share_internet = false   # set to true if you want to have
+                                                                      ## internet via bluetooth
+main.plugins.bt-tether.devices.android-phone.priority = 1             # the device with the highest
+                                                                      ## priority wins (1 = highest)
+
+main.plugins.bt-tether.devices.ios-phone.enabled = false              # next device...
+main.plugins.bt-tether.devices.ios-phone.search_order = 2
 ```
 
 {{% notice warning %}}
@@ -321,6 +317,95 @@ check the log file (`/var/log/pwnagotchi.log`) for related debug messages.
 Some users had problems with the **auto pairing** feature of the plugin (in old versions). If your pwnagotchi should not make an effort to connect to your bluetooth device after a few minutes, there is a chance that this can be fixed by doing the pairing manually. To do this, put your phone in *discoverable mode*. On your pwnagotchi, run `sudo bluetoothctl` and once in the bluetooth-shell, type `scan on`. That will scan the environment for nearby bluetooth devices.
 Pick the mac of your phone and type `pair <mac>` and `trust <mac>`. In short time (maybe not immediately)
 you will be prompted on the phone to allow connection from your pwnagotchi hostname.
+
+## Sdcard protection
+
+As you may know, sdcards have a limited count of write cycles and can break from time to time. A
+good way to prevent this is to minimize the writes to sdcard. Pwnagotchi has the ability to mount
+certain directories into memory and only write it back to the sdcard after a certain interval.
+To activate this functionality, you have to change your config to:
+
+```toml
+fs.memory.enabled = true
+fs.memory.mounts.log.enabled = true
+fs.memory.mounts.data.enabled = true
+```
+
+The full configuration of a mount looks like this:
+
+```toml
+fs.memory.mounts.log.enabled = true     # switch
+fs.memory.mounts.log.mount = "/var/log" # which directory to map into memory
+fs.memory.mounts.log.size = "50M"       # max size to put into memory
+fs.memory.mounts.log.sync = 60          # interval in seconds to sync back onto disk
+fs.memory.mounts.log.zram = true        # use zram for compression (recommended)
+fs.memory.mounts.log.rsync = true       # use rsync to copy only the difference (recommended)
+```
+
+## Encryption
+
+Shit happenz. What if you loose your pwnagotchi? All your data, configuration incl. api-keys, are lost.
+To prevent the leak of your sensible data, it's a good idea to encrypt your data.
+
+To do this, we can make use of the [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) subsystem of linux.
+
+### How does it work?
+
+Pwnagotchi will look for the file **/root/.pwnagotchi-crypted**. 
+Every line in this file represents a [luks](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)-container that will be decrypted and mounted before pwnagotchi starts.
+
+Each line must be in the following format:
+```bash
+$name $container_path $mountpoint
+```
+
+**Example**
+```bash
+config /cryptobox1 /etc/pwnagotchi # /cryptobox1 is some file
+handshakes /dev/sdb /root/handshakes # /dev/sdb is some external storage
+```
+
+{{% notice warning %}}
+<p>Don't use comments in this file.</p>
+{{% /notice %}}
+
+
+**But how does pwnagotchi decrypts it?**
+
+The following will happen do make it possible:
+
+1. A hotspot will be started (*Name:* **DECRYPT-ME**; *Password:* **pwnagotchi**)
+2. The user will have to connect to this wifi and open a browser (*Redirection should work;* **if not go to** [http://192.168.0.10/](http://192.168.0.10/)).
+3. Password must be submitted via the following form:
+
+
+![Password Form](https://i.imgur.com/BRGATme.png)
+
+### Example: Encrypt the configuration directory
+
+Let's do this together! やりましょう！
+
+```bash
+# create a container file
+dd if=/dev/zero of=/cryptobox bs=1M count=100
+# make it luks-ready! You'll be asked for a password. Remember it,
+# because you will have to type it everytime you start your pwnagotchi.
+cryptsetup luksFormat /cryptobox
+# Now we can open it (you'll have to type your password in)
+cryptsetup luksOpen /cryptobox cryptobox
+# create a ext4 filesystem
+mkfs.ext4 /dev/mapper/cryptobox
+# mount it to /mnt
+mount /dev/mapper/cryptobox /mnt
+# now we copy all the configs to /mnt/
+cp /etc/pwnagotchi/* /mnt/
+# remove the old files
+rm /etc/pwnagotchi/*
+# tell pwnagotchi about the encrypted container
+echo "cryptobox /cryptobox /etc/pwnagotchi" > /root/.pwnagotchi-crypted
+```
+
+
 
 &nbsp;
 
