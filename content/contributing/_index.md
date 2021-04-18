@@ -6,7 +6,7 @@ draft: false
 pre: "<i class='fas fa-dna'></i> "
 ---
 
-Pwnagotchi's developement environment is [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune config.yml).
+Pwnagotchi's developement environment is [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) + [nexmon patches](https://re4son-kernel.com/re4son-pi-kernel/) for monitor mode, or any Linux with a monitor mode enabled interface (if you tune `config.toml`).
 
 {{% notice warning %}}
 <p>
@@ -18,7 +18,7 @@ Pwnagotchi's developement environment is [Raspbian](https://www.raspberrypi.org/
 
 The easiest way to extend Pwnagotchi's functionalities is writing a plugin. Pwnagotchi has a simple plugin system that you can 
 use to customize your unit and its behavior. You can place your plugins anywhere as Python files, and then edit the 
-`config.yml` file (`main.plugins` value) to point to their containing folder.
+`config.toml` file (`main.plugins` value) to point to their containing folder.
 
 Check the [plugins](/plugins/) page for more information.
 
