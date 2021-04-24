@@ -7,6 +7,9 @@ theme = "hugo-theme-learn"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
+[markup.goldmark.renderer]
+unsafe= true
+
 [params]
 themeVariant = "yellow"
 disableShortcutsTitle=true
