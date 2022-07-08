@@ -381,6 +381,8 @@ The following will happen do make it possible:
 
 ![Password Form](https://i.imgur.com/BRGATme.png)
 
+*In case no hotspot appears, you must delete /etc/network/interfaces.d/wlan0-cfg*
+
 ### Example: Encrypt the configuration directory
 
 Let's do this together! やりましょう！
