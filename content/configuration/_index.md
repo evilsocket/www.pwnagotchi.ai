@@ -407,6 +407,13 @@ rm /etc/pwnagotchi/*
 echo "cryptobox /cryptobox /etc/pwnagotchi" > /root/.pwnagotchi-crypted
 ```
 
+### Stuff which would make sense to encrypt:
+
+```
+/etc/pwnagotchi
+/root (several files and folders - a mount-bind via fstab would make it simpler)
+/var/log (mainly pwnagotchi logs and pwngrid-peer logs)
+```
 
 
 &nbsp;
