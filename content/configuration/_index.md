@@ -382,6 +382,8 @@ The following will happen do make it possible:
 
 ![Password Form](https://i.imgur.com/BRGATme.png)
 
+*In case no hotspot appears, you must delete /etc/network/interfaces.d/wlan0-cfg*
+
 ### Example: Encrypt the configuration directory
 
 Let's do this together! やりましょう！
@@ -406,6 +408,13 @@ rm /etc/pwnagotchi/*
 echo "cryptobox /cryptobox /etc/pwnagotchi" > /root/.pwnagotchi-crypted
 ```
 
+### Stuff which would make sense to encrypt:
+
+```
+/etc/pwnagotchi
+/root (several files and folders - a mount-bind via fstab would make it simpler)
+/var/log (mainly pwnagotchi logs and pwngrid-peer logs)
+```
 
 
 &nbsp;
