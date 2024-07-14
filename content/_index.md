@@ -4,6 +4,13 @@
 
 Learn more about [the project and how it started on the author's blog](https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/).
 
+<p align="center">
+  <strong>Join the Discord</strong>
+  <a href="https://discord.gg/https://discord.gg/btZpkp45gQ" target="_blank" title="Join our community!">
+    <img src="https://dcbadge.limes.pink/api/server/https://discord.gg/btZpkp45gQ"/>
+  </a>
+</p>
+
 <img src="https://media.giphy.com/media/f9GsXyfgEQbY65fnhu/source.gif"/>
 
 Instead of merely playing [Super Mario or Atari games](https://becominghuman.ai/getting-mario-back-into-the-gym-setting-up-super-mario-bros-in-openais-gym-8e39a96c1e41?gi=c4b66c3d5ced) like most reinforcement learning based "AI" *(yawn)*, Pwnagotchi tunes [its own parameters](https://github.com/evilsocket/pwnagotchi/blob/master/pwnagotchi/defaults.toml#L137) over time to **get better at pwning WiFi things** in the real world environments you expose it to.

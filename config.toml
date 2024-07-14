@@ -28,10 +28,10 @@ name = '<img alt="Discourse posts" src="https://img.shields.io/discourse/posts?s
 url = "https://community.pwnagotchi.ai/"
 weight = 1.5
 
-[[menu.shortcuts]]
-name = "<img alt='Slack' src='https://invite.pwnagotchi.ai/badge.svg'>"
-url = "https://invite.pwnagotchi.ai/"
-weight = 2
+# [[menu.shortcuts]]
+# name = "<img alt='Slack' src='https://invite.pwnagotchi.ai/badge.svg'>"
+# url = "https://invite.pwnagotchi.ai/"
+# weight = 2
 
 [[menu.shortcuts]]
 name = '<img alt="Software License" src="https://img.shields.io/badge/license-GPL3-brightgreen.svg?style=flat-square">'
