@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ .Hugo.Generator }}
+    {{ hugo.Generator }}
     {{ partial "meta.html" . }}
     {{ partial "favicon.html" . }}
 
@@ -78,7 +78,7 @@
         <div id="body-inner">
           {{if and (not .IsHome) (not .Params.chapter) }}
             <h1>{{.Title}}</h1>
-            {{ if ne .URL "/pwnfile/" }}
+            {{ if ne .Permalink "/pwnfile/" }}
               <div class="toc">
               {{ .TableOfContents }}
               </div>
