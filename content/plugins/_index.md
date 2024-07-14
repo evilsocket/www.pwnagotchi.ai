@@ -25,8 +25,8 @@ Plugin Script | Description
 `memtemp.py` | Adds a memory and temperature indicator.
 `net-pos.py` | Saves WiFi position whenever a handshake is captured and retrieves the geolocation when internet is next available.
 `onlinehashcrack.py` | Automatically uploads handshakes to [onlinehashcrack.com](https://onlinehashcrack.com).
-`paw-gps.py` | Saves GPS coordinates whenever an handshake is captured. The GPS data is get from PAW on android.
-`session-stats.py` | Shows the current session stats in nice little graps.
+`paw-gps.py` | Saves GPS coordinates whenever an handshake is captured. The GPS data is retrieved from PAW on android.
+`session-stats.py` | Shows the current session stats in nice little graphs.
 `switcher.py` | You can switch to some non-pwnagotchi activity for some amount of time.
 `ups_lite.py` | A plugin that will add a voltage indicator for the UPS Lite v1.1.
 `webcfg.py` | With this plugin you can change the configuration via the browser.
