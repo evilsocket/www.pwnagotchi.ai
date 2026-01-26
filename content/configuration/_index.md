@@ -137,6 +137,7 @@ Currently supported:
 * `papirus` for [PaPiRus Zero](https://thepihut.com/products/papirus-zero-epaper-eink-screen-phat-for-pi-zero).
 * `oledhat` for [Waveshare's OLED Hat](https://www.waveshare.com/wiki/1.3inch_OLED_HAT).
 * `dfrobot` for [DFRobot's eInk Hat](https://www.dfrobot.com/product-1867.html)
+* `adafruitssd1306i2c` for [Adafruit Monochrome 0.96" 128x64](https://www.adafruit.com/product/326)
 
 **You can configure the refresh interval of the display via `ui.fps`.** We recommend using a slow refresh rate to avoid shortening the lifetime of your e-ink display. The default value is `0`, which will *only* refresh when changes are made to the screen.
 
